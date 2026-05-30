@@ -1,0 +1,3015 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>福岡旅遊計劃書 2026.6.1–6.9</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans TC", sans-serif;
+      background: #f5f4f0;
+      color: #2c2c2c;
+      line-height: 1.6;
+    }
+
+    /* Header */
+    .hero {
+      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+      color: white;
+      padding: 48px 24px 40px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: "🌸";
+      position: absolute;
+      font-size: 200px;
+      opacity: 0.04;
+      top: -40px;
+      left: -20px;
+    }
+    .hero::after {
+      content: "⛩️";
+      position: absolute;
+      font-size: 200px;
+      opacity: 0.04;
+      bottom: -60px;
+      right: -20px;
+    }
+    .hero h1 { font-size: 2rem; font-weight: 700; letter-spacing: 0.05em; margin-bottom: 8px; }
+    .hero .subtitle { font-size: 1rem; opacity: 0.75; margin-bottom: 20px; }
+    .hero-tags { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; }
+    .hero-tag {
+      background: rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 20px;
+      padding: 4px 14px;
+      font-size: 0.8rem;
+      color: white;
+    }
+    .hero-tag-btn {
+      cursor: pointer;
+      font-family: inherit;
+      transition: background 0.15s;
+    }
+    .hero-tag-btn:hover { background: rgba(255,255,255,0.25); }
+
+    /* Layout */
+    .container { max-width: 900px; margin: 0 auto; padding: 24px 16px; }
+
+    /* Section title */
+    .section-title {
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: #888;
+      margin: 32px 0 12px;
+    }
+
+    /* Info cards row */
+    .info-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; margin-bottom: 8px; }
+    .info-card {
+      background: white;
+      border-radius: 12px;
+      padding: 16px;
+      border-left: 4px solid #0f3460;
+    }
+    .info-card .label { font-size: 0.72rem; color: #999; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 4px; }
+    .info-card .value { font-size: 0.95rem; font-weight: 600; color: #1a1a2e; }
+    .info-card .sub { font-size: 0.8rem; color: #666; margin-top: 2px; }
+
+    /* Pass card */
+    .pass-box {
+      background: white;
+      border-radius: 12px;
+      padding: 20px;
+      margin-bottom: 8px;
+      border: 2px dashed #e0d6c8;
+    }
+    .pass-box h3 { font-size: 0.9rem; font-weight: 700; margin-bottom: 12px; color: #1a1a2e; }
+    .pass-table { width: 100%; border-collapse: collapse; font-size: 0.85rem; }
+    .pass-table th { text-align: left; padding: 6px 10px; background: #f8f6f2; color: #666; font-weight: 600; font-size: 0.75rem; }
+    .pass-table td { padding: 8px 10px; border-top: 1px solid #f0ece4; }
+    .pass-table tr:hover td { background: #fdfcfa; }
+    .note-box {
+      background: #fff9e6;
+      border-left: 3px solid #f5a623;
+      border-radius: 0 8px 8px 0;
+      padding: 10px 14px;
+      font-size: 0.82rem;
+      color: #7a5c00;
+      margin-top: 10px;
+    }
+    details > summary { list-style: none; }
+    details > summary::-webkit-details-marker { display: none; }
+    details[open] > summary > span:last-child::before { content: '▲ 收起'; color: #888; font-size: 0.75rem; }
+    details:not([open]) > summary > span:last-child::before { content: '▼ 展開'; color: #888; font-size: 0.75rem; }
+
+    /* Day cards */
+    .day-card {
+      background: white;
+      border-radius: 16px;
+      margin-bottom: 16px;
+      overflow: hidden;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    }
+    .day-header {
+      display: flex;
+      align-items: center;
+      padding: 16px 20px;
+      gap: 16px;
+    }
+    .day-num {
+      font-size: 1.8rem;
+      font-weight: 800;
+      opacity: 0.15;
+      line-height: 1;
+      min-width: 48px;
+    }
+    .day-meta { flex: 1; }
+    .day-meta .date { font-size: 0.8rem; color: #999; }
+    .day-meta .title { font-size: 1.05rem; font-weight: 700; }
+    .day-meta .tags { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 4px; }
+    .tag {
+      font-size: 0.7rem;
+      padding: 2px 8px;
+      border-radius: 10px;
+      font-weight: 600;
+    }
+    .tag-pass { background: #e8f4fd; color: #1a6fa8; }
+    .tag-nishitetsu { background: #fde8f0; color: #a81a6f; }
+    .tag-free { background: #e8fdf0; color: #1a8a3a; }
+    .tag-reserve { background: #fff3e0; color: #e65100; }
+    .tag-anime { background: #f3e5f5; color: #6a1b9a; }
+    .tag-paid { background: #ffecd2; color: #c45000; }
+
+    /* Timeline */
+    .timeline { padding: 0 20px 20px; }
+    .tl-item {
+      display: flex;
+      gap: 14px;
+      padding: 8px 0;
+      border-bottom: 1px solid #f5f3ef;
+    }
+    .tl-item:last-child { border-bottom: none; }
+    .tl-time {
+      font-size: 0.78rem;
+      color: #bbb;
+      min-width: 44px;
+      padding-top: 2px;
+      font-variant-numeric: tabular-nums;
+    }
+    .tl-content { flex: 1; }
+    .tl-name { font-weight: 600; font-size: 0.92rem; }
+    .tl-detail { font-size: 0.8rem; color: #777; margin-top: 2px; }
+    .tl-price {
+      font-size: 0.78rem;
+      font-weight: 700;
+      padding: 2px 8px;
+      border-radius: 8px;
+      align-self: flex-start;
+      white-space: nowrap;
+      margin-top: 2px;
+    }
+    .price-free { background: #e8fdf0; color: #1a8a3a; }
+    .price-paid { background: #fef3cd; color: #856404; }
+    .price-pass { background: #e8f4fd; color: #1a6fa8; }
+    .price-consume { background: #f3e5f5; color: #6a1b9a; }
+
+    /* Alert inline */
+    .tl-alert {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 0.75rem;
+      color: #e65100;
+      background: #fff3e0;
+      border-radius: 6px;
+      padding: 2px 8px;
+      margin-top: 4px;
+    }
+
+    /* Chinese notes */
+    .tl-zh { color: #bbb; font-size: 0.75rem; display: block; margin-top: 1px; }
+
+    /* External links */
+    .tl-name a {
+      color: inherit;
+      text-decoration: none;
+      border-bottom: 1px dashed #ccc;
+    }
+    .tl-name a:hover { color: #0f3460; border-bottom-color: #0f3460; }
+    .ext-badge {
+      display: inline-flex;
+      align-items: center;
+      font-size: 0.7rem;
+      color: #1a6fa8;
+      text-decoration: none;
+      background: #e8f4fd;
+      border-radius: 4px;
+      padding: 1px 7px;
+      margin-left: 6px;
+      vertical-align: middle;
+      white-space: nowrap;
+      font-weight: 600;
+    }
+    .ext-badge:hover { background: #cce4f7; }
+    .ext-badge.klook { background: #fff0e6; color: #e84f00; }
+    .ext-badge.klook:hover { background: #ffdec8; }
+    .ext-badge.volcano { background: #fff3e0; color: #e65100; }
+    .ext-badge.volcano:hover { background: #ffe0b2; }
+
+    /* Rain plan */
+    .rain-card {
+      background: white;
+      border-radius: 12px;
+      padding: 20px;
+      margin-bottom: 8px;
+    }
+    .rain-card h3 { font-size: 0.9rem; font-weight: 700; margin-bottom: 14px; color: #1a1a2e; }
+    .rain-table { width: 100%; border-collapse: collapse; font-size: 0.84rem; }
+    .rain-table th { text-align: left; padding: 6px 10px; background: #f0f4f8; color: #555; font-size: 0.75rem; font-weight: 600; }
+    .rain-table td { padding: 8px 10px; border-top: 1px solid #eef2f6; vertical-align: top; line-height: 1.5; }
+    .rain-table tr:first-child td { border-top: none; }
+    .rain-day { font-weight: 700; color: #0f3460; white-space: nowrap; }
+    .rain-orig { color: #e65c00; font-size: 0.78rem; }
+    .rain-alt { color: #1a6fa8; }
+    .rain-indoor { background: #e8f4fd; color: #1a6fa8; font-size: 0.72rem; font-weight: 600; border-radius: 4px; padding: 1px 6px; margin-left: 4px; vertical-align: middle; white-space: nowrap; }
+
+    /* Budget table */
+    .budget-card {
+      background: white;
+      border-radius: 12px;
+      padding: 20px;
+      margin-bottom: 8px;
+    }
+    .budget-card h3 { font-size: 0.9rem; font-weight: 700; margin-bottom: 14px; color: #1a1a2e; }
+    .budget-table { width: 100%; border-collapse: collapse; font-size: 0.85rem; }
+    .budget-table th { text-align: left; padding: 6px 10px; background: #f8f6f2; color: #666; font-size: 0.75rem; font-weight: 600; }
+    .budget-table td { padding: 7px 10px; border-top: 1px solid #f0ece4; }
+    .budget-table .total-row td { font-weight: 700; background: #f8f6f2; color: #1a1a2e; font-size: 0.9rem; border-top: 2px solid #e0d6c8; }
+    .budget-table .cat { color: #aaa; font-size: 0.75rem; }
+    .amount-jpy { text-align: right; font-variant-numeric: tabular-nums; }
+    .amount-twd { text-align: right; color: #888; font-size: 0.78rem; font-variant-numeric: tabular-nums; }
+
+    /* Reminder checklist */
+    .checklist {
+      background: white;
+      border-radius: 12px;
+      padding: 20px;
+      margin-bottom: 8px;
+    }
+    .checklist h3 { font-size: 0.9rem; font-weight: 700; margin-bottom: 12px; color: #1a1a2e; }
+    .check-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      padding: 7px 0;
+      border-bottom: 1px solid #f5f3ef;
+      font-size: 0.85rem;
+    }
+    .check-item:last-child { border-bottom: none; }
+    .check-icon { font-size: 1rem; margin-top: 1px; flex-shrink: 0; }
+    .check-text strong { display: block; font-weight: 600; }
+    .check-text span { color: #777; font-size: 0.78rem; }
+
+    /* Color themes per day */
+    .d1 .day-header { background: linear-gradient(135deg, #667eea15, #764ba215); }
+    .d1 .day-num { color: #667eea; }
+    .d2 .day-header { background: linear-gradient(135deg, #f093fb15, #f5576c15); }
+    .d2 .day-num { color: #f5576c; }
+    .d3 .day-header { background: linear-gradient(135deg, #4facfe15, #00f2fe15); }
+    .d3 .day-num { color: #4facfe; }
+    .d4 .day-header { background: linear-gradient(135deg, #43e97b15, #38f9d715); }
+    .d4 .day-num { color: #38b27f; }
+    .d5 .day-header { background: linear-gradient(135deg, #fa709a15, #fee14015); }
+    .d5 .day-num { color: #fa709a; }
+    .d6 .day-header { background: linear-gradient(135deg, #a18cd115, #fbc2eb15); }
+    .d6 .day-num { color: #9b59b6; }
+    .d7 .day-header { background: linear-gradient(135deg, #ffecd215, #fcb69f15); }
+    .d7 .day-num { color: #e08060; }
+    .d8 .day-header { background: linear-gradient(135deg, #a1c4fd15, #c2e9fb15); }
+    .d8 .day-num { color: #6a9fd8; }
+    .d9 .day-header { background: linear-gradient(135deg, #d4fc7915, #96e6a115); }
+    .d9 .day-num { color: #5aaa6a; }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 24px;
+      color: #bbb;
+      font-size: 0.78rem;
+    }
+
+    @media (max-width: 600px) {
+      /* Prevent horizontal overflow */
+      body { overflow-x: hidden; }
+      .container { padding: 16px 12px; }
+
+      /* Hero */
+      .hero { padding: 32px 16px 28px; }
+      .hero h1 { font-size: 1.25rem; letter-spacing: 0.02em; }
+      .hero .subtitle { font-size: 0.82rem; }
+      .hero-tag { font-size: 0.72rem; padding: 3px 10px; }
+
+      /* Info cards: 2 columns on mobile */
+      .info-row { grid-template-columns: 1fr 1fr; gap: 8px; }
+      .info-card { padding: 12px; }
+      .info-card .value { font-size: 0.85rem; }
+
+      /* Tables: scroll horizontally, don't break layout */
+      .pass-box  { overflow-x: auto; -webkit-overflow-scrolling: touch; padding: 14px; }
+      .rain-card { overflow-x: auto; -webkit-overflow-scrolling: touch; padding: 14px; }
+      .budget-card { overflow-x: auto; -webkit-overflow-scrolling: touch; padding: 14px; }
+      .pass-table  { min-width: 460px; font-size: 0.8rem; }
+      .rain-table  { min-width: 400px; font-size: 0.79rem; }
+      .budget-table { min-width: 380px; font-size: 0.8rem; }
+
+      /* Day header */
+      .day-header { padding: 12px 14px; gap: 10px; }
+      .day-num { font-size: 1.4rem; min-width: 36px; }
+      .day-meta .title { font-size: 0.95rem; }
+      .day-meta .date { font-size: 0.75rem; }
+
+      /* Timeline: stack price below content */
+      .timeline { padding: 0 12px 16px; }
+      .tl-item { flex-wrap: wrap; gap: 6px; padding: 8px 0; }
+      .tl-time { min-width: 38px; font-size: 0.72rem; }
+      .tl-content { min-width: 0; flex: 1; }
+      .tl-name { font-size: 0.87rem; }
+      .tl-detail { font-size: 0.75rem; }
+      .tl-price { margin-left: 44px; font-size: 0.73rem; }
+      /* Hide Japanese/Chinese subtitle notes to reduce clutter */
+      .tl-zh { display: none; }
+      /* Hide external link badges to reduce overflow */
+      .ext-badge { display: none; }
+
+      /* Note box */
+      .note-box { font-size: 0.78rem; padding: 8px 10px; }
+
+      /* Checklist */
+      .checklist { padding: 14px; }
+      .check-item { font-size: 0.82rem; gap: 8px; }
+
+      /* Section title */
+      .section-title { margin: 24px 0 8px; }
+
+      /* Tab nav already has overflow-x: auto, ensure buttons readable */
+      .tab-btn { font-size: 0.74rem; padding: 4px 10px; }
+
+      /* Day weather row */
+      .day-weather { gap: 6px; }
+      .wx-badge { font-size: 0.72rem; padding: 2px 8px; }
+    }
+
+    /* ===== Tab Navigation ===== */
+    /* ===== Two-layer navigation ===== */
+    .nav-wrapper {
+      position: sticky;
+      top: 0;
+      z-index: 200;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.13);
+    }
+    .tab-nav-upper {
+      background: #1a1a2e;
+      display: flex;
+      gap: 0;
+      padding: 0;
+      margin: 0;
+    }
+    .upper-btn {
+      flex: 1;
+      padding: 9px 6px;
+      background: transparent;
+      color: rgba(255,255,255,0.55);
+      border: none;
+      border-bottom: 3px solid transparent;
+      font-size: 0.8rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.18s;
+      font-family: inherit;
+      white-space: nowrap;
+      letter-spacing: 0.02em;
+    }
+    .upper-btn:hover { color: white; background: rgba(255,255,255,0.07); }
+    .upper-btn.active { color: white; border-bottom-color: #48c78e; }
+    .tab-nav {
+      background: #f5f4f0;
+      border-bottom: 2px solid #e0d8ce;
+      display: flex;
+      gap: 4px;
+      padding: 8px 12px;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+      margin: 0 0 20px;
+    }
+    .tab-nav::-webkit-scrollbar { display: none; }
+    .tab-btn {
+      flex-shrink: 0;
+      padding: 5px 13px;
+      border: 1.5px solid #d8d0c8;
+      border-radius: 20px;
+      background: white;
+      color: #555;
+      font-size: 0.79rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.15s;
+      white-space: nowrap;
+      font-family: inherit;
+      line-height: 1.4;
+    }
+    .tab-btn:hover { background: #f0ece4; border-color: #aaa; }
+    .tab-btn.active { background: #1a1a2e; color: white; border-color: #1a1a2e; }
+    .tab-pane { display: none; }
+    .tab-pane.active { display: block; }
+
+
+  .day-weather {
+    display: flex; align-items: center; gap: 10px;
+    margin-top: 7px; font-size: 0.8rem; color: #555;
+    flex-wrap: wrap;
+  }
+  .wx-badge {
+    display: inline-flex; align-items: center; gap: 4px;
+    background: #f5f4f0; border: 1px solid #ddd;
+    border-radius: 20px; padding: 3px 10px; font-size: 0.78rem;
+    font-weight: 600; white-space: nowrap;
+  }
+  .wx-badge.wx-sun  { background:#fffde7; border-color:#f9a825; color:#7a5c00; }
+  .wx-badge.wx-part { background:#fff8e1; border-color:#ffca28; color:#6d4c00; }
+  .wx-badge.wx-rain { background:#fff0f0; border-color:#ef9a9a; color:#b71c1c; }
+  .wx-link { font-size:0.74rem; color:#888; text-decoration:none; }
+  .wx-link:hover { color:#555; text-decoration:underline; }
+  </style>
+</head>
+<body>
+
+<!-- Hero -->
+<div class="hero">
+  <h1>🇯🇵 福岡旅遊計劃書</h1>
+  <div class="subtitle">2026年6月1日（一）〜 6月9日（二）　9天8夜</div>
+  <div class="hero-tags">
+    <button class="hero-tag hero-tag-btn" onclick="showTab('overview')">住 WELLCABIN TENJIN</button>
+    <button class="hero-tag hero-tag-btn" onclick="showTab('day4')">鬼滅の刃 ufotable Cafe</button>
+    <button class="hero-tag hero-tag-btn" onclick="showTab('day5')">ヒロアカ原画展</button>
+    <button class="hero-tag hero-tag-btn" onclick="showTab('day2')">🌸 太宰府 紫陽花 + 九博</button>
+    <button class="hero-tag hero-tag-btn" onclick="showTab('day3')">🐭 ちいかわ討伐フェア</button>
+    <button class="hero-tag hero-tag-btn" onclick="showTab('day7')">🌋 阿蘇火山 Klook</button>
+    <button class="hero-tag hero-tag-btn" onclick="showTab('day8')">🌊 糸島 + 唐津</button>
+    <button class="hero-tag hero-tag-btn" onclick="showTab('overview')" style="background:rgba(72,199,142,0.25);border-color:rgba(72,199,142,0.5);color:#d4f5e9;">✅ eSIM 已購入 NT$652</button>
+  </div>
+</div>
+
+<div class="container">
+  <!-- ===== Two-layer Tab Navigation ===== -->
+  <div class="nav-wrapper">
+    <div class="tab-nav-upper">
+      <button class="upper-btn active" data-group="itinerary" onclick="showGroup('itinerary')">📅 行程</button>
+      <button class="upper-btn" data-group="food" onclick="showGroup('food')">🍜 餐廳美食</button>
+      <button class="upper-btn" data-group="info" onclick="showGroup('info')">📋 攻略資訊</button>
+    </div>
+    <div class="tab-nav">
+      <button class="tab-btn" data-tab="overview" data-group="itinerary" onclick="showTab('overview')">概覽</button>
+      <button class="tab-btn active" data-tab="day1" data-group="itinerary" onclick="showTab('day1')">Day 1</button>
+      <button class="tab-btn" data-tab="day2" data-group="itinerary" onclick="showTab('day2')">Day 2</button>
+      <button class="tab-btn" data-tab="day3" data-group="itinerary" onclick="showTab('day3')">Day 3</button>
+      <button class="tab-btn" data-tab="day4" data-group="itinerary" onclick="showTab('day4')">Day 4</button>
+      <button class="tab-btn" data-tab="day5" data-group="itinerary" onclick="showTab('day5')">Day 5</button>
+      <button class="tab-btn" data-tab="day6" data-group="itinerary" onclick="showTab('day6')">Day 6</button>
+      <button class="tab-btn" data-tab="day7" data-group="itinerary" onclick="showTab('day7')">Day 7</button>
+      <button class="tab-btn" data-tab="day8" data-group="itinerary" onclick="showTab('day8')">Day 8</button>
+      <button class="tab-btn" data-tab="day9" data-group="itinerary" onclick="showTab('day9')">Day 9</button>
+      <button class="tab-btn" data-tab="rain" data-group="itinerary" onclick="showTab('rain')">🌧️ 雨備案</button>
+      <button class="tab-btn" data-tab="lunch" data-group="food" style="display:none" onclick="showTab('lunch')">🍱 午餐</button>
+      <button class="tab-btn" data-tab="ramen" data-group="food" style="display:none" onclick="showTab('ramen')">🍜 拉麵</button>
+      <button class="tab-btn" data-tab="food" data-group="food" style="display:none" onclick="showTab('food')">🍽️ 美食</button>
+      <button class="tab-btn" data-tab="anime" data-group="info" style="display:none" onclick="showTab('anime')">🎌 動漫・K-pop</button>
+      <button class="tab-btn" data-tab="workman" data-group="info" style="display:none" onclick="showTab('workman')">🧊 WorkMan</button>
+      <button class="tab-btn" data-tab="map" data-group="info" style="display:none" onclick="showTab('map')">📍 地圖</button>
+      <button class="tab-btn" data-tab="budget" data-group="info" style="display:none" onclick="showTab('budget')">💰 費用</button>
+      <button class="tab-btn" data-tab="checklist" data-group="info" style="display:none" onclick="showTab('checklist')">✅ 確認</button>
+    </div>
+  </div>
+
+  <div class="tab-pane" id="pane-overview">
+
+  <!-- 航班資訊 -->
+  <div class="section-title">航班</div>
+  <div class="info-row">
+    <div class="info-card">
+      <div class="label">✈️ 去程 6/1</div>
+      <div class="value">06:50 台北桃園 → 09:55 福岡</div>
+      <div class="sub">飛行約2小時05分　⚠️ 注意颱風動態</div>
+    </div>
+    <div class="info-card">
+      <div class="label">✈️ 回程 6/9</div>
+      <div class="value">11:00 福岡 → 12:30 台北桃園</div>
+      <div class="sub">⚠️ 09:00 前必須到達福岡機場（09:30 登機）</div>
+    </div>
+  </div>
+
+  <!-- 機場交通 -->
+  <div class="section-title">🚇 機場交通 &amp; 航廈</div>
+
+  <div class="info-row">
+    <div class="info-card" style="background:#f0f7ff;border-left:3px solid #1a6fa8">
+      <div class="label">🛫 桃園機場出發</div>
+      <div class="value">第二航廈（Terminal 2）</div>
+      <div class="sub">報到櫃台 J6–J12 ｜ 登機門 B8</div>
+    </div>
+    <div class="info-card" style="background:#f0f7ff;border-left:3px solid #1a6fa8">
+      <div class="label">🛬 福岡機場入境 / 出境</div>
+      <div class="value">國際線航廈（International Terminal）</div>
+      <div class="sub">入境後搭接駁巴士到國內線 → 地下鉄空港線直達天神</div>
+    </div>
+  </div>
+
+  <div class="rain-card" style="margin-bottom:8px">
+    <h3>📍 Day 1（6/1）機場 → 市區　落地後動線</h3>
+    <table class="rain-table">
+      <thead><tr><th>步驟</th><th>方式</th><th>時間</th><th>費用</th><th>備注</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><strong>① 入境通關</strong></td>
+          <td>國際線到着ロビー</td>
+          <td>通關 20–40 分</td>
+          <td>免費</td>
+          <td>排隊時間視人潮，IC カード 建議機場 ATM 先取¥10,000備用</td>
+        </tr>
+        <tr>
+          <td><strong>② 免費接駁巴士</strong></td>
+          <td>國際線 → 國內線航廈</td>
+          <td>10–15 分</td>
+          <td>免費</td>
+          <td>國際線 1F 出口搭乘</td>
+        </tr>
+        <tr>
+          <td><strong>③ 地鐵空港線</strong></td>
+          <td>福岡空港 → 博多駅（2站）</td>
+          <td>約 5 分</td>
+          <td>¥260</td>
+          <td rowspan="2">每 3–5 分一班，天神或博多視飯店決定</td>
+        </tr>
+        <tr>
+          <td><strong>③ 地鐵空港線</strong></td>
+          <td>福岡空港 → 天神駅（5站）</td>
+          <td>約 11 分</td>
+          <td>¥260</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="note-box" style="margin-top:12px; background:#f0fdf4; border-left-color:#38b27f">
+      💡 落地 09:55 → 通關 → 接駁 + 地鐵 → <strong>預計 10:45–11:15 到博多 / 天神</strong>
+    </div>
+  </div>
+
+  <div class="rain-card" style="margin-bottom:8px">
+    <h3>📍 Day 9（6/9）市區 → 機場　回程動線</h3>
+    <p style="font-size:0.84rem; color:#c0392b; margin:0 0 12px; font-weight:600">⚠️ 回程 11:00 起飛，09:30 登機截止 → 09:00 前必須抵達國際線航廈 → <strong>建議 07:30 前出飯店</strong></p>
+    <table class="rain-table">
+      <thead><tr><th>步驟</th><th>方式</th><th>時間</th><th>費用</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><strong>① 地鐵空港線</strong></td>
+          <td>天神駅 → 福岡空港（5站）</td>
+          <td>約 11 分</td>
+          <td>¥260</td>
+        </tr>
+        <tr>
+          <td><strong>①</strong> 或</td>
+          <td>博多駅 → 福岡空港（2站）</td>
+          <td>約 5 分</td>
+          <td>¥260</td>
+        </tr>
+        <tr>
+          <td><strong>② 免費接駁巴士</strong></td>
+          <td>國內線 → 國際線航廈</td>
+          <td>10–15 分</td>
+          <td>免費</td>
+        </tr>
+        <tr>
+          <td><strong>③ 安檢 + 候機</strong></td>
+          <td>國際線辦理登機、安檢</td>
+          <td>60–90 分</td>
+          <td>—</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="note-box" style="margin-top:12px; background:#fff8e1; border-left-color:#f9a825">
+      💡 天神出發到機場安檢完畢約 <strong>30–40 分鐘</strong>，預留免稅購物時間 → <strong>07:30 最晚出飯店</strong>
+    </div>
+  </div>
+
+  <!-- 住宿資訊 -->
+  <div class="section-title">住宿</div>
+  <div class="info-row">
+    <div class="info-card">
+      <div class="label">飯店</div>
+      <div class="value"><a href="https://maps.google.com/?q=WELLCABIN+TENJIN+天神+福岡市" target="_blank" style="color:inherit;text-decoration:underline dotted">WELLCABIN TENJIN 🗺</a></div>
+      <div class="sub">男性專用膠囊旅館</div>
+    </div>
+    <div class="info-card">
+      <div class="label">交通</div>
+      <div class="value">天神南駅 徒步2分</div>
+      <div class="sub">西鉄天神駅 徒步4分</div>
+    </div>
+    <div class="info-card">
+      <div class="label">Check-in / Check-out</div>
+      <div class="value">15:00 / 11:00</div>
+      <div class="sub">6/1 抵達後可寄放行李</div>
+    </div>
+    <div class="info-card">
+      <div class="label">費用（估）</div>
+      <div class="value">¥3,000–4,500 /泊</div>
+      <div class="sub">8泊 合計約 ¥28,000</div>
+    </div>
+  </div>
+
+  <!-- 網路 / eSIM -->
+  <div class="section-title">📱 網路 / eSIM</div>
+  <div class="info-row">
+    <div class="info-card" style="border-left-color:#27ae60">
+      <div class="label">✅ 已購入</div>
+      <div class="value">日本 eSIM — NT$652</div>
+      <div class="sub">Klook 購入 / 9天不限流量（降速後 384kbps，隔日重置）</div>
+    </div>
+    <div class="info-card" style="border-left-color:#27ae60">
+      <div class="label">啟用方式</div>
+      <div class="value">落地後再啟用</div>
+      <div class="sub">⚠️ 台灣出發前掃 QR Code 安裝，到日本再開啟 eSIM 數據</div>
+    </div>
+  </div>
+
+  <!-- 交通票券 -->
+  <div class="section-title">交通票券</div>
+  <div class="pass-box">
+    <h3>🎫 票券規劃</h3>
+    <table class="pass-table">
+      <thead>
+        <tr>
+          <th>票券</th>
+          <th>使用日</th>
+          <th>費用</th>
+          <th>涵蓋範圍</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>西鉄 1日フリー乗車券</strong></td>
+          <td>6/6（Day 6 柳川）</td>
+          <td>¥1,370/人</td>
+          <td>西鉄全線（天神↔柳川往返で元取れる）</td>
+        </tr>
+        <tr>
+          <td><strong>🚄 新幹線 博多↔小倉（自由席）</strong></td>
+          <td>6/4（Day 4 小倉）</td>
+          <td>¥2,160/人（3人 = ¥6,480 往復 ¥12,960）</td>
+          <td>博多→小倉 約15分・小倉→博多 各 ¥2,160</td>
+        </tr>
+        <tr>
+          <td><strong>🌋 阿蘇一日遊（Klook）</strong></td>
+          <td>6/7（Day 7）</td>
+          <td>NT$1,312/人（早鳥 NT$1,312）</td>
+          <td>熊本城・阿蘇火山（含接駁車）・草千里・黑川溫泉｜★4.8（1,844評價）30K+人</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="note-box">
+      ✅ <strong>新幹線（Day 4 小倉）</strong>：博多↔小倉 自由席 ¥2,160/人，約15分，隨到隨搭不需劃位，直接刷 Suica / 現金購票均可。<br>
+      ✅ <strong>西鉄 1日券（Day 6 柳川）</strong>：在西鉄天神駅窓口購買，¥1,370。天神→柳川往復(¥1,320×2=¥2,640)で十分元が取れる。<br>
+      ✅ <strong>阿蘇 Klook（Day 7）</strong>：出發前 Klook 預訂，07:30 天神 or 博多駅集合，全程含交通無需另買票。
+    </div>
+  </div>
+
+  <!-- 出發前準備清單 -->
+  <div class="section-title">📋 出發前準備清單</div>
+  <div class="rain-card" style="padding:16px 20px">
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px 24px;">
+
+      <div>
+        <p style="font-weight:700; font-size:0.85rem; color:#1a1a2e; margin:0 0 8px">🛂 證件</p>
+        <label style="display:flex;gap:8px;align-items:flex-start;margin-bottom:6px;font-size:0.83rem"><input type="checkbox"> <span>護照效期 6 個月以上（截至 2026/12）</span></label>
+        <label style="display:flex;gap:8px;align-items:flex-start;margin-bottom:6px;font-size:0.83rem"><input type="checkbox"> <span><strong>Visit Japan Web</strong> 電子入境卡<br><span style="color:#999;font-size:0.77rem">vjw-lp.digital.go.jp</span></span></label>
+        <label style="display:flex;gap:8px;align-items:flex-start;margin-bottom:6px;font-size:0.83rem"><input type="checkbox"> <span>旅遊保險 投保</span></label>
+      </div>
+
+      <div>
+        <p style="font-weight:700; font-size:0.85rem; color:#1a1a2e; margin:0 0 8px">📱 網路 / eSIM</p>
+        <label style="display:flex;gap:8px;align-items:flex-start;margin-bottom:6px;font-size:0.83rem"><input type="checkbox" checked> <span style="text-decoration:line-through;color:#aaa;">購買日本 eSIM</span><span style="color:#27ae60;font-size:0.83rem;margin-left:4px">✅ 已購入 — Klook NT$652 / 9天不限流量（公平使用原則，降速後 384kbps，隔日重置）落地再啟用</span></label>
+        <label style="display:flex;gap:8px;align-items:flex-start;margin-bottom:6px;font-size:0.83rem"><input type="checkbox"> <span>Google Maps 離線地圖（福岡・大分・佐賀）</span></label>
+        <label style="display:flex;gap:8px;align-items:flex-start;margin-bottom:6px;font-size:0.83rem"><input type="checkbox"> <span>Suica / IC カード 確認可用</span></label>
+      </div>
+
+      <div>
+        <p style="font-weight:700; font-size:0.85rem; color:#1a1a2e; margin:0 0 8px">🎟️ Klook 預訂</p>
+        <label style="display:flex;gap:8px;align-items:flex-start;margin-bottom:6px;font-size:0.83rem"><input type="checkbox"> <span><strong>JR 北部九州 Pass 3日</strong>（Day2–4）<br><span style="color:#c45000;font-size:0.77rem">NT$2,796，台灣預訂較現場便宜</span></span></label>
+        <label style="display:flex;gap:8px;align-items:flex-start;margin-bottom:6px;font-size:0.83rem"><input type="checkbox"> <span><strong>阿蘇一日遊</strong>（Day6，6/6 指定日）<br><span style="color:#c45000;font-size:0.77rem">NT$1,312　★4.8（1,844評）</span></span></label>
+        <label style="display:flex;gap:8px;align-items:flex-start;margin-bottom:6px;font-size:0.83rem"><input type="checkbox"> <span>柳川遊船（Day5，可提前訂）<br><span style="color:#999;font-size:0.77rem">NT$356〜，現場購票亦可</span></span></label>
+        <label style="display:flex;gap:8px;align-items:flex-start;margin-bottom:6px;font-size:0.83rem"><input type="checkbox"> <span>Marine World 門票（Day8）<br><span style="color:#999;font-size:0.77rem">¥2,500，Klook 通常有折扣</span></span></label>
+      </div>
+
+      <div>
+        <p style="font-weight:700; font-size:0.85rem; color:#1a1a2e; margin:0 0 8px">🏨 住宿 & 金錢</p>
+        <label style="display:flex;gap:8px;align-items:flex-start;margin-bottom:6px;font-size:0.83rem"><input type="checkbox"> <span><strong>WELLCABIN TENJIN</strong> 訂房確認（8泊，6/1–6/8）</span></label>
+        <label style="display:flex;gap:8px;align-items:flex-start;margin-bottom:6px;font-size:0.83rem"><input type="checkbox"> <span>換日幣 ¥60,000〜80,000<br><span style="color:#999;font-size:0.77rem">台灣機場或福岡機場 7-Eleven ATM</span></span></label>
+        <label style="display:flex;gap:8px;align-items:flex-start;margin-bottom:6px;font-size:0.83rem"><input type="checkbox"> <span>信用卡海外手續費確認（Visa/MC）</span></label>
+        <label style="display:flex;gap:8px;align-items:flex-start;margin-bottom:6px;font-size:0.83rem"><input type="checkbox"> <span>西鉄 1日フリー乗車券（Day5 太宰府・柳川，現場購）</span></label>
+      </div>
+
+      <div>
+        <p style="font-weight:700; font-size:0.85rem; color:#1a1a2e; margin:0 0 8px">🎒 行李 & 裝備</p>
+        <label style="display:flex;gap:8px;align-items:flex-start;margin-bottom:6px;font-size:0.83rem"><input type="checkbox"> <span>摺疊傘（颱風警告中，必備！）</span></label>
+        <label style="display:flex;gap:8px;align-items:flex-start;margin-bottom:6px;font-size:0.83rem"><input type="checkbox"> <span>防水袋 / 輕便雨衣</span></label>
+        <label style="display:flex;gap:8px;align-items:flex-start;margin-bottom:6px;font-size:0.83rem"><input type="checkbox"> <span>行動電源（20,000mAh，確認航空安規）</span></label>
+        <label style="display:flex;gap:8px;align-items:flex-start;margin-bottom:6px;font-size:0.83rem"><input type="checkbox"> <span>速乾薄衣（福岡 6月 30–35°C）</span></label>
+      </div>
+
+      <div>
+        <p style="font-weight:700; font-size:0.85rem; color:#1a1a2e; margin:0 0 8px">🧊 WorkMan 製冷背心</p>
+        <label style="display:flex;gap:8px;align-items:flex-start;margin-bottom:6px;font-size:0.83rem"><input type="checkbox"> <span>出發前官網確認庫存<br><span style="color:#999;font-size:0.77rem">workman.jp　WZ-6（¥19,800）或 7ヶ所新款（¥29,800）</span></span></label>
+        <label style="display:flex;gap:8px;align-items:flex-start;margin-bottom:6px;font-size:0.83rem"><input type="checkbox"> <span>Day1–2 前往吉塚店購買<br><span style="color:#999;font-size:0.77rem">博多駅→吉塚 JR 1站3分＋步行5分</span></span></label>
+      </div>
+
+    </div>
+    <p style="font-size:0.77rem; color:#aaa; margin-top:16px; border-top:1px solid #eee; padding-top:10px;">
+      ✅ 可點擊各項目打勾追蹤（刷新後重置）
+    </p>
+  </div>
+
+  <!-- 每日行程 -->
+  <div class="section-title">每日行程</div>
+
+  <!-- 颱風警告 -->
+  <div class="note-box" style="margin-bottom:16px; background:#fff0f0; border-left-color:#e53e3e; color:#7b1c1c; border-radius:8px; padding:14px 16px;">
+    <strong>⚠️ 颱風 6号（查米 Champi）動態注意</strong><br>
+    截至 2026/5/28，颱風 6号 在沖繩附近移動，預測可能於 6/2 前後影響九州，帶來強風大雨。<br>
+    建議：①出發前確認颱風動向 ②確認航空公司改期政策（酷航/台虎通常允許颱風免費改期）③備妥折疊傘＋防水袋，Day 7 阿蘇 Klook 遇颱風可彈性聯絡業者處理。
+    <div style="display:flex; flex-wrap:wrap; gap:8px; margin-top:12px;">
+      <a href="https://www.jma.go.jp/bosai/cyclone/" target="_blank"
+         style="background:#c62828; color:white; border-radius:16px; padding:5px 14px; font-size:0.78rem; font-weight:700; text-decoration:none;">
+        🌀 JMA 氣象廳颱風情報
+      </a>
+      <a href="https://www.cwa.gov.tw/V8/C/W/TY/TY.html" target="_blank"
+         style="background:#b71c1c; color:white; border-radius:16px; padding:5px 14px; font-size:0.78rem; font-weight:700; text-decoration:none;">
+        🇹🇼 中央氣象署颱風警報
+      </a>
+      <a href="https://www.windy.com/?typ=cyclone" target="_blank"
+         style="background:#6a1313; color:white; border-radius:16px; padding:5px 14px; font-size:0.78rem; font-weight:700; text-decoration:none;">
+        🌐 Windy 颱風路徑視覺化
+      </a>
+    </div>
+  </div>
+
+</div><!-- /pane-overview -->
+
+<div class="tab-pane active" id="pane-day1">
+  <!-- Day 1 -->
+  <div class="day-card d1">
+    <div class="day-header">
+      <div class="day-num">01</div>
+      <div class="day-meta">
+        <div class="date">6月1日（一）</div>
+        <div class="title">✈️ 抵達福岡・初夜中洲</div>
+        <div class="tags">
+          <span class="tag tag-free">輕鬆日</span>
+          <span class="tag tag-pass">🚇 地下鐵 ¥260</span>
+        </div>
+        <div class="day-weather" data-date="2026-06-01">
+          <span class="wx-badge">⏳ 載入中...</span>
+          <a class="wx-link" href="https://tenki.jp/forecast/9/43/8210/40130/" target="_blank">📡 tenki.jp</a>
+        </div>
+      </div>
+    </div>
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-time">06:50</div>
+        <div class="tl-content">
+          <div class="tl-name">✈️ 台北桃園 出発</div>
+          <div class="tl-detail">飛行約2時間05分<span class="tl-zh">台北桃園機場起飛</span></div>
+        </div>
+        <div class="tl-price price-free">—</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">09:55</div>
+        <div class="tl-content">
+          <div class="tl-name">🛬 福岡空港 到着</div>
+          <div class="tl-detail">入国審査・荷物受取後 → 地下鉄で天神へ（約5分 ¥260）<span class="tl-zh">入境審查・領行李，再搭地下鐵到天神</span></div>
+        </div>
+        <div class="tl-price price-paid">¥260</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">10:45</div>
+        <div class="tl-content">
+          <div class="tl-name">WELLCABIN 到着・荷物預け</div>
+          <div class="tl-detail">チェックインは15:00〜。荷物だけ先に預ける。<span class="tl-zh">Check-in 15:00 才開始，先把行李寄放</span></div>
+        </div>
+        <div class="tl-price price-free">—</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">11:30</div>
+        <div class="tl-content">
+          <div class="tl-name"><a href="https://maps.google.com/?q=博多+キャナルシティ+福岡市">博多・キャナルシティ散步</a></div>
+          <div class="tl-detail">Canal City 博多、博多駅周邊逛逛<span class="tl-zh">運河城購物中心・博多車站周邊隨意逛</span></div>
+        </div>
+        <div class="tl-price price-free">免費</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">13:00</div>
+        <div class="tl-content">
+          <div class="tl-name"><a href="https://maps.google.com/?q=フルフル+天神コア+明太フランス+福岡">🥖 フルフル 天神コア店（明太フランス）</a></div>
+          <div class="tl-detail">
+            天神コア B1F ／ 10:00–20:00（火曜休）<br>
+            博多名物！明太子入り法式麵包，外酥內軟，大排隊約30~50分。<br>
+            口味：原味・辣味・起司　¥500~800/個
+            <span class="tl-zh">博多最有名的明太子法式麵包，天神核心商圈地下室，必排必買</span>
+          </div>
+        </div>
+        <div class="tl-price price-consume">¥600~</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">14:30</div>
+        <div class="tl-content">
+          <div class="tl-name"><a href="https://maps.google.com/?q=大濠公園+福岡市中央区">🌿 大濠公園・舞鶴公園 散步</a></div>
+          <div class="tl-detail">
+            天神から徒步15分 or 地下鉄1駅（大濠公園駅）<br>
+            広大な池を囲む都市公園。梅雨前の緑が映える。舞鶴公園（福岡城跡）も隣接。
+            <span class="tl-zh">天神步行15分或搭一站地下鐵，廣大人工湖公園，梅雨前翠綠，旁邊還有福岡城跡</span>
+          </div>
+        </div>
+        <div class="tl-price price-free">免費</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">17:00</div>
+        <div class="tl-content">
+          <div class="tl-name"><a href="https://maps.google.com/?q=WELLCABIN+天神南+福岡市">WELLCABIN チェックイン</a></div>
+          <div class="tl-detail">天神南駅 徒步2分</div>
+        </div>
+        <div class="tl-price price-paid">¥3,000~</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">19:00</div>
+        <div class="tl-content">
+          <div class="tl-name"><a href="https://maps.google.com/?q=中洲屋台+福岡市">🏮 中洲屋台（なかす）夜食</a></div>
+          <div class="tl-detail">長浜ラーメン・串焼き・博多もつ鍋 等。天神から徒歩15分。<span class="tl-zh">長浜拉麵・串燒・博多牛腸鍋等。天神步行15分。</span></div>
+        </div>
+        <div class="tl-price price-consume">消費制</div>
+      </div>
+    </div>
+  </div>
+</div><!-- /pane-day1 -->
+
+<div class="tab-pane" id="pane-day2">
+  <!-- Day 2 -->
+  <div class="day-card d2">
+    <div class="day-header">
+      <div class="day-num">02</div>
+      <div class="day-meta">
+        <div class="date">6月2日（二）</div>
+        <div class="title">🌸 太宰府 紫陽花 + 九博（雨天行程）</div>
+        <div class="tags">
+          <span class="tag tag-nishitetsu">西鉄</span>
+          <span class="tag tag-free">1人</span>
+          <span class="tag" style="background:#d1ecf1;color:#0c5460;border-color:#bee5eb">🌧️ 80% 雨天室內 OK</span>
+        </div>
+        <div class="day-weather" data-date="2026-06-02">
+          <span class="wx-badge">⏳ 載入中...</span>
+          <a class="wx-link" href="https://tenki.jp/forecast/9/43/8210/40130/" target="_blank">📡 tenki.jp</a>
+        </div>
+      </div>
+    </div>
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-time">09:00</div>
+        <div class="tl-content">
+          <div class="tl-name">🚃 天神南 → 西鉄二日市 → 太宰府（西鉄）</div>
+          <div class="tl-detail">天神南 → 西鉄二日市 乗換 → 太宰府 約35分（片道 ¥580）<span class="tl-zh">西鉄電鐵，天神出發約35分到太宰府</span></div>
+        </div>
+        <div class="tl-price price-paid">¥580</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">09:45</div>
+        <div class="tl-content">
+          <div class="tl-name"><a href="https://maps.google.com/?q=太宰府天満宮+太宰府市+福岡">⛩️ 太宰府天満宮 参拝</a></div>
+          <div class="tl-detail">
+            菅原道真公を祀る全国天満宮の総本社。本殿修復中（仮殿で参拝）。<br>
+            📸 <strong>6月は紫陽花（あじさい）が満開！</strong> 境内・参道に紫陽花多数。
+            <span class="tl-zh">全國天滿宮總本社，6月繡球花盛開，境內・參道紫陽花超美。現在本殿修復中，仮殿参拝</span>
+          </div>
+        </div>
+        <div class="tl-price price-free">免費</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">10:30</div>
+        <div class="tl-content">
+          <div class="tl-name"><a href="https://maps.google.com/?q=太宰府+参道+梅ヶ枝餅">🍡 参道 散策・梅ヶ枝餅</a></div>
+          <div class="tl-detail">
+            太宰府名物「梅ヶ枝餅」（¥150）。かさの家・松屋 等、参道に10店以上。<br>
+            お守り・太宰府みやげも参道で揃える。
+            <span class="tl-zh">太宰府名物梅枝餅（¥150），參道10幾家店，邊走邊吃</span>
+          </div>
+        </div>
+        <div class="tl-price price-consume">¥150~</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">11:30</div>
+        <div class="tl-content">
+          <div class="tl-name"><a href="https://maps.google.com/?q=九州国立博物館+太宰府市+福岡">🏛️ 九州国立博物館（九博）</a></div>
+          <div class="tl-detail">
+            太宰府天満宮 奥から連絡橋で直結（徒步5分）。常設展 ¥700。<br>
+            「海の道、アジアの路」テーマ。博多の貿易史から大陸交流まで。☔ 全室內，雨天最適合！
+            <span class="tl-zh">九博 = 九州最大國立博物館，天滿宮奥直結，常設展¥700，雨天完美去處</span>
+          </div>
+        </div>
+        <div class="tl-price price-paid">¥700</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">13:30</div>
+        <div class="tl-content">
+          <div class="tl-name">🍜 太宰府 参道でランチ</div>
+          <div class="tl-detail">参道沿いの食堂・蕎麦屋・定食屋。推薦：梅の花（豆腐料理・¥1,500~）or 太宰府うどん<span class="tl-zh">參道上有多家食堂，推薦太宰府うどん或豆腐料理</span></div>
+        </div>
+        <div class="tl-price price-consume">¥1,000~</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">14:30</div>
+        <div class="tl-content">
+          <div class="tl-name"><a href="https://maps.google.com/?q=竈門神社+太宰府市+福岡">⛩️ 竈門神社（かまどじんじゃ）＋ 紫陽花</a></div>
+          <div class="tl-detail">
+            太宰府天満宮から徒步 or バス15分。縁結びの神様＆鬼滅の刃聖地。<br>
+            📸 <strong>6月の紫陽花スポット最高！</strong> 境内の斜面に紫陽花群落。
+            <span class="tl-zh">鬼滅の刃聖地 + 縁結び神社 + 6月紫陽花絕景，太宰府最值得走的散步路線</span>
+          </div>
+        </div>
+        <div class="tl-price price-free">免費</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">16:00</div>
+        <div class="tl-content">
+          <div class="tl-name">🚃 太宰府 → 天神 帰還</div>
+          <div class="tl-detail">西鉄太宰府線 → 二日市 → 天神 約35分（¥580）</div>
+        </div>
+        <div class="tl-price price-paid">¥580</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">19:00</div>
+        <div class="tl-content">
+          <div class="tl-name"><a href="https://maps.google.com/?q=元祖もつ鍋+楽天地+天神ACROS+福岡">🍲 天神で夕食（もつ鍋 楽天地など）</a></div>
+          <div class="tl-detail">天神 ACROS 店（天神駅16番出口直結）。創業48年・累計977萬人。事前網路訂位推薦：rakutenti.com<span class="tl-zh">太宰府歸來，天神晚餐，推薦もつ鍋楽天地（天神駅直結）</span></div>
+        </div>
+        <div class="tl-price price-consume">¥2,000~</div>
+      </div>
+    </div>
+  </div>
+</div><!-- /pane-day2 -->
+
+<div class="tab-pane" id="pane-day3">
+  <!-- Day 3 -->
+  <div class="day-card d3">
+    <div class="day-header">
+      <div class="day-num">03</div>
+      <div class="day-meta">
+        <div class="date">6月3日（三）</div>
+        <div class="title">🐭 ちいかわ討伐フェア ＋ Canal City（全室內）</div>
+        <div class="tags">
+          <span class="tag tag-anime">動漫</span>
+          <span class="tag tag-free">1人</span>
+          <span class="tag" style="background:#d1ecf1;color:#0c5460;border-color:#bee5eb">🌧️ 90% 大雨室內 OK</span>
+        </div>
+        <div class="day-weather" data-date="2026-06-03">
+          <span class="wx-badge">⏳ 載入中...</span>
+          <a class="wx-link" href="https://tenki.jp/forecast/9/43/8210/40130/" target="_blank">📡 tenki.jp</a>
+        </div>
+      </div>
+    </div>
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-time">10:00</div>
+        <div class="tl-content">
+          <div class="tl-name"><a href="https://maps.google.com/?q=ちいかわらんど+福岡PARCO+天神+福岡市">🐭 ちいかわらんど（福岡PARCO 本館8F）</a></div>
+          <div class="tl-detail">
+            キデイランド内常設店。10:00–20:30、入場無料。<br>
+            ぬいぐるみ・アクスタ・文具・食品系グッズなど豊富な在庫。天神地下街から地下接続。
+            <span class="tl-zh">ちいかわ常設店，免費入場，公仔・壓克力立牌・文具・食品周邊，天神地下街室內相連</span>
+          </div>
+        </div>
+        <div class="tl-price price-consume">消費制</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">11:00</div>
+        <div class="tl-content">
+          <div class="tl-name">🎉 ちいかわ討伐フェア ドリンクスタンド ＋ 限定グッズ</div>
+          <div class="tl-detail">
+            ① <strong>新館6F みのりカフェ</strong>（10:30–20:30）：博多あまおう等 九州素材の限定ドリンク。¥650~<br>
+            ② <strong>本館B1F グッズショップ</strong>（10:00–20:30）：討伐フェア限定グッズ。品切れ注意！<br>
+            ⚠️ 討伐フェア 2026/5/14–<strong>6/7</strong> 終了。早い者勝ち。
+            <span class="tl-zh">限定飲料（新館6F）+ 限定周邊（本館B1F），整個 PARCO 室內相連，大雨完全沒問題</span>
+          </div>
+          <div class="tl-alert">⚠️ 討伐フェアは 6/7（日）まで。限定グッズ売り切れに注意！</div>
+        </div>
+        <div class="tl-price price-consume">消費制</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">12:30</div>
+        <div class="tl-content">
+          <div class="tl-name">🍱 PARCO フードコート or 天神地下街でランチ</div>
+          <div class="tl-detail">PARCO 内 or 天神地下街（全部屋内接続）。大雨でも移動 0m。<span class="tl-zh">PARCO 內或天神地下街用餐，全室內相連，大雨完全沒問題</span></div>
+        </div>
+        <div class="tl-price price-consume">¥800~</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">14:00</div>
+        <div class="tl-content">
+          <div class="tl-name"><a href="https://maps.google.com/?q=キャナルシティ博多+福岡市博多区">🛍️ キャナルシティ博多（Canal City）</a></div>
+          <div class="tl-detail">
+            天神からバス or 地下鉄 中洲川端駅 徒步5分。大型ショッピングモール（全屋内）。<br>
+            OZ 韓流 SHOP（B1F）・アニメイト・HMV などアニメ・K-pop グッズも充実。<br>
+            ファッション・雑貨・フードコートも一気に楽しめる。
+            <span class="tl-zh">博多最大室內購物中心，韓流・動漫・流行雜貨全部有，雨天超適合</span>
+          </div>
+        </div>
+        <div class="tl-price price-free">逛街自費</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">17:00</div>
+        <div class="tl-content">
+          <div class="tl-name">🛍️ 天神ショッピング（室内）</div>
+          <div class="tl-detail">岩田屋三越・VIORO・天神地下街（全部屋内接続）。まんだらけ 大名店（中古アニメ）も近く。<span class="tl-zh">天神室內商圈全部相連，雨天完全沒問題</span></div>
+        </div>
+        <div class="tl-price price-free">逛街自費</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">19:30</div>
+        <div class="tl-content">
+          <div class="tl-name"><a href="https://maps.google.com/?q=ばかとあほ+薬院+福岡">🔥 薬院焼肉「ばかとあほ」（晩ごはん）</a></div>
+          <div class="tl-detail">薬院駅 徒步3分。平價燒肉居酒屋，CP值極高，年輕人聚集的活力店。¥2,000–3,000/人。定休：月曜（今日水曜→OK ✅）<span class="tl-zh">天神隣の薬院でガッツリ焼肉。旅行三日目の夜、ご褒美ディナー</span></div>
+        </div>
+        <div class="tl-price price-consume">¥2,500~</div>
+      </div>
+    </div>
+  </div>
+</div><!-- /pane-day3 -->
+
+<div class="tab-pane" id="pane-day4">
+  <!-- Day 4 -->
+  <div class="day-card d4">
+    <div class="day-header">
+      <div class="day-num">04</div>
+      <div class="day-meta">
+        <div class="date">6月4日（四）</div>
+        <div class="title">⚔️ 小倉・鬼滅 ufotable Cafe ＋ 🌅 門司港夜景</div>
+        <div class="tags">
+          <span class="tag tag-paid">🚄 新幹線 ¥2,160/人 自費</span>
+          <span class="tag tag-anime">動漫</span>
+          <span class="tag tag-reserve">需預約</span>
+          <span class="tag tag-free">3人</span>
+        </div>
+        <div class="day-weather" data-date="2026-06-04">
+          <span class="wx-badge">⏳ 載入中...</span>
+          <a class="wx-link" href="https://tenki.jp/forecast/9/43/8210/40130/" target="_blank">📡 tenki.jp</a>
+        </div>
+      </div>
+    </div>
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-time">上午</div>
+        <div class="tl-content">
+          <div class="tl-name">✈️ 接機 ＋ 放行李</div>
+          <div class="tl-detail">福岡空港接人後送至飯店放行李。<span class="tl-zh">上午先完成接機，下午出發小倉</span></div>
+        </div>
+        <div class="tl-price price-free">—</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">12:30</div>
+        <div class="tl-content">
+          <div class="tl-name">🚄 博多 → 小倉（新幹線 自由席）</div>
+          <div class="tl-detail">博多 → 小倉 約15分。自由席 ¥2,160/人（3人合計 ¥6,480）<span class="tl-zh">隨到隨搭不需劃位，15分鐘到小倉</span></div>
+        </div>
+        <div class="tl-price price-paid">¥2,160/人</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">13:00</div>
+        <div class="tl-content">
+          <div class="tl-name"><a href="https://maps.google.com/?q=旦過市場+北九州市小倉北区">🏙️ 旦過市場 ＋ 午餐</a></div>
+          <div class="tl-detail">小倉の台所。食べ歩き・ランチ。平日のみ賑わう。<span class="tl-zh">小倉廚房，邊走邊吃，順便解決午餐</span></div>
+        </div>
+        <div class="tl-price price-consume">消費制</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">14:00</div>
+        <div class="tl-content">
+          <div class="tl-name"><a href="https://maps.google.com/?q=あるあるCity+小倉+北九州">⚔️ ufotable Cafe ＆ マチ★アソビCAFE 北九州</a></div>
+          <div class="tl-detail">
+            あるあるCity 2F ／ 小倉北区浅野2-14-5 ／ 小倉駅 徒步3分<br>
+            営業時間 11:00–20:00<br>
+            🩸 鬼滅の刃「繋がる大集合イベント」2026年5月〜開催中
+          </div>
+          <div class="tl-alert">⚠️ 事前網路抽選予約が必要。出發前確認官網，預約時段選下午場</div>
+        </div>
+        <div class="tl-price price-consume">消費制</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">16:30</div>
+        <div class="tl-content">
+          <div class="tl-name"><a href="https://maps.google.com/?q=あるあるCity+小倉北区浅野">🎮 あるあるCity 逛街</a></div>
+          <div class="tl-detail">6F まで動漫・ゲーム・フィギュア専門店。グッズ購入おすすめ。<span class="tl-zh">6層樓動漫・遊戲・模型，周邊商品購入</span></div>
+        </div>
+        <div class="tl-price price-free">逛街自費</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">18:00</div>
+        <div class="tl-content">
+          <div class="tl-name">🚃 小倉 → 門司港（JR 鹿児島本線）</div>
+          <div class="tl-detail">小倉駅 → 門司港駅 約15分 ¥200/人<span class="tl-zh">JR 普通列車，15分鐘，不用新幹線</span></div>
+        </div>
+        <div class="tl-price price-paid">¥200/人</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">18:30</div>
+        <div class="tl-content">
+          <div class="tl-name"><a href="https://maps.google.com/?q=門司港レトロ+北九州市門司区">🌅 門司港レトロ地区 ＋ 關門海峽夜景</a></div>
+          <div class="tl-detail">
+            明治・大正のレトロ建築が並ぶ港町。夕暮れ〜夜景が特に美しい。<br>
+            おすすめ：旧大阪商船・バナナマン像・関門海峡沿い散歩・展望スポット<br>
+            <span class="tl-zh">夕陽下的復古港口，明治大正建築夜間打燈，關門海峽夜景絕美</span>
+          </div>
+        </div>
+        <div class="tl-price price-free">入場無料</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">20:00</div>
+        <div class="tl-content">
+          <div class="tl-name">🚃→🚄 門司港 → 小倉 → 博多 帰還</div>
+          <div class="tl-detail">門司港→小倉（JR ¥200）→ 小倉→博多（新幹線 ¥2,160）約40分<span class="tl-zh">JR 接新幹線，博多 21:00 前到</span></div>
+        </div>
+        <div class="tl-price price-paid">¥2,360/人</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">21:00</div>
+        <div class="tl-content">
+          <div class="tl-name">🍲 博多晚餐（もつ鍋・屋台・博多拉麵 等）</div>
+          <div class="tl-detail">帰着後は博多市内で自由晩餐。<span class="tl-zh">回博多後自由選擇，もつ鍋、屋台、拉麵都行</span></div>
+        </div>
+        <div class="tl-price price-consume">消費制</div>
+      </div>
+    </div>
+  </div>
+</div><!-- /pane-day4 -->
+
+<div class="tab-pane" id="pane-day5">
+  <!-- Day 5 -->
+  <div class="day-card d5">
+    <div class="day-header">
+      <div class="day-num">05</div>
+      <div class="day-meta">
+        <div class="date">6月5日（五）</div>
+        <div class="title">🐟🦸 Marine World ＋ 英雄學院展（室內）</div>
+        <div class="tags">
+          <span class="tag tag-free">3人</span>
+          <span class="tag tag-anime">室內行程</span>
+          <span class="tag" style="background:#d4edda;color:#155724;border-color:#c3e6cb">☀️ 晴天 10%</span>
+        </div>
+        <div class="day-weather" data-date="2026-06-05">
+          <span class="wx-badge">⏳ 載入中...</span>
+          <a class="wx-link" href="https://tenki.jp/forecast/9/43/8210/40130/" target="_blank">📡 tenki.jp</a>
+        </div>
+      </div>
+    </div>
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-time">09:30</div>
+        <div class="tl-content">
+          <div class="tl-name">🚃 博多 → 海ノ中道駅（JR 香椎線）</div>
+          <div class="tl-detail">博多 → 西戸崎方面 → 海ノ中道駅 約30分 ¥420/人<span class="tl-zh">JR 香椎線，博多出發約30分，¥420（3人合計 ¥1,260）</span></div>
+        </div>
+        <div class="tl-price price-paid">¥420/人</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">10:00</div>
+        <div class="tl-content">
+          <div class="tl-name"><a href="https://maps.google.com/?q=Marine+World+海の中道+福岡市">🐋 Marine World 海の中道</a>
+            <a class="ext-badge klook" href="https://www.klook.com/zh-TW/activity/28959-uminonakamichi-marine-world-ticket-fukuoka/" target="_blank">🎫 Klook NT$493</a>
+          </div>
+          <div class="tl-detail">
+            海ノ中道駅 徒步5分。九州最大級の水族館。<br>
+            見どころ：大型サメ水槽・イルカショー・海獅ショー　所要約3時間<br>
+            ✅ <strong>水族館本体は屋内</strong>なので雨天でも全て楽しめる
+            <span class="tl-zh">海之中道駅步行5分，九州最大水族館。鯊魚水槽・海豚秀・海獅秀，約需3小時。Klook 線上購票更便宜</span>
+          </div>
+        </div>
+        <div class="tl-price price-paid">¥2,500/人</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">13:30</div>
+        <div class="tl-content">
+          <div class="tl-name">🚃 海ノ中道 → 天神 帰還</div>
+          <div class="tl-detail">JR 香椎線 → 博多 → 地下鉄 天神 約45分（¥420）</div>
+        </div>
+        <div class="tl-price price-paid">¥420/人</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">14:30</div>
+        <div class="tl-content">
+          <div class="tl-name">🍱 天神でランチ（帰着後）</div>
+          <div class="tl-detail">天神地下街 or KITTE 博多（武蔵ステーキ・えびのや等）。平日金曜→商業ランチセット狙える。<span class="tl-zh">回到天神後吃午餐，金曜平日限定午餐划算</span></div>
+        </div>
+        <div class="tl-price price-consume">¥1,000~</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">15:30</div>
+        <div class="tl-content">
+          <div class="tl-name"><a href="https://maps.google.com/?q=福岡三越+天神+福岡市">🦸 堀越耕平「僕のヒーローアカデミア」原画展</a></div>
+          <div class="tl-detail">
+            福岡三越 9F 三越ギャラリー（天神・岩田屋横）<br>
+            2026年4月11日〜<strong>6月14日</strong> ／ 10:00–19:30（最終入場 19:00）✅ 全室內<br>
+            東京・大阪で完売した人気展示が九州初上陸！
+            <span class="tl-zh">福岡三越9樓，展覽至6/14，全室內，鬼滅フェアと合わせてアニメ尽くしの1日</span>
+          </div>
+          <div class="tl-alert">⚠️ 需事前在 e+ 購票，現場可能無票</div>
+        </div>
+        <div class="tl-price price-paid">¥2,200/人</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">17:00</div>
+        <div class="tl-content">
+          <div class="tl-name">🛍️ 天神・PARCO ショッピング</div>
+          <div class="tl-detail">アニメイト・タワーレコード（K-pop）・岩田屋三越でみやげ購入<span class="tl-zh">英雄展後在天神 PARCO 逛動漫・K-pop 周邊</span></div>
+        </div>
+        <div class="tl-price price-free">逛街自費</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">19:00</div>
+        <div class="tl-content">
+          <div class="tl-name"><a href="https://maps.google.com/?q=中洲屋台+那珂川+福岡">🏮 中洲屋台（晴天狙い）</a></div>
+          <div class="tl-detail">降水10%の晴れ予報。金曜夜、外国人も少なく地元客多め。最高のタイミング！<span class="tl-zh">今天天氣最好（10%雨），金曜平日屋台＝地元客多、不太擠，D5 是最佳屋台機會</span></div>
+        </div>
+        <div class="tl-price price-consume">¥1,500~</div>
+      </div>
+    </div>
+  </div>
+</div><!-- /pane-day5 -->
+
+<div class="tab-pane" id="pane-day6">
+  <!-- Day 6 -->
+  <div class="day-card d6">
+    <div class="day-header">
+      <div class="day-num">06</div>
+      <div class="day-meta">
+        <div class="date">6月6日（六）</div>
+        <div class="title">🚣 柳川 川下り ＋ うなぎせいろ蒸し</div>
+        <div class="tags">
+          <span class="tag tag-nishitetsu">西鉄 1日券</span>
+          <span class="tag tag-free">1人</span>
+          <span class="tag" style="background:#fff3cd;color:#856404;border-color:#ffc107">⛅ 60%/7mm</span>
+        </div>
+        <div class="day-weather" data-date="2026-06-06">
+          <span class="wx-badge">⏳ 載入中...</span>
+          <a class="wx-link" href="https://tenki.jp/forecast/9/43/8210/40130/" target="_blank">📡 tenki.jp</a>
+        </div>
+      </div>
+    </div>
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-time">09:30</div>
+        <div class="tl-content">
+          <div class="tl-name">🚃 天神南 → 西鉄柳川（西鉄 特急）</div>
+          <div class="tl-detail">西鉄天神大牟田線 特急 約49分 → 西鉄柳川着（片道 ¥980、西鉄1日券 ¥1,370 でお得）<span class="tl-zh">西鐵特急，天神出發約49分到柳川，西鐵1日券¥1,370（來回已值回票價）</span></div>
+        </div>
+        <div class="tl-price price-paid">西鉄1日券 ¥1,370</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">10:30</div>
+        <div class="tl-content">
+          <div class="tl-name"><a href="https://maps.google.com/?q=御花+柳川藩主立花邸+柳川市">🌿 御花・水郷 柳川 散策</a></div>
+          <div class="tl-detail">江戸時代の水路が張り巡らされた水郷の町。柳川藩主立花邸「御花」（庭園見学 ¥1,000~）も近く。<span class="tl-zh">江戶時代水道網絡保存完好的水鄉城市，可逛柳川藩主立花邸（¥1,000~）</span></div>
+        </div>
+        <div class="tl-price price-free">免費散策</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">12:00</div>
+        <div class="tl-content">
+          <div class="tl-name"><a href="https://maps.google.com/?q=元祖本吉屋+柳川市+うなぎ">🦎 元祖本吉屋 本店（うなぎせいろ蒸し）</a></div>
+          <div class="tl-detail">
+            名物「うなぎのせいろ蒸し」¥2,500〜。10:30–20:00 通し営業（月曜休）<br>
+            ⚠️ 若松屋・川よしは14:30–15:00でランチ終了→ 本吉屋一択<br>
+            💡 土曜午前中に行くと比較的空いている
+            <span class="tl-zh">柳川名物鰻魚蒸籠飯，必吃！元祖本吉屋通日制到20:00，土曜上午去比下午隊伍短</span>
+          </div>
+        </div>
+        <div class="tl-price price-consume">¥2,500~</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">13:30</div>
+        <div class="tl-content">
+          <div class="tl-name"><a href="https://maps.google.com/?q=柳川川下り+柳川市+福岡">🚤 柳川川下り（どんこ舟）</a>
+            <a class="ext-badge klook" href="https://www.klook.com/zh-TW/activity/3321-yanagawa-river-cruise-fukuoka/" target="_blank">🎫 Klook NT$356起</a>
+          </div>
+          <div class="tl-detail">
+            水郷の町・柳川を舟でのんびり約70分。どんこ舟に揺られて水路巡り。<br>
+            ✅ <strong>小雨でも舟は出る</strong>（7mmは微妙だが傘持参で乗れることが多い）<br>
+            雨の川下りは風情がある！紫陽花の季節と重なり、水面に映る景色が美しい。
+            <span class="tl-zh">搭小木舟悠遊水路約70分。Klook 預訂比現場便宜，★4.8 / 10K+人。小雨照開，7mm 傘撐著上船，梅雨期的川下り更有詩意</span>
+          </div>
+          <div class="tl-alert">⚠️ 雨が強い場合（10mm以上）は運航中止あり → 当日朝に乗船場に確認</div>
+        </div>
+        <div class="tl-price price-paid">¥1,800</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">15:30</div>
+        <div class="tl-content">
+          <div class="tl-name">🛍️ 柳川 土産・街歩き</div>
+          <div class="tl-detail">川下り終着点から駅まで散策。いきなり団子・海苔など柳川みやげを探す。<span class="tl-zh">川下り結束後漫步回車站，順便找找柳川當地伴手禮</span></div>
+        </div>
+        <div class="tl-price price-free">—</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">16:30</div>
+        <div class="tl-content">
+          <div class="tl-name">🚃 西鉄柳川 → 天神 帰還</div>
+          <div class="tl-detail">西鉄 特急 約49分 → 天神 17:20頃着</div>
+        </div>
+        <div class="tl-price price-paid">西鉄1日券</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">19:00</div>
+        <div class="tl-content">
+          <div class="tl-name"><a href="https://maps.google.com/?q=元祖もつ鍋+楽天地+天神ACROS+福岡">🍲 天神 夕食（もつ鍋 楽天地など）</a></div>
+          <div class="tl-detail">柳川でうなぎを食べてもまだ夜は食べられる。天神 ACROS（天神駅16番出口直結）でもつ鍋。<span class="tl-zh">回到天神，晚餐吃もつ鍋，或在天神地下街找其他選擇</span></div>
+        </div>
+        <div class="tl-price price-consume">¥2,000~</div>
+      </div>
+    </div>
+  </div>
+</div><!-- /pane-day6 -->
+
+<div class="tab-pane" id="pane-day7">
+  <!-- Day 7 -->
+  <div class="day-card d7">
+    <div class="day-header">
+      <div class="day-num">07</div>
+      <div class="day-meta">
+        <div class="date">6月7日（日）</div>
+        <div class="title">🌋 阿蘇火山 Klook 一日遊（3人）</div>
+        <div class="tags">
+          <span class="tag tag-reserve">Klook 預訂</span>
+          <span class="tag tag-paid">NT$1,312/人</span>
+          <span class="tag tag-free">3人</span>
+          <span class="tag" style="background:#fff3cd;color:#856404;border-color:#ffc107">⛅ 40%/0mm</span>
+        </div>
+        <div class="day-weather" data-date="2026-06-07">
+          <span class="wx-badge">⏳ 載入中...</span>
+          <a class="wx-link" href="https://tenki.jp/forecast/9/43/8210/40130/" target="_blank">📡 tenki.jp</a>
+        </div>
+      </div>
+    </div>
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-time">07:30</div>
+        <div class="tl-content">
+          <div class="tl-name">🚌 集合出發（天神 or 博多駅）
+            <a class="ext-badge klook" href="https://www.klook.com/zh-TW/activity/118393-mount-aso-kusasenri-kumamoto-castle-one-day-tour-from-fukuoka/" target="_blank">🎫 Klook NT$1,382（早鳥 NT$1,312）</a>
+          </div>
+          <div class="tl-detail">
+            熊本城 &amp; 阿蘇火山（含火山接駁車）&amp; 草千里 &amp; 黑川溫泉一日遊<br>
+            ★4.8（1,844評價）・30,000+ 人參加過｜含接駁交通，3人無車也 OK
+          </div>
+          <div class="tl-alert">⚠️ 需提前在 Klook 預購，確認集合時間與地點</div>
+        </div>
+        <div class="tl-price price-paid">NT$1,312/人</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">09:30</div>
+        <div class="tl-content">
+          <div class="tl-name"><a href="https://maps.google.com/?q=熊本城+熊本市中央区">🏯 熊本城（くまもとじょう）</a></div>
+          <div class="tl-detail">2016年熊本地震後修復再開放。「武者返し」石垣・天守閣。所要約1.5小時。<span class="tl-zh">2016熊本地震後修復重開，石牆（武者返し）・天守閣，約需1.5小時</span></div>
+        </div>
+        <div class="tl-price price-free">含行程</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">12:00</div>
+        <div class="tl-content">
+          <div class="tl-name"><a href="https://maps.google.com/?q=草千里ヶ浜+阿蘇市+熊本県">🌿 草千里ヶ浜（くさせんりがはま）</a></div>
+          <div class="tl-detail">阿蘇カルデラ内の大草原。馬に乗れる（有料）。標高900m、爽快な景色。あか牛丼もおすすめ。<span class="tl-zh">阿蘇火山口盆地內大草原，可騎馬（另付費），海拔900m，視野開闊，可以吃阿蘇赤牛丼</span></div>
+        </div>
+        <div class="tl-price price-free">含行程</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">13:00</div>
+        <div class="tl-content">
+          <div class="tl-name"><a href="https://maps.google.com/?q=阿蘇山西展望台+阿蘇市+熊本県">🌋 阿蘇山 西展望台（火山口）</a>
+            <a class="ext-badge volcano" href="https://www.data.jma.go.jp/vois/data/fukuoka/505_Asosan/505_index.html" target="_blank">🌋 火山情報</a>
+          </div>
+          <div class="tl-detail">
+            接駁車で中岳火口付近へ。硫黄の匂い・モクモクの噴煙・荒涼とした溶岩地帯。<br>
+            ⚠️ 火山活動により入場制限あり（当日確認必要）。接駁車含む行程なのでロープウェイ不要。
+            <span class="tl-zh">接駁車前往中岳火山口，硫磺味・濃煙・荒涼熔岩地帶。⚠️ 火山活動可能管制入場，當天須確認</span>
+          </div>
+        </div>
+        <div class="tl-price price-free">含行程</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">15:00</div>
+        <div class="tl-content">
+          <div class="tl-name"><a href="https://maps.google.com/?q=黒川温泉+南小国町+熊本県">♨️ 黒川温泉 入浴</a></div>
+          <div class="tl-detail">九州屈指の温泉地・黒川。歴史ある旅館街を散策＋日帰り入浴（手形巡り）。約1.5〜2時間。<span class="tl-zh">九州頂級溫泉鄉，歷史旅館街散步＋日歸入浴（湯巡手形），約1.5～2小時</span></div>
+        </div>
+        <div class="tl-price price-paid">¥800~</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">19:00</div>
+        <div class="tl-content">
+          <div class="tl-name">🚌 帰還・福岡 天神/博多着</div>
+          <div class="tl-detail">所要 約11.5小時の充実した一日。体力消耗あり、帰ったら早めに休憩。明日の糸島準備を。<span class="tl-zh">約11.5小時充實行程，回程好好休息，明天還有糸島＋唐津</span></div>
+        </div>
+        <div class="tl-price price-free">—</div>
+      </div>
+    </div>
+  </div>
+</div><!-- /pane-day7 -->
+
+<div class="tab-pane" id="pane-day8">
+  <!-- Day 8 -->
+  <div class="day-card d8">
+    <div class="day-header">
+      <div class="day-num">08</div>
+      <div class="day-meta">
+        <div class="date">6月8日（一）</div>
+        <div class="title">🌊 糸島 ＋ 唐津（JR 筑肥線で大衆交通）</div>
+        <div class="tags">
+          <span class="tag tag-free">1人</span>
+          <span class="tag tag-paid">🚃 JR 筑肥線 自費</span>
+          <span class="tag" style="background:#d4edda;color:#155724;border-color:#c3e6cb">☀️ 40%/0mm</span>
+        </div>
+        <div class="day-weather" data-date="2026-06-08">
+          <span class="wx-badge">⏳ 載入中...</span>
+          <a class="wx-link" href="https://tenki.jp/forecast/9/43/8210/40130/" target="_blank">📡 tenki.jp</a>
+        </div>
+      </div>
+    </div>
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-time">09:00</div>
+        <div class="tl-content">
+          <div class="tl-name">🚃 博多 → 筑前前原（JR 筑肥線）</div>
+          <div class="tl-detail">博多発 → 筑前前原（糸島エリア）約50分（¥590）。月曜は地元客のみ、比較的空いてる。<span class="tl-zh">JR 筑肥線，博多出發約50分，¥590，週一人不多</span></div>
+        </div>
+        <div class="tl-price price-paid">¥590</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">10:00</div>
+        <div class="tl-content">
+          <div class="tl-name"><a href="https://maps.google.com/?q=二見ヶ浦+糸島市+福岡">⛩️ 二見ヶ浦（海中鳥居）</a></div>
+          <div class="tl-detail">
+            前原駅から昭和バス「野北・二見ヶ浦線」約25分（¥390）or タクシー約2,000円<br>
+            📸 白い鳥居が海に立つ絶景！糸島のシンボル。満潮・干潮で景色が変わる。<br>
+            ✅ <strong>月曜 → 人が少なく、写真が撮りやすい</strong>（週末の半分以下）
+            <span class="tl-zh">糸島地標，白色海中鳥居，絕景打卡必訪。週一人少，照片好拍！昭和バス前原駅発25分</span>
+          </div>
+        </div>
+        <div class="tl-price price-free">免費（バス ¥390）</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">11:30</div>
+        <div class="tl-content">
+          <div class="tl-name"><a href="https://maps.google.com/?q=糸島+海岸カフェ+SUNSET+前原">☕ 糸島 海岸カフェでランチ</a></div>
+          <div class="tl-detail">バスで前原駅方面に戻りながら途中下車 or タクシー。SUNSET 周辺のカフェが有名。<span class="tl-zh">公車途中下車，糸島海景咖啡廳，SUNSET 周邊最有名，午餐吃海景餐</span></div>
+        </div>
+        <div class="tl-price price-consume">¥1,200~</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">13:00</div>
+        <div class="tl-content">
+          <div class="tl-name">🚃 前原 → 唐津（JR 筑肥線）</div>
+          <div class="tl-detail">筑前前原 → 唐津 約35分（¥660）。IC カード or 現金どちらも OK。</div>
+        </div>
+        <div class="tl-price price-paid">¥660</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">14:00</div>
+        <div class="tl-content">
+          <div class="tl-name"><a href="https://maps.google.com/?q=唐津城+佐賀県唐津市">🏯 唐津城</a></div>
+          <div class="tl-detail">城内見学 約1時間。唐津湾を見下ろす絶景あり。別名「舞鶴城」。<span class="tl-zh">唐津城城內參觀約1小時，可眺望唐津灣，別名「舞鶴城」</span></div>
+        </div>
+        <div class="tl-price price-paid">¥500</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">15:30</div>
+        <div class="tl-content">
+          <div class="tl-name"><a href="https://maps.google.com/?q=虹の松原+唐津市+佐賀">🌲 虹の松原 散策</a></div>
+          <div class="tl-detail">唐津湾沿い5kmの松並木（日本三大松原）。唐津城から徒步 or バス。快適な緑の散策道。<span class="tl-zh">唐津灣沿岸5公里松林大道，日本三大松原之一，唐津城から步行で行ける</span></div>
+        </div>
+        <div class="tl-price price-free">免費</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">16:30</div>
+        <div class="tl-content">
+          <div class="tl-name">🚃 唐津 → AEON MALL 福岡伊都（波多江駅直結）</div>
+          <div class="tl-detail">
+            JR 筑肥線 唐津 → 波多江駅 約40分（¥660）<br>
+            AEON MALL 福岡伊都は波多江駅直結！フードコート・ファッション揃い。夕食＋最後の買物に最適。
+            <span class="tl-zh">JR 唐津→波多江，波多江駅直結 AEON Mall 福岡伊都，吃晚餐 + 最後掃貨</span>
+          </div>
+        </div>
+        <div class="tl-price price-paid">¥660</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">17:00</div>
+        <div class="tl-content">
+          <div class="tl-name"><a href="https://maps.google.com/?q=イオンモール福岡伊都+波多江駅+福岡">🛍️ AEON MALL 福岡伊都（夕食 ＋ 買物）</a></div>
+          <div class="tl-detail">フードコート充実。博多もつ鍋・ラーメン・惣菜など福岡グルメも揃う。旅の最後の伴手禮補充にも。<span class="tl-zh">AEON Mall 超大，食堂街選擇多，可以吃晚餐，也能補充最後的伴手禮</span></div>
+        </div>
+        <div class="tl-price price-consume">消費制</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">19:00</div>
+        <div class="tl-content">
+          <div class="tl-name">🚃 波多江 → 博多 帰還</div>
+          <div class="tl-detail">JR 筑肥線 波多江 → 博多 約50分（¥590）→ 天神南 地下鉄。帰宅後荷物整理。<span class="tl-zh">JR 回博多約50分，今晚打包行李，明早退房</span></div>
+        </div>
+        <div class="tl-price price-paid">¥590</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">夜</div>
+        <div class="tl-content">
+          <div class="tl-name">📦 行李整理・早點休息</div>
+          <div class="tl-detail">⚠️ 明日 07:45 早出 Check-out，今晚打包完畢<span class="tl-zh">⚠️ 明天07:45就要退房，今晚把行李全部整理好</span></div>
+        </div>
+        <div class="tl-price price-free">—</div>
+      </div>
+    </div>
+  </div>
+</div><!-- /pane-day8 -->
+
+<div class="tab-pane" id="pane-day9">
+  <!-- Day 9 -->
+  <div class="day-card d9">
+    <div class="day-header">
+      <div class="day-num">09</div>
+      <div class="day-meta">
+        <div class="date">6月9日（二）</div>
+        <div class="title">✈️ 離開福岡</div>
+        <div class="tags">
+          <span class="tag tag-free">回家</span>
+          <span class="tag tag-pass">🚇 地下鐵 → 機場</span>
+        </div>
+        <div class="day-weather" data-date="2026-06-09">
+          <span class="wx-badge">⏳ 載入中...</span>
+          <a class="wx-link" href="https://tenki.jp/forecast/9/43/8210/40130/" target="_blank">📡 tenki.jp</a>
+        </div>
+      </div>
+    </div>
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-time">07:00</div>
+        <div class="tl-content">
+          <div class="tl-name">🌅 起床・打包完畢</div>
+          <div class="tl-detail">⚠️ 飛機 11:00 出発。今朝チェックアウト → 空港 → 搭機。行李昨晚打包完畢の確認。
+            <span class="tl-zh">⚠️ 11:00 起飛，今早必須早出。行李昨晚就要打包好。</span>
+          </div>
+        </div>
+        <div class="tl-price price-free">—</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">07:45</div>
+        <div class="tl-content">
+          <div class="tl-name">🏨 WELLCABIN チェックアウト</div>
+          <div class="tl-detail">早出退房。フロントに鍵を返却し、すぐ地下鉄へ。
+            <span class="tl-zh">提早退房，交還鑰匙後立刻出發搭地下鐵</span>
+          </div>
+        </div>
+        <div class="tl-price price-free">—</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">08:00</div>
+        <div class="tl-content">
+          <div class="tl-name">🚇 天神南 → 福岡空港（地下鉄）</div>
+          <div class="tl-detail">地下鉄空港線 直通 約5分。行李そのまま持ち込み可。
+            <span class="tl-zh">直達機場，5分鐘，行李可帶上車</span>
+          </div>
+        </div>
+        <div class="tl-price price-paid">¥260</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">08:15</div>
+        <div class="tl-content">
+          <div class="tl-name"><a href="https://maps.google.com/?q=福岡空港+国際線ターミナル">✈️ 福岡空港 国際線ターミナル 到着</a></div>
+          <div class="tl-detail">チェックイン・手荷物預け。カウンター閉まる前（通常出発2時間前）に完了。
+            <span class="tl-zh">抵達機場，完成報到 + 託運行李。通常起飛前2小時關閉報到。</span>
+          </div>
+        </div>
+        <div class="tl-price price-free">—</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">09:00</div>
+        <div class="tl-content">
+          <div class="tl-name">🛂 保安検査・出国審査</div>
+          <div class="tl-detail">余裕を持って通過。混雑時は30分以上かかることも。
+            <span class="tl-zh">過安檢 + 出境審查。尖峰時段可能需30分鐘以上，提早排隊。</span>
+          </div>
+        </div>
+        <div class="tl-price price-free">—</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">09:30</div>
+        <div class="tl-content">
+          <div class="tl-name">🛍️ 空港 免税店</div>
+          <div class="tl-detail">出国後エリアの免税ショップ。お酒・化粧品・お菓子など最終チェック。
+            <span class="tl-zh">出境後的免稅區逛逛，酒類・化妝品・零食等最後採購</span>
+          </div>
+        </div>
+        <div class="tl-price price-consume">消費制</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">11:00</div>
+        <div class="tl-content">
+          <div class="tl-name">✈️ 福岡 出発 → 台北桃園</div>
+          <div class="tl-detail">フライト約2時間05分。
+            <span class="tl-zh">飛行約2小時05分，再見福岡！</span>
+          </div>
+        </div>
+        <div class="tl-price price-free">—</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">12:30</div>
+        <div class="tl-content">
+          <div class="tl-name">🛬 台北桃園国際空港 到着</div>
+          <div class="tl-detail">お帰り！
+            <span class="tl-zh">抵達桃園，回家！</span>
+          </div>
+        </div>
+        <div class="tl-price price-free">—</div>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /pane-day9 -->
+
+<div class="tab-pane" id="pane-rain">
+  <!-- 雨天備案 -->
+  <div class="section-title">☂️ 雨天備案</div>
+  <div class="rain-card">
+    <h3>🌧️ 下雨了怎麼辦？各天室內替代方案</h3>
+    <table class="rain-table">
+      <thead>
+        <tr>
+          <th>天</th>
+          <th>原計畫（受影響）</th>
+          <th>雨天替換</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="rain-day">D3<br><span style="font-size:0.75rem;color:#888">6/3 ちいかわ+Canal City</span></td>
+          <td>
+            <span style="color:#1a8a3a;font-weight:600">✅ 全室內！</span><br>
+            ちいかわらんど（PARCO 8F）・討伐フェア（新館6F+本館B1F）・Canal City 全室內
+          </td>
+          <td class="rain-alt">
+            <b>雨天でも完全 OK</b><span class="rain-indoor">90% 室內</span><br>
+            全プログラムが室内施設。むしろ雨天の方が人が少なく快適。<br>
+            • PARCO各フロアゆっくり回れる<br>
+            • Canal City 内の映画館（109シネマズ）追加もOK
+          </td>
+        </tr>
+        <tr>
+          <td class="rain-day">D5<br><span style="font-size:0.75rem;color:#888">6/5 Marine World + 英雄展</span></td>
+          <td>
+            <span style="color:#1a8a3a;font-weight:600">✅ 全室內！</span><br>
+            Marine World（水族館）・英雄學院原画展（三越9F）全室內
+          </td>
+          <td class="rain-alt">
+            <b>雨天でも完全 OK</b><span class="rain-indoor">100% 室內</span><br>
+            • Marine World：水族館全室内、大型サメ水槽・イルカショー<br>
+            • 英雄學院展：三越9F 完全室内<br>
+            ⭐ むしろ雨天推薦日！濡れる心配ゼロ
+          </td>
+        </tr>
+        <tr>
+          <td class="rain-day">D6<br><span style="font-size:0.75rem;color:#888">6/6 柳川川下り</span></td>
+          <td>
+            <span class="rain-orig">⚠️ 川下り 全程戶外</span><br>
+            柳川川下り（雨天照開，但 7mm 以上體驗很差）<br>
+            御花水郷散策（戶外）
+          </td>
+          <td class="rain-alt">
+            <b>大雨なら川下りを午後に後回し</b><br>
+            • 午前：御花（屋内展示室あり）<br>
+            • 昼：<a href="https://maps.google.com/?q=元祖本吉屋+柳川市+うなぎ">元祖本吉屋 うなぎ</a>（室内）<br>
+            • 午後：雨が弱まったら川下りへ（当日朝に業者確認）<br>
+            • 大雨で断念 → 西鉄で太宰府か天神へ転進<br>
+            <span style="color:#c45000;font-size:0.78rem">⚠️ 7mm/h 超えると船頭さんが可否判断，当日朝確認推奨</span>
+          </td>
+        </tr>
+        <tr>
+          <td class="rain-day">D7<br><span style="font-size:0.75rem;color:#888">6/7 阿蘇 Klook</span></td>
+          <td>
+            <span class="rain-orig">⚠️ 最受影響</span><br>
+            阿蘇火山口（視界不良・入場クローズ）<br>
+            草千里ヶ浜（霧で展望不可）
+          </td>
+          <td class="rain-alt">
+            <b>Klook 業者に当日確認</b><br>
+            • 小雨→催行（雨具持参）；大雨・強風→中止の場合あり<br>
+            • 中止時：Klook 規約により代替日または返金<br>
+            • 熊本城・黑川温泉は雨でも体験可<br>
+            <span style="color:#c45000;font-size:0.78rem">⚠️ 出発前日に Klook アプリで気象情報確認推奨</span>
+          </td>
+        </tr>
+        <tr>
+          <td class="rain-day">D8<br><span style="font-size:0.75rem;color:#888">6/8 糸島・唐津</span></td>
+          <td>
+            <span class="rain-orig">⚠️ 受影響中</span><br>
+            二見ヶ浦（海中鳥居）露天<br>
+            虹の松原 散策
+          </td>
+          <td class="rain-alt">
+            <b>方案 A：唐津城先行</b>（有屋頂）<br>
+            • 唐津城天守閣（室內展示）→ 雨が止んだら虹の松原<br>
+            • 二見ヶ浦は昭和バスを見送り，前原 → 直接 AEON 帰還<br>
+            <b>方案 B：AEON Mall 一本勝ち</b>（全天候）<br>
+            • 波多江駅直結 AEON Mall 福岡伊都で終日ショッピング・グルメ
+          </td>
+        </tr>
+        <tr>
+          <td class="rain-day">任何天<br><span style="font-size:0.75rem;color:#888">臨時備用</span></td>
+          <td colspan="2" class="rain-alt">
+            <b>🏠 福岡市内萬用室內備案</b><br>
+            • <a href="https://maps.google.com/?q=キャナルシティ博多+福岡市">Canal City 博多</a>：8F 電影院 + 商場，可待半天<br>
+            • <a href="https://maps.google.com/?q=KITTE博多+博多駅">KITTE 博多</a> / <a href="https://maps.google.com/?q=アミュプラザ博多+博多駅">アミュプラザ</a>：博多駅直結，雨不濕<br>
+            • <a href="https://maps.google.com/?q=福岡タワー+早良区">福岡タワー</a>（¥800，展望台，123m 高，早良区）<br>
+            • <a href="https://maps.google.com/?q=ソフトバンクホークスグッズショップ+福岡PayPayドーム">PayPay ドーム 周辺商店</a>：鷹迷聖地，限定周邊<br>
+            • 喫茶店・珈琲館でゆっくり：福岡有大量本格咖啡廳
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+</div><!-- /pane-rain -->
+
+<div class="tab-pane" id="pane-lunch">
+  <!-- 商業午餐推薦 -->
+  <!-- ¥2,000 以下速查 -->
+  <div class="section-title">💴 ¥2,000 以下可以吃什麼？</div>
+  <div class="rain-card">
+    <h3 style="margin-bottom:12px">🟢 全行程餐點預算分層一覽</h3>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px">
+      <div style="background:#e8f5e9;border-radius:8px;padding:12px">
+        <div style="font-weight:700;font-size:0.82rem;color:#1b5e20;margin-bottom:8px">✅ ¥2,000 以下（全部可）</div>
+        <div style="font-size:0.78rem;line-height:2;color:#333">
+          🥩 <strong>武蔵 黑毛和牛ステーキ</strong>（¥1,000~1,999）⭐和牛<br>
+          🍜 Shin-Shin 博多拉麵（¥820）<br>
+          🍱 えびのや 天麩羅定食 + 明太子吃到飽（¥1,320）<br>
+          🥘 やまや もつ鍋定食（¥1,300~）<br>
+          🍲 但馬屋 しゃぶしゃぶ（¥1,580）<br>
+          🍲 もつ鍋おおやま 定食（¥1,500~）<br>
+          🐄 阿蘇あか牛丼（¥1,500~）⭐和牛<br>
+          🍱 伊都安蔵里 糸島定食（¥1,200~）<br>
+          🍜 博多一双/一幸舎/元気一杯（¥800~950）<br>
+          🍱 資さんうどん（¥700~）
+        </div>
+      </div>
+      <div style="background:#fff8e1;border-radius:8px;padding:12px">
+        <div style="font-weight:700;font-size:0.82rem;color:#e65100;margin-bottom:8px">⚠️ ¥2,000 超（要有心理準備）</div>
+        <div style="font-size:0.78rem;line-height:2;color:#333">
+          🦴 博多もつ鍋（晚餐）¥2,500~3,500<br>
+          🐟 博多水炊き（晚餐）¥3,000+<br>
+          🐣 柳川 うなぎ蒸籠飯（¥2,500~）<br>
+          🔥 薬院 焼肉（¥2,500~）<br>
+          🐔 努努鶏 外帶（¥1,200~1個，多點則超）<br>
+          🦪 糸島牡蠣（¥1,500~2,500、6月可能關季）
+        </div>
+      </div>
+    </div>
+    <div class="note-box">
+      🥩 <strong>和牛商業午餐</strong>：有的！<br>
+      ① <strong>武蔵 黑毛和牛ステーキ</strong>（博多駅前 1分）¥1,000~1,999：午餐・晚餐皆有，不需預約，黑毛和牛牛排定食，是全行程 CP 值最高的和牛體驗<br>
+      ② <strong>阿蘇あか牛丼</strong>（Day 7 草千里）¥1,500~：あか牛（阿蘇赤牛）屬和牛系列，Klook 行程午餐通常在此用餐<br>
+      ③ <strong>但馬屋 しゃぶしゃぶ</strong>（KITTE博多 10F）¥1,580：含牛肉 150g 選項，算最平價的和牛涮涮鍋體驗
+    </div>
+  </div>
+
+  <div class="section-title">🍱 商業午餐推薦</div>
+  <div class="rain-card">
+    <h3>九州全程コスパ最強ランチ 10選（博多本拠地 ＋ 各地名物）</h3>
+    <table class="rain-table">
+      <thead>
+        <tr>
+          <th style="width:17%">店名</th>
+          <th style="width:9%">エリア</th>
+          <th style="width:23%">吃什麼</th>
+          <th style="width:8%">價格</th>
+          <th style="width:17%">時間 / 位置</th>
+          <th>備注</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr style="background:#1e1e1e;">
+          <td colspan="6" style="font-size:0.72rem; color:#aaa; padding:5px 10px; font-weight:700; letter-spacing:0.04em;">🏙️ 博多駅エリア — 住 WELLCABIN 期間隨時可以去</td>
+        </tr>
+        <tr>
+          <td class="rain-day">
+            <a href="https://tabelog.com/fukuoka/A4001/A400101/40042768/" target="_blank">但馬屋</a>
+            <a href="https://maps.google.com/?q=但馬屋+KITTE博多+博多駅+福岡市" target="_blank" style="font-size:0.7rem;display:block;color:#1565c0;text-decoration:none;margin-top:2px">🗺 Maps</a>
+            <div class="rain-orig">しゃぶしゃぶ</div>
+          </td>
+          <td style="font-size:0.78rem; color:#bbb; text-align:center;">KITTE 10F</td>
+          <td>涮涮鍋（雞豬牛 150g）<br>蔬菜・咖喱・飯・麵吃到飽</td>
+          <td class="rain-alt" style="font-weight:700">¥1,580</td>
+          <td>平日 11:00–17:00<br>KITTE博多 10F</td>
+          <td>4種湯底選2，<strong>柚子鹽⭐</strong>強推<br><span style="color:#999;font-size:0.75rem">加¥290升級哈根達斯無限（¥1,870）</span></td>
+        </tr>
+        <tr>
+          <td class="rain-day">
+            <a href="https://tabelog.com/fukuoka/A4001/A400101/40060307/" target="_blank">えびのや</a>
+            <a href="https://maps.google.com/?q=えびのや+KITTE博多+博多駅+福岡市" target="_blank" style="font-size:0.7rem;display:block;color:#1565c0;text-decoration:none;margin-top:2px">🗺 Maps</a>
+            <div class="rain-orig">天麩羅</div>
+          </td>
+          <td style="font-size:0.78rem; color:#bbb; text-align:center;">KITTE 10F</td>
+          <td>天丼（海老2尾＋魚介野菜）<br>赤だし＋<strong>明太子吃到飽</strong></td>
+          <td class="rain-alt" style="font-weight:700">¥1,320</td>
+          <td>平日限定<br>KITTE博多 10F</td>
+          <td>白飯無限・明太子無限<br><span style="color:#999;font-size:0.75rem">御膳版（主菜多一道）¥1,650</span></td>
+        </tr>
+        <tr>
+          <td class="rain-day">
+            <a href="https://tabelog.com/fukuoka/A4001/A400101/40029725/" target="_blank">やまや</a>
+            <a href="https://maps.google.com/?q=やまや+博多駅+筑紫口+福岡市" target="_blank" style="font-size:0.7rem;display:block;color:#1565c0;text-decoration:none;margin-top:2px">🗺 Maps</a>
+            <div class="rain-orig">もつ鍋</div>
+          </td>
+          <td style="font-size:0.78rem; color:#bbb; text-align:center;">博多駅 2分</td>
+          <td>もつ鍋定食（選主菜）<br><strong>明太子・辛子高菜吃到飽</strong>・白飯無限</td>
+          <td class="rain-alt" style="font-weight:700">¥1,300~</td>
+          <td>11:00–15:00<br>博多駅筑紫口 2分</td>
+          <td>本場明太子廠牌直營<br><span style="color:#999;font-size:0.75rem">博多駅高架下，YodobashiCamera旁</span></td>
+        </tr>
+        <tr>
+          <td class="rain-day">
+            <a href="https://tabelog.com/fukuoka/A4001/A400101/40007847/" target="_blank">もつ鍋おおやま</a>
+            <a href="https://maps.google.com/?q=もつ鍋おおやま+博多駅デイトス+福岡市" target="_blank" style="font-size:0.7rem;display:block;color:#1565c0;text-decoration:none;margin-top:2px">🗺 Maps</a>
+            <div class="rain-orig">もつ鍋</div>
+          </td>
+          <td style="font-size:0.78rem; color:#bbb; text-align:center;">デイトス内</td>
+          <td>もつ鍋定食 / 御膳<br>博多ざんまいセット</td>
+          <td class="rain-alt" style="font-weight:700">¥1,500~</td>
+          <td>11:00~<br>博多駅デイトス内</td>
+          <td>博多駅直結，觀光客必排<br><span style="color:#999;font-size:0.75rem">食べログ百名店常連</span></td>
+        </tr>
+        <tr>
+          <td class="rain-day">
+            <a href="https://tabelog.com/fukuoka/A4001/A400101/40035362/" target="_blank">Shin-Shin</a>
+            <a href="https://maps.google.com/?q=しん・しん+博多DEITOS+博多駅+福岡市" target="_blank" style="font-size:0.7rem;display:block;color:#1565c0;text-decoration:none;margin-top:2px">🗺 Maps</a>
+            <div class="rain-orig">豚骨ラーメン</div>
+          </td>
+          <td style="font-size:0.78rem; color:#bbb; text-align:center;">デイトス 2F</td>
+          <td>博多純情らーめん<br>替玉 / 辛子高菜トッピング</td>
+          <td class="rain-alt" style="font-weight:700">¥820~</td>
+          <td>11:00–翌0:00<br>博多駅デイトス 2F</td>
+          <td>博多拉麵代表，清爽豚骨無臭<br><span style="color:#999;font-size:0.75rem">らーめん＋替玉セット ¥970，食べログ 3.56</span></td>
+        </tr>
+        <tr style="background:#1e1e1e;">
+          <td colspan="6" style="font-size:0.72rem; color:#aaa; padding:5px 10px; font-weight:700; letter-spacing:0.04em;">🚂 行程目的地 — 每個地方的當地名物午餐</td>
+        </tr>
+        <tr>
+          <td class="rain-day">
+            <a href="https://maps.google.com/?q=太宰府天満宮+参道+梅ヶ枝餅+太宰府市" target="_blank">太宰府参道 梅ヶ枝餅</a>
+            <div class="rain-orig">梅ヶ枝餅</div>
+          </td>
+          <td style="font-size:0.78rem; color:#bbb; text-align:center;">📍 太宰府<br>Day 2（火）</td>
+          <td>梅ヶ枝餅（焼きたて）・参道カフェランチ<br>かさの家・茶房きくち</td>
+          <td class="rain-alt" style="font-weight:700">¥150~</td>
+          <td>各店 10:00~<br>太宰府天満宮 参道沿い</td>
+          <td>名物！焼きたて梅ヶ枝餅 ¥150/個，邊走邊吃最佳。かさの家が特に有名。<br><span style="color:#999;font-size:0.75rem">参道ランチは茶房きくち・かさの家でどうぞ</span></td>
+        </tr>
+        <tr>
+          <td class="rain-day">
+            <a href="https://maps.google.com/?q=伊都安蔵里+糸島市" target="_blank">伊都安蔵里</a>
+            <div class="rain-orig">糸島海鮮</div>
+          </td>
+          <td style="font-size:0.78rem; color:#bbb; text-align:center;">📍 糸島<br>Day 8（月）</td>
+          <td>糸島豬・有機蔬菜・地產海鮮定食<br>複合農業公園內餐廳</td>
+          <td class="rain-alt" style="font-weight:700">¥1,200~</td>
+          <td>11:00–15:00<br>前原駅 車約10分</td>
+          <td>糸島農業直売所附設，食材鮮度高<br><span style="color:#999;font-size:0.75rem">週末排隊，平日（水曜）較輕鬆</span></td>
+        </tr>
+        <tr>
+          <td class="rain-day">
+            <a href="https://maps.google.com/?q=資さんうどん+小倉+北九州市" target="_blank">資さんうどん</a>
+            <div class="rain-orig">小倉うどん</div>
+          </td>
+          <td style="font-size:0.78rem; color:#bbb; text-align:center;">📍 小倉<br>Day 4（木）</td>
+          <td>北九州靈魂食物・肉ごぼう天うどん<br>ぼた餅セット</td>
+          <td class="rain-alt" style="font-weight:700">¥700~</td>
+          <td>24時間営業<br>小倉駅 近辺複数店</td>
+          <td>北九州 No.1 烏龍麵，外地人必試<br><span style="color:#999;font-size:0.75rem">無休・24H，小倉駅周辺に複数店舗</span></td>
+        </tr>
+        <tr>
+          <td class="rain-day">
+            <a href="https://maps.google.com/?q=元祖本吉屋+柳川市" target="_blank">元祖本吉屋 本店</a>
+            <div class="rain-orig">柳川うなぎ</div>
+          </td>
+          <td style="font-size:0.78rem; color:#bbb; text-align:center;">📍 柳川<br>Day 5（金）</td>
+          <td>鰻魚蒸籠飯（せいろ蒸し）<br>柳川地方特有的甜醬料理法</td>
+          <td class="rain-alt" style="font-weight:700">¥2,500~</td>
+          <td>10:30–20:00（通し）<br>川下り終點 徒步圏内</td>
+          <td>⭐ 川下り後 16:00 直接去，其他店 14:30 已截止<br><span style="color:#999;font-size:0.75rem">月曜休・火曜休確認，建議到店確認</span></td>
+        </tr>
+        <tr>
+          <td class="rain-day">
+            <a href="https://maps.google.com/?q=阿蘇+草千里+レストラン+熊本" target="_blank">阿蘇 草千里レストハウス</a>
+            <div class="rain-orig">阿蘇あか牛丼</div>
+          </td>
+          <td style="font-size:0.78rem; color:#bbb; text-align:center;">📍 阿蘇<br>Day 6（土）</td>
+          <td>阿蘇あか牛（赤牛）丼<br>草千里展望所 附設食堂</td>
+          <td class="rain-alt" style="font-weight:700">¥1,500~</td>
+          <td>展示施設に準ずる<br>草千里 現地</td>
+          <td>Klook 行程通常在此午餐，阿蘇赤牛是熊本名產<br><span style="color:#999;font-size:0.75rem">具体時間由 Klook 導遊安排</span></td>
+        </tr>
+      </tbody>
+    </table>
+    <p style="font-size:0.77rem; color:#999; margin-top:12px; line-height:1.6;">
+      ⚠️ 博多駅エリアの 但馬屋・えびのや は平日ランチ限定（土日は通常メニューのみ）。Day 3（水）・Day 4（木）・Day 5（金）が狙い目。週末はランチ料金が変わるケースあり。価格は 2025年8月時点の情報。現地で最終確認を。
+    </p>
+  </div>
+
+</div><!-- /pane-lunch -->
+
+<div class="tab-pane" id="pane-ramen">
+  <!-- 博多拉麵 10選 -->
+  <div class="section-title">🍜 博多拉麵 10選</div>
+  <div class="rain-card">
+    <h3>🐷 福岡豚骨聖地精選——每間都有獨門個性</h3>
+    <table class="rain-table">
+      <thead>
+        <tr>
+          <th style="width:2.2rem">#</th>
+          <th>店名</th>
+          <th>湯頭類型</th>
+          <th>特色</th>
+          <th>人均</th>
+          <th>位置・交通</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="rain-day">01</td>
+          <td style="font-weight:600"><a href="https://maps.google.com/?q=博多一双+博多駅東口+福岡市" target="_blank">博多一双</a><br><span style="font-size:0.73rem;color:#999">博多駅東本店</span></td>
+          <td><span class="rain-indoor" style="background:#fff0e6;color:#c45000">泡沫濃厚</span></td>
+          <td>泡沫感濃厚豬骨湯，Tabelog 百名店。細麵，建議加麵</td>
+          <td class="rain-alt" style="font-weight:700">¥950~</td>
+          <td style="font-size:0.77rem">博多駅東口 步行6分<br>11:00–凌晨1:00</td>
+        </tr>
+        <tr>
+          <td class="rain-day">02</td>
+          <td style="font-weight:600"><a href="https://maps.google.com/?q=博多一幸舎+総本店+博多区+福岡市" target="_blank">博多一幸舎</a><br><span style="font-size:0.73rem;color:#999">総本店</span></td>
+          <td><span class="rain-indoor" style="background:#fff0e6;color:#c45000">正統白濁</span></td>
+          <td>海外連鎖擴展 No.1，豬骨拉麵的「教科書」，外國人最受歡迎</td>
+          <td class="rain-alt" style="font-weight:700">¥800~</td>
+          <td style="font-size:0.77rem">博多駅前 3-23-12<br>11:00–凌晨2:00</td>
+        </tr>
+        <tr>
+          <td class="rain-day">03</td>
+          <td style="font-weight:600"><a href="https://maps.google.com/?q=博多元気一杯+博多駅前+福岡市博多区" target="_blank">博多元気一杯！！</a><br><span style="font-size:0.73rem;color:#999">博多駅前</span></td>
+          <td><span class="rain-indoor" style="background:#ffebee;color:#b71c1c">泥狀超濃厚</span></td>
+          <td>號稱「日本最濃」的泥狀豬骨湯，必排隊，愛恨分明</td>
+          <td class="rain-alt" style="font-weight:700">¥850~</td>
+          <td style="font-size:0.77rem">博多駅前 3-27-16<br>11:30–凌晨1:00</td>
+        </tr>
+        <tr>
+          <td class="rain-day">04</td>
+          <td style="font-weight:600"><a href="https://maps.google.com/?q=しん・しん+博多DEITOS+博多駅+福岡市" target="_blank">Shin-Shin</a><br><span style="font-size:0.73rem;color:#999">博多DEITOS店</span></td>
+          <td><span class="rain-indoor" style="background:#e8fdf0;color:#1a8a3a">清爽白濁</span></td>
+          <td>豬骨但喝起來清爽，初嘗豬骨的最佳選擇，車站直結最方便</td>
+          <td class="rain-alt" style="font-weight:700">¥820~</td>
+          <td style="font-size:0.77rem">博多駅 DEITOS 2F（直結）<br>11:00–23:00</td>
+        </tr>
+        <tr>
+          <td class="rain-day">05</td>
+          <td style="font-weight:600"><a href="https://maps.google.com/?q=麺屋兼虎+渡辺通+天神+福岡市" target="_blank">麺屋兼虎</a><br><span style="font-size:0.73rem;color:#999">天神本店</span></td>
+          <td><span class="rain-indoor" style="background:#e8f4fd;color:#1a6fa8">豬骨×海鮮沾麵</span></td>
+          <td>豬骨底×海鮮高湯的雙重濃厚沾麵，天神觀光順路必嘗的創作系</td>
+          <td class="rain-alt" style="font-weight:700">¥1,000~</td>
+          <td style="font-size:0.77rem">渡辺通 4-9-18（天神）<br>11:00–22:00</td>
+        </tr>
+        <tr>
+          <td class="rain-day">06</td>
+          <td style="font-weight:600"><a href="https://maps.google.com/?q=博多達摩+大博町+祇園駅+福岡市" target="_blank">博多達摩</a><br><span style="font-size:0.73rem;color:#999">総本店</span></td>
+          <td><span class="rain-indoor" style="background:#2c2c2c;color:#eee">黑豬骨</span></td>
+          <td>焦化蒜油黑豬骨湯，重口味愛好者聖地，深夜 3 點關門</td>
+          <td class="rain-alt" style="font-weight:700">¥850~</td>
+          <td style="font-size:0.77rem">大博町 7-4（祇園駅 步行3分）<br>11:30–凌晨3:00</td>
+        </tr>
+        <tr>
+          <td class="rain-day">07</td>
+          <td style="font-weight:600"><a href="https://maps.google.com/?q=一蘭+本社総本店+中洲+福岡市" target="_blank">一蘭</a><br><span style="font-size:0.73rem;color:#999">本社総本店</span></td>
+          <td><span class="rain-indoor" style="background:#fff0e6;color:#c45000">天然豬骨・隔板</span></td>
+          <td>隔板獨享座位＋湯頭全客製化，24 小時，本社獨有限定菜單</td>
+          <td class="rain-alt" style="font-weight:700">¥890~</td>
+          <td style="font-size:0.77rem">中洲 5-3-2<br>24 小時</td>
+        </tr>
+        <tr>
+          <td class="rain-day">08</td>
+          <td style="font-weight:600"><a href="https://maps.google.com/?q=海鳴+博多DEITOS+博多駅+福岡市" target="_blank">拉麺 海鳴</a><br><span style="font-size:0.73rem;color:#999">博多DEITOS店</span></td>
+          <td><span class="rain-indoor" style="background:#e8f4fd;color:#1a6fa8">蛤蜊豬骨</span></td>
+          <td>豬骨×蛤蜊高湯的綿密湯頭，車站直結，下雨天也免淋</td>
+          <td class="rain-alt" style="font-weight:700">¥900~</td>
+          <td style="font-size:0.77rem">博多駅 DEITOS（直結）<br>11:00–23:00</td>
+        </tr>
+        <tr>
+          <td class="rain-day">09</td>
+          <td style="font-weight:600"><a href="https://maps.google.com/?q=二男坊+博多本店+博多駅前+福岡市" target="_blank">拉麺 二男坊</a><br><span style="font-size:0.73rem;color:#999">博多本店</span></td>
+          <td><span class="rain-indoor" style="background:#e8fdf0;color:#1a8a3a">清淡白濁</span></td>
+          <td>清淡白濁湯＋溏心蛋是招牌，吃膩重口味時的溫柔一碗</td>
+          <td class="rain-alt" style="font-weight:700">¥800~</td>
+          <td style="font-size:0.77rem">博多駅前 4-19-20<br>11:00–凌晨2:00</td>
+        </tr>
+        <tr>
+          <td class="rain-day">10</td>
+          <td style="font-weight:600"><a href="https://maps.google.com/?q=長浜屋台やまちゃん+中洲+福岡市" target="_blank">長浜屋台やまちゃん</a><br><span style="font-size:0.73rem;color:#999">中洲店</span></td>
+          <td><span class="rain-indoor" style="background:#f3e5f5;color:#6a1b9a">長濱系屋台</span></td>
+          <td>保留昭和屋台氛圍，加麵免費，中洲夜飲後收尾最合適</td>
+          <td class="rain-alt" style="font-weight:700">¥700~</td>
+          <td style="font-size:0.77rem">中洲 4丁目（屋台街）<br>18:00–凌晨3:00</td>
+        </tr>
+      </tbody>
+    </table>
+    <p style="font-size:0.77rem; color:#999; margin-top:12px; line-height:1.6;">
+      💡 博多駅周邊不知選哪間？#04 Shin-Shin（DEITOS直結）或 #07 一蘭（中洲・24H）最容易進。想挑戰重口味就選 #03 元気一杯 或 #06 達摩。中洲夜飲收尾選 #10 やまちゃん（屋台氛圍）。
+    </p>
+  </div>
+
+</div><!-- /pane-ramen -->
+
+<div class="tab-pane" id="pane-anime">
+  <!-- 動漫周邊・ちいかわ -->
+  <div class="section-title">🎌 動漫周邊・ちいかわスポット</div>
+  <div class="rain-card">
+    <h3>🐭 ちいかわ聖地巡禮 ＋ 天神アニメ購物圏</h3>
+    <table class="rain-table">
+      <thead>
+        <tr>
+          <th style="width:1.8rem">類型</th>
+          <th>地點</th>
+          <th>亮點・介紹</th>
+          <th>時間・費用</th>
+          <th>位置・連結</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="rain-indoor" style="background:#f9f0ff;color:#6a1b9a">ちいかわ<br>常設</span></td>
+          <td style="font-weight:600">ちいかわらんど<br><span style="font-size:0.73rem;color:#999">福岡PARCO店</span></td>
+          <td>九州唯一常設店。福岡PARCO本館8F キデイランド内。不限日期入場（新商品發售日除外），吉伊卡娃全系列正規周邊齊全</td>
+          <td style="font-size:0.77rem">10:00–20:30<br>入場免費</td>
+          <td style="font-size:0.77rem">天神 2-11-1<br>福岡PARCO 本館8F<br><a href="https://chiikawa-land.com/shop/fukuoka/" target="_blank" style="color:#1a6fa8">官網 →</a><br><a href="https://maps.google.com/?q=ちいかわらんど+福岡PARCO+天神+福岡市" target="_blank" style="color:#1565c0">🗺 Maps</a></td>
+        </tr>
+        <tr style="background:#fff9f0">
+          <td><span class="rain-indoor" style="background:#ffebcc;color:#b45300">ちいかわ<br>⚠️ 6/7まで</span></td>
+          <td style="font-weight:600">ちいかわレストラン<br>討伐フェア<br><span style="font-size:0.73rem;color:#e65100">期間限定 5/14–6/7</span></td>
+          <td>⚠️ <strong style="color:#c45000">旅程期間（6/1–6/7）中！限定コラボ。</strong><br>ドリンクスタンド：博多あまおう等九州素材の限定ドリンク<br>グッズショップ：希少限定グッズあり（本館B1F）<br><span style="color:#3a5a8a;font-size:0.82rem">行程期間恰逢限定活動！限定飲品（博多草莓等九州素材）＋限定周邊；6/7 截止，Day1–6 內排入天神 PARCO 必訪</span></td>
+          <td style="font-size:0.77rem">飲品攤：PARCO新館6F<br>みのりカフェ<br>限定周邊：本館B1F</td>
+          <td style="font-size:0.77rem">天神 2-11-1<br>福岡PARCO<br><span style="color:#e65100;font-weight:600">6/7（日）終了！</span><br><a href="https://maps.google.com/?q=福岡PARCO+天神+新館+福岡市" target="_blank" style="color:#1565c0">🗺 Maps</a></td>
+        </tr>
+        <tr>
+          <td><span class="rain-indoor" style="background:#e8f4fd;color:#1a6fa8">アニメ<br>専門店</span></td>
+          <td style="font-weight:600">アニメイト<br><span style="font-size:0.73rem;color:#999">福岡天神PARCO店</span></td>
+          <td>PARCO内のアニメ・マンガ・グッズ専門大型店。フィギュア・CD・DVD・同人誌・コスプレグッズ幅広く取扱。ちいかわらんどと同じビルで一気に回れる<br><span style="color:#3a5a8a;font-size:0.82rem">天神 PARCO 最大動漫周邊專賣店，手辦／CD／同人誌／Cosplay 道具一應俱全；與吉伊卡娃專賣店同棟，可一次逛完</span></td>
+          <td style="font-size:0.77rem">11:00–20:30<br>（PARCO同時間）</td>
+          <td style="font-size:0.77rem">天神 2-11-1<br>福岡PARCO内<br><a href="https://shop.animate.co.jp/shop/fukuoka-tenjin-parco/" target="_blank" style="color:#1a6fa8">公式 →</a><br><a href="https://maps.google.com/?q=アニメイト+福岡天神PARCO店+福岡市" target="_blank" style="color:#1565c0">🗺 Maps</a></td>
+        </tr>
+        <tr>
+          <td><span class="rain-indoor" style="background:#f3e5f5;color:#6a1b9a">中古<br>レア</span></td>
+          <td style="font-weight:600">まんだらけ<br><span style="font-size:0.73rem;color:#999">福岡店</span></td>
+          <td>100萬件超庫存的中古聖地。絕版フィギュア・レアグッズ・古い同人誌が発掘できる。天神步行5分，順路必訪</td>
+          <td style="font-size:0.77rem">12:00–20:00</td>
+          <td style="font-size:0.77rem">大名 1-14-28<br>大名センタービル 3F<br>（天神 徒歩5分）<br><a href="https://maps.google.com/?q=まんだらけ+大名+福岡市中央区" target="_blank" style="color:#1565c0">🗺 Maps</a></td>
+        </tr>
+        <tr>
+          <td><span class="rain-indoor" style="background:#e8fdf0;color:#1a8a3a">同人誌<br>グッズ</span></td>
+          <td style="font-weight:600">メロンブックス<br><span style="font-size:0.73rem;color:#999">福岡天神店</span></td>
+          <td>同人誌・フィギュア・コスプレ衣装・声優グッズ専門。アニメイト＋まんだらけと合わせた「天神オタクルーティング」の三角エリア完成<br><span style="color:#3a5a8a;font-size:0.82rem">同人誌、聲優周邊、手辦專門店；與 Animate ＋ まんだらけ 構成天神御宅族購物鐵三角</span></td>
+          <td style="font-size:0.77rem">11:00–21:00</td>
+          <td style="font-size:0.77rem">天神 2-5-55<br>（天神 徒歩5分）<br><a href="https://maps.google.com/?q=メロンブックス+福岡天神店+天神+福岡市" target="_blank" style="color:#1565c0">🗺 Maps</a></td>
+        </tr>
+        <tr>
+          <td><span class="rain-indoor" style="background:#e8fdf0;color:#1a8a3a">Day4<br>小倉</span></td>
+          <td style="font-weight:600">あるあるCity<br><span style="font-size:0.73rem;color:#999">北九州・小倉（Day4行程内）</span></td>
+          <td>北九州の秋葉原。アニメイト・ゲーマーズ・まんだらけ・駿河屋が同一ビルに集結。ufotable Cafe も同建物。Day4（6/4）小倉観光時に組み込み済み<br><span style="color:#3a5a8a;font-size:0.82rem">北九州版秋葉原，Animate／Gamers／まんだらけ／駿河屋集中一棟；Day 4 小倉觀光順路必逛，ufotable Cafe 同棟加分</span></td>
+          <td style="font-size:0.77rem">10:00–21:00</td>
+          <td style="font-size:0.77rem">小倉駅北口 徒歩3分<br>（Day4行程内）<br><a href="https://maps.google.com/?q=あるあるCity+小倉駅北口+北九州市" target="_blank" style="color:#1565c0">🗺 Maps</a></td>
+        </tr>
+      </tbody>
+    </table>
+    <p style="font-size:0.77rem; color:#999; margin-top:12px; line-height:1.6;">
+      ✅ <strong style="color:#1a8a3a">ちいかわ討伐フェア已排入 Day 3（6/3 水）！</strong> 截止 6/7（日）之前 4 天出擊。建議路線：ちいかわらんど（8F）→ Animate（PARCO內）→討伐祭飲品攤（新館6F）→限定周邊（本館B1F）→ Canal City，一次逛完效率最高。
+    </p>
+  </div>
+
+  <!-- CORTIS / K-pop 專區 -->
+  <div class="section-title">🎤 CORTIS・K-pop 周邊 — 福岡在地購物圈</div>
+  <div class="rain-card">
+    <div style="display:flex;gap:12px;align-items:flex-start;margin-bottom:16px;padding:12px 14px;background:linear-gradient(135deg,#1a1a2e,#2d1b5e);border-radius:10px;color:white">
+      <div style="font-size:2rem;flex-shrink:0">🎤</div>
+      <div>
+        <div style="font-weight:700;font-size:0.95rem;margin-bottom:4px">CORTIS（コルティス）</div>
+        <div style="font-size:0.78rem;opacity:0.85;line-height:1.6">BIGHIT MUSIC 旗下 5 人男團（Martin / James / Juhoon / Seonghyeon / Keonho），2025年8月出道。Billboard 200 最高第15位。概念：COLOR OUTSIDE THE LINES，以自由破格著稱。與 Vans 合作，2026年4月啟動「Off The Wall」聯名系列。</div>
+      </div>
+    </div>
+    <h3 style="margin-bottom:12px">📍 福岡在地 K-pop 周邊購物圈</h3>
+    <p style="font-size:0.8rem;color:#666;margin-bottom:14px;line-height:1.6">福岡離韓國最近（飛釜山僅1小時），韓流文化根深蒂固。以下是在地人才知道的 CORTIS 周邊入手路線：</p>
+    <table class="rain-table">
+      <thead>
+        <tr>
+          <th>地點</th>
+          <th>亮點</th>
+          <th>交通</th>
+          <th>位置・連結</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr style="background:#f9f0ff">
+          <td style="font-weight:600">タワーレコード<br><span style="font-size:0.73rem;color:#999">福岡パルコ店</span></td>
+          <td>⭐ 福岡最大 K-pop 實體賣場。CORTIS 新專輯首發日必到，設有 K-pop 專區，常設 BIGHIT 系週邊（BTS/CORTIS/TXT）。在地樂迷固定報到點，非觀光客導向</td>
+          <td style="font-size:0.77rem">天神 PARCO 本館7F<br>（ちいかわらんど同棟！）<br>11:00–20:30</td>
+          <td style="font-size:0.77rem"><a href="https://maps.google.com/?q=タワーレコード+福岡PARCO店+天神+福岡市" target="_blank" style="color:#1565c0">🗺 Maps</a><br><a href="https://tower.jp/store/kanto/FukuokaPARCO" target="_blank" style="color:#1a6fa8">官網 →</a></td>
+        </tr>
+        <tr>
+          <td style="font-weight:600">OZ 韓流 SHOP<br><span style="font-size:0.73rem;color:#999">キャナルシティ博多</span></td>
+          <td>Canal City 內規模最大的 K-pop 周邊店。C-type / 限定 photocard / 小卡 / 週邊齊全。CORTIS 福岡粉常在這補貨，店員常有最新到貨資訊</td>
+          <td style="font-size:0.77rem">Canal City B1F<br>（博多から徒步15分）<br>10:00–21:00</td>
+          <td style="font-size:0.77rem"><a href="https://maps.google.com/?q=OZ韓流SHOP+キャナルシティ博多+福岡市" target="_blank" style="color:#1565c0">🗺 Maps</a></td>
+        </tr>
+        <tr style="background:#f0fff4">
+          <td style="font-weight:600">HMV &amp; BOOKS<br><span style="font-size:0.73rem;color:#999">博多 KITTE 店</span></td>
+          <td>博多駅直通 KITTE 博多内。K-pop CD / フォトブック / DVD。在地樂迷下班順路買的首選，商業午餐同棟逛完一次解決。CORTIS 日本發盤必有進貨</td>
+          <td style="font-size:0.77rem">博多駅直通 KITTE 博多内<br>10:00–21:00</td>
+          <td style="font-size:0.77rem"><a href="https://maps.google.com/?q=HMV+KITTE博多+博多駅+福岡市" target="_blank" style="color:#1565c0">🗺 Maps</a></td>
+        </tr>
+        <tr>
+          <td style="font-weight:600">K-BOOKS<br><span style="font-size:0.73rem;color:#999">福岡天神店</span></td>
+          <td>K-pop / 聲優 / 推し活グッズ 專門店。CORTIS 周邊 trading card / bromide / uchiwa 等應援道具豐富。天神オタクエリア內，與 Animate・まんだらけ 形成四角攻略路線</td>
+          <td style="font-size:0.77rem">天神 2-5 周邊<br>12:00–20:00（休息日需確認）</td>
+          <td style="font-size:0.77rem"><a href="https://maps.google.com/?q=K-BOOKS+福岡天神店+天神+福岡市" target="_blank" style="color:#1565c0">🗺 Maps</a></td>
+        </tr>
+        <tr style="background:#fff9f0">
+          <td style="font-weight:600">Weverse Shop<br>取貨代理店<br><span style="font-size:0.73rem;color:#999">（天神 PARCO 周邊）</span></td>
+          <td>CORTIS 官方周邊以 Weverse Shop 為主。出發前在台灣下單、指定轉運至日本地址；或在福岡用 Wi-Fi 直購。部分商品支援 FamiPort 便利店取貨（ファミリーマート）</td>
+          <td style="font-size:0.77rem">Weverse App 下單<br>FamilyMart 取貨</td>
+          <td style="font-size:0.77rem"><a href="https://shop.weverse.io" target="_blank" style="color:#1a6fa8">Weverse Shop →</a><br><a href="https://maps.google.com/?q=ファミリーマート+天神+福岡市" target="_blank" style="color:#1565c0">🗺 最近 FamilyMart</a></td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="note-box" style="margin-top:14px">
+      💡 <strong>攻略路線（天神集中）</strong>：タワーレコード（PARCO 7F）→ ちいかわらんど（PARCO 8F）→ Animate（PARCO 内）→ まんだらけ（大名）→ K-BOOKS（天神）→ メロンブックス（天神）<br>
+      全程步行可達，建議 <strong>Day 7（6/7）天神自由日</strong> 安排。タワーレコードは木曜日・祝前日に新入荷あり（アルバム発売日は必確認）
+    </div>
+  </div>
+
+</div><!-- /pane-anime -->
+
+<div class="tab-pane" id="pane-workman">
+  <div class="section-title">🧊 WorkMan 製冷晶片背心</div>
+  <div class="rain-card">
+    <h3>🧊 WorkMan 製冷背心 2026年款比較</h3>
+    <p style="font-size:0.84rem; color:#555; margin-bottom:14px; line-height:1.6;">
+      福岡夏日戶外氣溫 30-35°C，製冷背心是救命神器。WorkMan 的珀耳帖（Peltier）製冷背心性價比業界最高，建議<strong>行程第 1-2 天</strong>就去買，夏季容易完售。
+    </p>
+    <table class="rain-table">
+      <thead>
+        <tr>
+          <th>規格</th>
+          <th>WZ-6 ペルチェベスト PRO3<br><span style="font-weight:400;font-size:0.78rem">標準款</span></th>
+          <th>2026年新款（7ヶ所）<br><span style="font-weight:400;font-size:0.78rem">旗艦款</span></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="rain-day">價格</td>
+          <td><strong style="color:#1a8a3a">¥19,800</strong>（含稅）</td>
+          <td><strong style="color:#c45000">¥29,800</strong>（含稅）</td>
+        </tr>
+        <tr>
+          <td class="rain-day">珀耳帖元件數</td>
+          <td>5 ヶ所</td>
+          <td><strong>7 ヶ所</strong>（+2 新增）</td>
+        </tr>
+        <tr>
+          <td class="rain-day">製冷效果</td>
+          <td>最大差 -30°C（環境溫差）</td>
+          <td>表面溫度 -5°C（直接接觸感）</td>
+        </tr>
+        <tr>
+          <td class="rain-day">冷暖兩用</td>
+          <td>冷卻 4 段／暖熱 2 段</td>
+          <td>冷卻 4 段／暖熱 2 段</td>
+        </tr>
+        <tr>
+          <td class="rain-day">防水</td>
+          <td>IPX4 防潑水</td>
+          <td>IPX4 防潑水</td>
+        </tr>
+        <tr>
+          <td class="rain-day">電池續航</td>
+          <td>2.8h（強冷）〜 27h（弱冷）<br>附 20,000mAh 專用電池</td>
+          <td>同規格電池</td>
+        </tr>
+        <tr>
+          <td class="rain-day">顏色</td>
+          <td>黑色</td>
+          <td>黑色・<strong>白色</strong>（新增）</td>
+        </tr>
+        <tr>
+          <td class="rain-day">官網連結</td>
+          <td><a href="https://workman.jp/shop/g/g2300035585014/" target="_blank" style="color:#1a6fa8">WZ-6 商品頁 →</a></td>
+          <td><a href="https://workman.jp/shop/e/epeltierv/" target="_blank" style="color:#1a6fa8">ペルチェ特集頁 →</a></td>
+        </tr>
+        <tr>
+          <td class="rain-day">推薦對象</td>
+          <td style="color:#1a8a3a;font-weight:600">✅ 旅遊推薦（CP值高）</td>
+          <td>重度戶外／工地作業用</td>
+        </tr>
+      </tbody>
+    </table>
+    <h3 style="margin-top:20px">🗺️ 福岡近郊 WorkMan Plus 門市</h3>
+    <table class="rain-table">
+      <thead>
+        <tr>
+          <th>門市名稱</th>
+          <th>特色</th>
+          <th>交通方式</th>
+          <th>營業時間</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td style="font-weight:600">WorkMan Plus<br>福岡吉塚店</td>
+          <td>距博多駅最近<br><span style="color:#1a8a3a; font-weight:600">⭐ 首推</span></td>
+          <td>JR 博多駅 → 吉塚駅（1 站 3 分）→ 步行 5 分<br><span style="font-size:0.75rem; color:#999">吉塚 3-7-11</span></td>
+          <td>8:00–20:00</td>
+        </tr>
+        <tr>
+          <td style="font-weight:600">WorkMan Plus<br>福岡空港通り店</td>
+          <td>福岡機場旁<br>回程順路可買</td>
+          <td>福岡空港開車 5 分<br><span style="font-size:0.75rem; color:#999">東平尾 2-1-40</span></td>
+          <td>8:00–20:00</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="note-box" style="margin-top:14px">
+      ⚠️ 夏季（6–8月）庫存消耗快，2026年官方生產量雖增加 80%，仍建議出發前至<a href="https://workman.jp/shop/g/g2300035585014/" target="_blank"> 官方網站</a>確認庫存。若當地售完，可線上購買寄回台灣。
+    </div>
+  </div>
+</div><!-- /pane-workman -->
+
+<div class="tab-pane" id="pane-map">
+  <div class="section-title">📍 Google My Maps 旅遊地圖</div>
+  <div class="rain-card">
+    <h3>📍 福岡旅遊地圖 — 全行程景點標記</h3>
+    <p style="font-size:0.84rem; color:#555; margin-bottom:14px; line-height:1.6;">
+      地圖已依分類建立圖層：住宿・Day 1-9 行程・商業午餐・伴手禮・拉麵10選・動漫周邊・WorkMan
+    </p>
+    <div style="text-align:center; margin-bottom:16px">
+      <a href="https://www.google.com/maps/d/u/0/viewer?mid=1tWbfT-GwOhBsPEKjvjZsYwKWG4xIICY&ll=33.346063306340106%2C130.67325&z=10" target="_blank"
+         style="display:inline-block; background:#1a1a2e; color:white; padding:10px 24px; border-radius:20px; font-weight:700; text-decoration:none; font-size:0.9rem;">
+        📍 打開 Google My Maps →
+      </a>
+    </div>
+    <iframe
+      src="https://www.google.com/maps/d/embed?mid=1tWbfT-GwOhBsPEKjvjZsYwKWG4xIICY&ll=33.346063306340106%2C130.67325&z=10&ehbc=2E312F"
+      width="100%" height="480"
+      style="border:0; border-radius:12px; display:block;"
+      allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+    </iframe>
+    <p style="font-size:0.75rem; color:#bbb; margin-top:8px; text-align:center;">
+      地圖無法顯示時請直接點擊上方按鈕開啟。圖層可在地圖左上角切換顯示/隱藏。
+    </p>
+  </div>
+
+  <!-- 全景點清單 -->
+  <div class="section-title">📋 全行程景點・餐廳 Google Maps 清單</div>
+  <div class="rain-card" style="padding:14px 16px">
+    <p style="font-size:0.8rem;color:#666;margin-bottom:14px">點擊 <strong>🗺</strong> 在 Google Maps 中開啟，加入「想去」即可建立個人清單</p>
+
+    <!-- 住宿 -->
+    <div style="font-weight:700;font-size:0.82rem;color:#1a1a2e;background:#f0f4ff;padding:6px 10px;border-radius:6px;margin-bottom:8px">🏨 住宿</div>
+    <table class="rain-table" style="margin-bottom:16px">
+      <tbody>
+        <tr><td style="font-weight:600">WELLCABIN TENJIN</td><td style="font-size:0.77rem;color:#666">天神 / 中洲川端（8泊）</td><td><a href="https://maps.google.com/?q=WELLCABIN+TENJIN+天神+福岡市" target="_blank" style="color:#1565c0">🗺</a></td></tr>
+      </tbody>
+    </table>
+
+    <!-- Day 1-2 -->
+    <div style="font-weight:700;font-size:0.82rem;color:#1a1a2e;background:#f0f4ff;padding:6px 10px;border-radius:6px;margin-bottom:8px">📅 Day 1–2：抵福・太宰府</div>
+    <table class="rain-table" style="margin-bottom:16px">
+      <tbody>
+        <tr><td style="font-weight:600">博多駅</td><td style="font-size:0.77rem;color:#666">旅程中心・各路線起點</td><td><a href="https://maps.google.com/?q=博多駅+福岡市博多区" target="_blank" style="color:#1565c0">🗺</a></td></tr>
+        <tr><td style="font-weight:600">フルフル 天神コア店</td><td style="font-size:0.77rem;color:#666">明太フランス・Day 1 午後</td><td><a href="https://maps.google.com/?q=フルフル+天神+明太フランス+福岡" target="_blank" style="color:#1565c0">🗺</a></td></tr>
+        <tr><td style="font-weight:600">大濠公園</td><td style="font-size:0.77rem;color:#666">Day 1 散歩・天神から徒歩15分</td><td><a href="https://maps.google.com/?q=大濠公園+福岡市中央区" target="_blank" style="color:#1565c0">🗺</a></td></tr>
+        <tr><td style="font-weight:600">中洲屋台</td><td style="font-size:0.77rem;color:#666">Day 1 晚餐・中洲川端</td><td><a href="https://maps.google.com/?q=中洲屋台+中洲+福岡市" target="_blank" style="color:#1565c0">🗺</a></td></tr>
+        <tr><td style="font-weight:600">太宰府天満宮</td><td style="font-size:0.77rem;color:#666">Day 2・学問之神・紫陽花</td><td><a href="https://maps.google.com/?q=太宰府天満宮+太宰府市+福岡県" target="_blank" style="color:#1565c0">🗺</a></td></tr>
+        <tr><td style="font-weight:600">九州国立博物館</td><td style="font-size:0.77rem;color:#666">Day 2・太宰府天満宮隣接</td><td><a href="https://maps.google.com/?q=九州国立博物館+太宰府市" target="_blank" style="color:#1565c0">🗺</a></td></tr>
+        <tr><td style="font-weight:600">竈門神社・あじさい</td><td style="font-size:0.77rem;color:#666">Day 2・鬼滅の刃聖地・紫陽花</td><td><a href="https://maps.google.com/?q=竈門神社+太宰府市+福岡県" target="_blank" style="color:#1565c0">🗺</a></td></tr>
+      </tbody>
+    </table>
+
+    <!-- Day 3 -->
+    <div style="font-weight:700;font-size:0.82rem;color:#1a1a2e;background:#f0f4ff;padding:6px 10px;border-radius:6px;margin-bottom:8px">📅 Day 3：ちいかわ討伐フェア + Canal City</div>
+    <table class="rain-table" style="margin-bottom:16px">
+      <tbody>
+        <tr><td style="font-weight:600">ちいかわらんど（PARCO 本館8F）</td><td style="font-size:0.77rem;color:#666">Day 3・天神・常設店</td><td><a href="https://maps.google.com/?q=ちいかわらんど+福岡PARCO+天神+福岡市" target="_blank" style="color:#1565c0">🗺</a></td></tr>
+        <tr><td style="font-weight:600">討伐フェア 飲料攤（新館6F みのりカフェ）</td><td style="font-size:0.77rem;color:#666">Day 3・6/7 截止</td><td><a href="https://maps.google.com/?q=福岡パルコ新館+天神+福岡市" target="_blank" style="color:#1565c0">🗺</a></td></tr>
+        <tr><td style="font-weight:600">討伐フェア 限定商品（本館B1F）</td><td style="font-size:0.77rem;color:#666">Day 3・限定周邊</td><td><a href="https://maps.google.com/?q=福岡パルコ本館+天神+福岡市" target="_blank" style="color:#1565c0">🗺</a></td></tr>
+        <tr><td style="font-weight:600">Canal City 博多</td><td style="font-size:0.77rem;color:#666">Day 3 午後・6層商場</td><td><a href="https://maps.google.com/?q=キャナルシティ博多+福岡市" target="_blank" style="color:#1565c0">🗺</a></td></tr>
+        <tr><td style="font-weight:600">ばかとあほ（薬院焼肉）</td><td style="font-size:0.77rem;color:#666">Day 3 晚餐・薬院駅3分</td><td><a href="https://maps.google.com/?q=ばかとあほ+薬院+焼肉+福岡" target="_blank" style="color:#1565c0">🗺</a></td></tr>
+      </tbody>
+    </table>
+
+    <!-- Day 4 -->
+    <div style="font-weight:700;font-size:0.82rem;color:#1a1a2e;background:#f0f4ff;padding:6px 10px;border-radius:6px;margin-bottom:8px">📅 Day 4：小倉 + 門司港夜景</div>
+    <table class="rain-table" style="margin-bottom:16px">
+      <tbody>
+        <tr><td style="font-weight:600">旦過市場</td><td style="font-size:0.77rem;color:#666">小倉の台所・Day 4 午餐</td><td><a href="https://maps.google.com/?q=旦過市場+北九州市小倉北区" target="_blank" style="color:#1565c0">🗺</a></td></tr>
+        <tr><td style="font-weight:600">あるあるCity</td><td style="font-size:0.77rem;color:#666">小倉駅北口・動漫聖地</td><td><a href="https://maps.google.com/?q=あるあるCity+小倉駅北口+北九州市" target="_blank" style="color:#1565c0">🗺</a></td></tr>
+        <tr><td style="font-weight:600">ufotable Cafe 福岡</td><td style="font-size:0.77rem;color:#666">鬼滅の刃コラボ（あるあるCity内）</td><td><a href="https://maps.google.com/?q=ufotable+Cafe+小倉+北九州市" target="_blank" style="color:#1565c0">🗺</a></td></tr>
+        <tr><td style="font-weight:600">門司港レトロ地区</td><td style="font-size:0.77rem;color:#666">Day 4 傍晚・レトロ建築・關門海峽夜景</td><td><a href="https://maps.google.com/?q=門司港レトロ+北九州市門司区" target="_blank" style="color:#1565c0">🗺</a></td></tr>
+      </tbody>
+    </table>
+
+    <!-- Day 5 -->
+    <div style="font-weight:700;font-size:0.82rem;color:#1a1a2e;background:#f0f4ff;padding:6px 10px;border-radius:6px;margin-bottom:8px">📅 Day 5：Marine World + 英雄學院展（3人）</div>
+    <table class="rain-table" style="margin-bottom:16px">
+      <tbody>
+        <tr><td style="font-weight:600">Marine World 海の中道</td><td style="font-size:0.77rem;color:#666">Day 5・海ノ中道駅5分・Klook NT$493</td><td><a href="https://maps.google.com/?q=Marine+World+海の中道+福岡市" target="_blank" style="color:#1565c0">🗺</a></td></tr>
+        <tr><td style="font-weight:600">ヒロアカ原画展（福岡三越9F）</td><td style="font-size:0.77rem;color:#666">Day 5 午後・天神・¥2,200</td><td><a href="https://maps.google.com/?q=福岡三越+天神+福岡市" target="_blank" style="color:#1565c0">🗺</a></td></tr>
+        <tr><td style="font-weight:600">海ノ中道駅（JR香椎線）</td><td style="font-size:0.77rem;color:#666">博多から約30分 ¥420</td><td><a href="https://maps.google.com/?q=海ノ中道駅+福岡市東区" target="_blank" style="color:#1565c0">🗺</a></td></tr>
+      </tbody>
+    </table>
+
+    <!-- Day 6 -->
+    <div style="font-weight:700;font-size:0.82rem;color:#1a1a2e;background:#f0f4ff;padding:6px 10px;border-radius:6px;margin-bottom:8px">📅 Day 6：柳川川下り + うなぎ（1人）</div>
+    <table class="rain-table" style="margin-bottom:16px">
+      <tbody>
+        <tr><td style="font-weight:600">西鉄天神駅（天神南）</td><td style="font-size:0.77rem;color:#666">柳川方面・西鉄1日券¥1,370</td><td><a href="https://maps.google.com/?q=西鉄天神駅+天神+福岡市" target="_blank" style="color:#1565c0">🗺</a></td></tr>
+        <tr><td style="font-weight:600">柳川 川下り（御花乗船場）</td><td style="font-size:0.77rem;color:#666">Day 6・Klook NT$356起</td><td><a href="https://maps.google.com/?q=御花+柳川藩主立花邸+柳川市" target="_blank" style="color:#1565c0">🗺</a></td></tr>
+        <tr><td style="font-weight:600">元祖本吉屋 本店</td><td style="font-size:0.77rem;color:#666">柳川うなぎ蒸籠飯・¥2,500~</td><td><a href="https://maps.google.com/?q=元祖本吉屋+柳川市" target="_blank" style="color:#1565c0">🗺</a></td></tr>
+      </tbody>
+    </table>
+
+    <!-- Day 7-9 -->
+    <div style="font-weight:700;font-size:0.82rem;color:#1a1a2e;background:#f0f4ff;padding:6px 10px;border-radius:6px;margin-bottom:8px">📅 Day 7–9：阿蘇・糸島唐津・回台</div>
+    <table class="rain-table" style="margin-bottom:16px">
+      <tbody>
+        <tr><td style="font-weight:600">阿蘇山上広場（火山口）</td><td style="font-size:0.77rem;color:#666">Day 7・Klook 行程</td><td><a href="https://maps.google.com/?q=阿蘇山上広場+阿蘇市" target="_blank" style="color:#1565c0">🗺</a></td></tr>
+        <tr><td style="font-weight:600">草千里ヶ浜</td><td style="font-size:0.77rem;color:#666">Day 7・あか牛丼・パノラマ</td><td><a href="https://maps.google.com/?q=草千里ヶ浜+阿蘇市" target="_blank" style="color:#1565c0">🗺</a></td></tr>
+        <tr><td style="font-weight:600">熊本城</td><td style="font-size:0.77rem;color:#666">Day 7・Klook 行程包含</td><td><a href="https://maps.google.com/?q=熊本城+熊本市" target="_blank" style="color:#1565c0">🗺</a></td></tr>
+        <tr><td style="font-weight:600">二見ヶ浦（糸島 海中鳥居）</td><td style="font-size:0.77rem;color:#666">Day 8・昭和バス25分</td><td><a href="https://maps.google.com/?q=二見ヶ浦+糸島市+福岡" target="_blank" style="color:#1565c0">🗺</a></td></tr>
+        <tr><td style="font-weight:600">唐津城</td><td style="font-size:0.77rem;color:#666">Day 8 下午・¥500</td><td><a href="https://maps.google.com/?q=唐津城+唐津市+佐賀県" target="_blank" style="color:#1565c0">🗺</a></td></tr>
+        <tr><td style="font-weight:600">AEON MALL 福岡伊都（波多江駅）</td><td style="font-size:0.77rem;color:#666">Day 8 晚餐・波多江駅直結</td><td><a href="https://maps.google.com/?q=イオンモール福岡伊都+波多江駅+福岡" target="_blank" style="color:#1565c0">🗺</a></td></tr>
+        <tr><td style="font-weight:600">福岡空港 国際線ターミナル</td><td style="font-size:0.77rem;color:#666">Day 9 出發</td><td><a href="https://maps.google.com/?q=福岡空港+国際線ターミナル+福岡市博多区" target="_blank" style="color:#1565c0">🗺</a></td></tr>
+      </tbody>
+    </table>
+
+    <!-- 餐廳 -->
+    <div style="font-weight:700;font-size:0.82rem;color:#1a1a2e;background:#fff3e0;padding:6px 10px;border-radius:6px;margin-bottom:8px">🍜 拉麵 10選</div>
+    <table class="rain-table" style="margin-bottom:16px">
+      <tbody>
+        <tr><td style="font-weight:600">博多一双（泡沫濃厚）</td><td style="font-size:0.77rem;color:#666">博多駅東口 6分・¥950~</td><td><a href="https://maps.google.com/?q=博多一双+博多駅東口+福岡市" target="_blank" style="color:#1565c0">🗺</a></td></tr>
+        <tr><td style="font-weight:600">博多一幸舎 総本店</td><td style="font-size:0.77rem;color:#666">博多駅前・¥800~</td><td><a href="https://maps.google.com/?q=博多一幸舎+総本店+博多区+福岡市" target="_blank" style="color:#1565c0">🗺</a></td></tr>
+        <tr><td style="font-weight:600">博多元気一杯（超濃厚）</td><td style="font-size:0.77rem;color:#666">博多駅前・¥850~</td><td><a href="https://maps.google.com/?q=博多元気一杯+博多駅前+福岡市博多区" target="_blank" style="color:#1565c0">🗺</a></td></tr>
+        <tr><td style="font-weight:600">Shin-Shin（清爽白濁）</td><td style="font-size:0.77rem;color:#666">博多DEITOS直結・¥820~</td><td><a href="https://maps.google.com/?q=しん・しん+博多DEITOS+博多駅+福岡市" target="_blank" style="color:#1565c0">🗺</a></td></tr>
+        <tr><td style="font-weight:600">麺屋兼虎（沾麵）</td><td style="font-size:0.77rem;color:#666">天神・¥1,000~</td><td><a href="https://maps.google.com/?q=麺屋兼虎+渡辺通+天神+福岡市" target="_blank" style="color:#1565c0">🗺</a></td></tr>
+        <tr><td style="font-weight:600">博多達摩（黑豬骨）</td><td style="font-size:0.77rem;color:#666">祇園駅 3分・¥850~</td><td><a href="https://maps.google.com/?q=博多達摩+大博町+祇園駅+福岡市" target="_blank" style="color:#1565c0">🗺</a></td></tr>
+        <tr><td style="font-weight:600">一蘭 本社総本店</td><td style="font-size:0.77rem;color:#666">中洲・24H・¥890~</td><td><a href="https://maps.google.com/?q=一蘭+本社総本店+中洲+福岡市" target="_blank" style="color:#1565c0">🗺</a></td></tr>
+        <tr><td style="font-weight:600">拉麺 海鳴（蛤蜊豬骨）</td><td style="font-size:0.77rem;color:#666">博多DEITOS直結・¥900~</td><td><a href="https://maps.google.com/?q=海鳴+博多DEITOS+博多駅+福岡市" target="_blank" style="color:#1565c0">🗺</a></td></tr>
+        <tr><td style="font-weight:600">拉麺 二男坊（清淡白濁）</td><td style="font-size:0.77rem;color:#666">博多駅前・¥800~</td><td><a href="https://maps.google.com/?q=二男坊+博多本店+博多駅前+福岡市" target="_blank" style="color:#1565c0">🗺</a></td></tr>
+        <tr><td style="font-weight:600">長浜屋台やまちゃん</td><td style="font-size:0.77rem;color:#666">中洲屋台街・¥700~</td><td><a href="https://maps.google.com/?q=長浜屋台やまちゃん+中洲+福岡市" target="_blank" style="color:#1565c0">🗺</a></td></tr>
+      </tbody>
+    </table>
+
+    <div style="font-weight:700;font-size:0.82rem;color:#1a1a2e;background:#fff3e0;padding:6px 10px;border-radius:6px;margin-bottom:8px">🍱 商業午餐・博多駅エリア</div>
+    <table class="rain-table" style="margin-bottom:16px">
+      <tbody>
+        <tr><td style="font-weight:600">但馬屋（しゃぶしゃぶ）</td><td style="font-size:0.77rem;color:#666">KITTE博多 10F・¥1,580</td><td><a href="https://maps.google.com/?q=但馬屋+KITTE博多+博多駅+福岡市" target="_blank" style="color:#1565c0">🗺</a></td></tr>
+        <tr><td style="font-weight:600">えびのや（天麩羅）</td><td style="font-size:0.77rem;color:#666">KITTE博多 10F・¥1,320</td><td><a href="https://maps.google.com/?q=えびのや+KITTE博多+博多駅+福岡市" target="_blank" style="color:#1565c0">🗺</a></td></tr>
+        <tr><td style="font-weight:600">やまや（もつ鍋・明太子）</td><td style="font-size:0.77rem;color:#666">博多駅筑紫口 2分・¥1,300~</td><td><a href="https://maps.google.com/?q=やまや+博多駅+筑紫口+福岡市" target="_blank" style="color:#1565c0">🗺</a></td></tr>
+        <tr><td style="font-weight:600">もつ鍋おおやま</td><td style="font-size:0.77rem;color:#666">博多駅DEITOS・¥1,500~</td><td><a href="https://maps.google.com/?q=もつ鍋おおやま+博多駅デイトス+福岡市" target="_blank" style="color:#1565c0">🗺</a></td></tr>
+        <tr><td style="font-weight:600">武蔵 黑毛和牛ステーキ⭐</td><td style="font-size:0.77rem;color:#666">博多駅前 1分・¥1,000~1,999</td><td><a href="https://maps.google.com/?q=武蔵+ステーキ+博多駅+福岡" target="_blank" style="color:#1565c0">🗺</a></td></tr>
+        <tr><td style="font-weight:600">資さんうどん</td><td style="font-size:0.77rem;color:#666">小倉駅周辺・¥700~</td><td><a href="https://maps.google.com/?q=資さんうどん+小倉+北九州市" target="_blank" style="color:#1565c0">🗺</a></td></tr>
+      </tbody>
+    </table>
+
+    <div style="font-weight:700;font-size:0.82rem;color:#1a1a2e;background:#e8fdf0;padding:6px 10px;border-radius:6px;margin-bottom:8px">🎌 動漫・K-pop 周邊</div>
+    <table class="rain-table" style="margin-bottom:16px">
+      <tbody>
+        <tr><td style="font-weight:600">ちいかわらんど</td><td style="font-size:0.77rem;color:#666">福岡PARCO 本館8F</td><td><a href="https://maps.google.com/?q=ちいかわらんど+福岡PARCO+天神+福岡市" target="_blank" style="color:#1565c0">🗺</a></td></tr>
+        <tr><td style="font-weight:600">アニメイト 福岡天神PARCO</td><td style="font-size:0.77rem;color:#666">PARCO内</td><td><a href="https://maps.google.com/?q=アニメイト+福岡天神PARCO店+福岡市" target="_blank" style="color:#1565c0">🗺</a></td></tr>
+        <tr><td style="font-weight:600">タワーレコード 福岡PARCO店（CORTIS）</td><td style="font-size:0.77rem;color:#666">PARCO 7F・K-pop 専区</td><td><a href="https://maps.google.com/?q=タワーレコード+福岡PARCO店+天神+福岡市" target="_blank" style="color:#1565c0">🗺</a></td></tr>
+        <tr><td style="font-weight:600">OZ 韓流SHOP（Canal City）</td><td style="font-size:0.77rem;color:#666">キャナルシティ博多 B1F</td><td><a href="https://maps.google.com/?q=OZ韓流SHOP+キャナルシティ博多+福岡市" target="_blank" style="color:#1565c0">🗺</a></td></tr>
+        <tr><td style="font-weight:600">HMV &amp; BOOKS（KITTE博多）</td><td style="font-size:0.77rem;color:#666">博多駅直通</td><td><a href="https://maps.google.com/?q=HMV+KITTE博多+博多駅+福岡市" target="_blank" style="color:#1565c0">🗺</a></td></tr>
+        <tr><td style="font-weight:600">まんだらけ 福岡店</td><td style="font-size:0.77rem;color:#666">大名 センタービル 3F</td><td><a href="https://maps.google.com/?q=まんだらけ+大名+福岡市中央区" target="_blank" style="color:#1565c0">🗺</a></td></tr>
+        <tr><td style="font-weight:600">メロンブックス 福岡天神店</td><td style="font-size:0.77rem;color:#666">天神 2-5 周辺</td><td><a href="https://maps.google.com/?q=メロンブックス+福岡天神店+天神+福岡市" target="_blank" style="color:#1565c0">🗺</a></td></tr>
+        <tr><td style="font-weight:600">K-BOOKS 天神店</td><td style="font-size:0.77rem;color:#666">天神エリア・K-pop 周邊</td><td><a href="https://maps.google.com/?q=K-BOOKS+福岡天神店+天神+福岡市" target="_blank" style="color:#1565c0">🗺</a></td></tr>
+      </tbody>
+    </table>
+
+    <div style="font-weight:700;font-size:0.82rem;color:#1a1a2e;background:#e8fdf0;padding:6px 10px;border-radius:6px;margin-bottom:8px">🧊 WorkMan・交通・其他</div>
+    <table class="rain-table" style="margin-bottom:8px">
+      <tbody>
+        <tr><td style="font-weight:600">ワークマン Plus 吉塚店</td><td style="font-size:0.77rem;color:#666">博多→吉塚 JR 1站</td><td><a href="https://maps.google.com/?q=ワークマンプラス+吉塚+福岡市博多区" target="_blank" style="color:#1565c0">🗺</a></td></tr>
+        <tr><td style="font-weight:600">福岡空港 国際線ターミナル</td><td style="font-size:0.77rem;color:#666">入境・出境・地下鉄直結</td><td><a href="https://maps.google.com/?q=福岡空港+国際線+JR+福岡市" target="_blank" style="color:#1565c0">🗺</a></td></tr>
+        <tr><td style="font-weight:600">七隈線 天神南駅</td><td style="font-size:0.77rem;color:#666">WELLCABIN 最寄駅</td><td><a href="https://maps.google.com/?q=天神南駅+七隈線+福岡市" target="_blank" style="color:#1565c0">🗺</a></td></tr>
+      </tbody>
+    </table>
+
+    <p style="font-size:0.75rem;color:#999;margin-top:10px">💡 手機點開各 🗺 連結後，在 Google Maps 點「儲存」→「想去」，即可集中在個人清單</p>
+  </div>
+</div><!-- /pane-map -->
+
+<div class="tab-pane" id="pane-budget">
+  <!-- 費用總覽 -->
+  <div class="section-title">費用估算</div>
+  <div class="budget-card">
+    <h3>💰 9天費用概覽（成人1名）</h3>
+    <table class="budget-table">
+      <thead>
+        <tr>
+          <th>項目</th>
+          <th class="amount-jpy">JPY</th>
+          <th class="amount-twd">約 NT$</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>住宿 8泊（WELLCABIN ¥3,500平均）<span class="cat"> 住宿</span></td>
+          <td class="amount-jpy">¥28,000</td>
+          <td class="amount-twd">~5,600</td>
+        </tr>
+        <tr>
+          <td>西鉄 1日フリー乗車券（Day 6 柳川）<span class="cat"> 交通</span></td>
+          <td class="amount-jpy">¥1,370</td>
+          <td class="amount-twd">~274</td>
+        </tr>
+        <tr>
+          <td>🚄 新幹線 博多↔小倉 往復（Day 4）<span class="cat"> 交通</span></td>
+          <td class="amount-jpy">¥4,320</td>
+          <td class="amount-twd">~864</td>
+        </tr>
+        <tr>
+          <td>市內地下鉄・バス（推算）<span class="cat"> 交通</span></td>
+          <td class="amount-jpy">¥3,000</td>
+          <td class="amount-twd">~600</td>
+        </tr>
+        <tr>
+          <td>Marine World 入場<span class="cat"> 景點</span></td>
+          <td class="amount-jpy">¥2,500</td>
+          <td class="amount-twd">~500</td>
+        </tr>
+        <tr>
+          <td>海の中道公園<span class="cat"> 景點</span></td>
+          <td class="amount-jpy">¥450</td>
+          <td class="amount-twd">~90</td>
+        </tr>
+        <tr>
+          <td>唐津城<span class="cat"> 景點</span></td>
+          <td class="amount-jpy">¥500</td>
+          <td class="amount-twd">~100</td>
+        </tr>
+        <tr>
+          <td>英雄學院原畫展<span class="cat"> 景點</span></td>
+          <td class="amount-jpy">¥2,200</td>
+          <td class="amount-twd">~440</td>
+        </tr>
+        <tr>
+          <td>柳川川下り<span class="cat"> 景點</span></td>
+          <td class="amount-jpy">¥1,800</td>
+          <td class="amount-twd">~360</td>
+        </tr>
+        <tr>
+          <td>🌋 阿蘇一日遊（Klook）<span class="cat"> 景點</span></td>
+          <td class="amount-jpy">NT$1,312</td>
+          <td class="amount-twd">1,312</td>
+        </tr>
+        <tr>
+          <td>ufotable Cafe 消費<span class="cat"> 飲食</span></td>
+          <td class="amount-jpy">¥2,500</td>
+          <td class="amount-twd">~500</td>
+        </tr>
+        <tr>
+          <td>餐費 9天（¥3,000/天）<span class="cat"> 飲食</span></td>
+          <td class="amount-jpy">¥27,000</td>
+          <td class="amount-twd">~5,400</td>
+        </tr>
+        <tr>
+          <td>伴手禮・雜費<span class="cat"> 其他</span></td>
+          <td class="amount-jpy">¥10,000</td>
+          <td class="amount-twd">~2,000</td>
+        </tr>
+        <tr class="total-row">
+          <td>合計（不含機票）</td>
+          <td class="amount-jpy">¥83,640 + NT$1,312</td>
+          <td class="amount-twd">~NT$18,040</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="note-box" style="margin-top:12px;">
+      換算基準：1 TWD ≈ 5 JPY（2026年參考值，實際依當日匯率調整）
+    </div>
+  </div>
+
+  <!-- 注意事項 -->
+</div><!-- /pane-budget -->
+
+<div class="tab-pane" id="pane-checklist">
+  <div class="section-title">出發前確認清單</div>
+  <div class="checklist">
+    <h3>✅ 必辦事項</h3>
+    <div class="check-item">
+      <div class="check-icon">🎟️</div>
+      <div class="check-text">
+        <strong>英雄學院原畫展 購票</strong>
+        <span>e+ 平台購票，東京/大阪場已完售，請盡早入手。官網：heroaca-ex-fuk.com</span>
+      </div>
+    </div>
+    <div class="check-item">
+      <div class="check-icon">⚔️</div>
+      <div class="check-text">
+        <strong>ufotable Cafe 預約</strong>
+        <span>鬼滅咖啡廳通常需網路抽選，請出發2〜3週前確認官方 Twitter 公告</span>
+      </div>
+    </div>
+    <div class="check-item">
+      <div class="check-icon">🌋</div>
+      <div class="check-text">
+        <strong>阿蘇一日遊 Klook 預訂（6/7 Day 7）</strong>
+        <span>熊本城 &amp; 阿蘇火山（含接駁車）&amp; 草千里 &amp; 黑川溫泉。NT$1,312 起。★4.8（1,844評價）。出發前1〜2週預訂，熱門時段容易售完。07:30 天神集合。</span>
+      </div>
+    </div>
+    <div class="check-item">
+      <div class="check-icon">🚤</div>
+      <div class="check-text">
+        <strong>柳川川下り Klook 預訂（6/6 Day 6）</strong>
+        <span>NT$356起。川下り 70分。前日の天気次第で当日朝確認推奨（7mm/h超えると運行判断あり）。</span>
+      </div>
+    </div>
+    <div class="check-item">
+      <div class="check-icon">🌀</div>
+      <div class="check-text">
+        <strong>颱風動態確認（出發前必查）</strong>
+        <span>颱風 6号 Champi 可能影響出發日（6/1〜6/2）。確認 JMA（www.jma.go.jp）最新路徑，同時確認航空公司免費改期政策。</span>
+      </div>
+    </div>
+    <div class="check-item">
+      <div class="check-icon">🌧️</div>
+      <div class="check-text">
+        <strong>梅雨對策</strong>
+        <span>6/5前後入梅。折疊傘必備。晴天景點（糸島）建議排前半段。</span>
+      </div>
+    </div>
+    <div class="check-item">
+      <div class="check-icon">🧊</div>
+      <div class="check-text">
+        <strong>WORKMAN 製冷晶片背心（ペルチェベストPRO3）</strong>
+        <span>型號 WZ-6，¥19,800。搭載5個珀耳帖元件，冷卻差 -30℃，IPX4防水，電池2.8~27小時。夏季容易完售，<strong>建議第1〜2天前往 ワークマン Plus 吉塚店</strong>（博多→吉塚 JR 1站3分+徒歩5分）。出發前可先至官網確認庫存：workman.jp</span>
+      </div>
+    </div>
+    <div class="check-item">
+      <div class="check-icon">📷</div>
+      <div class="check-text">
+        <strong>相機記憶卡/電池確認</strong>
+        <span>糸島海中鳥居・太宰府紫陽花・竈門神社・阿蘇火山口・Marine World 海豚秀，全部超上相！</span>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /pane-checklist -->
+
+</div><!-- /container -->
+
+<footer>
+  📅 製作日：2026年5月28日（最終更新：2026年5月30日）　｜　資料來源：JR 九州官網、Klook、ufotable Cafe 官網、heroaca-ex-fuk.com
+</footer>
+
+<script>
+var TAB_GROUPS = {
+  itinerary: ['overview','day1','day2','day3','day4','day5','day6','day7','day8','day9','rain'],
+  food: ['lunch','ramen','food'],
+  info: ['anime','workman','map','budget','checklist']
+};
+
+function showGroup(group, targetTab) {
+  // Update upper nav
+  document.querySelectorAll('.upper-btn').forEach(function(b) {
+    b.classList.toggle('active', b.dataset.group === group);
+  });
+  // Show/hide lower tabs
+  var tabs = TAB_GROUPS[group];
+  document.querySelectorAll('.tab-btn').forEach(function(b) {
+    b.style.display = tabs.indexOf(b.dataset.tab) !== -1 ? '' : 'none';
+  });
+  // Navigate to target tab or first in group
+  showTab(targetTab || tabs[0]);
+}
+
+function showTab(id) {
+  // Auto-switch upper group if needed
+  var group = null;
+  for (var g in TAB_GROUPS) {
+    if (TAB_GROUPS[g].indexOf(id) !== -1) { group = g; break; }
+  }
+  if (group) {
+    var activeUpper = document.querySelector('.upper-btn.active');
+    if (!activeUpper || activeUpper.dataset.group !== group) {
+      document.querySelectorAll('.upper-btn').forEach(function(b) {
+        b.classList.toggle('active', b.dataset.group === group);
+      });
+      var tabs = TAB_GROUPS[group];
+      document.querySelectorAll('.tab-btn').forEach(function(b) {
+        b.style.display = tabs.indexOf(b.dataset.tab) !== -1 ? '' : 'none';
+      });
+    }
+  }
+  document.querySelectorAll('.tab-pane').forEach(function(p) { p.classList.remove('active'); });
+  document.querySelectorAll('.tab-btn').forEach(function(b) { b.classList.remove('active'); });
+  var pane = document.getElementById('pane-' + id);
+  var btn  = document.querySelector('[data-tab="' + id + '"]');
+  if (pane) pane.classList.add('active');
+  if (btn)  {
+    btn.classList.add('active');
+    btn.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+  }
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+document.addEventListener('DOMContentLoaded', function() { showTab('day1'); });
+</script>
+
+
+<div class="tab-pane" id="pane-food">
+  <div style="padding: 20px 0 40px;">
+    <h2 style="font-size:1.3rem; font-weight:700; margin-bottom:4px;">🍽️ 福岡美食懶人包</h2>
+    <p style="font-size:0.82rem; color:#888; margin-bottom:20px;">必吃 6 + 可能吃 4 ／ 含定休日・Google 地圖・預算・假日注意</p>
+
+    <!-- ▌ 必吃 ▐ -->
+    <div style="background:#1a1a2e; color:#f0ece4; border-radius:8px; padding:10px 16px; margin-bottom:14px;">
+      <span style="font-size:0.72rem; font-weight:700; letter-spacing:0.08em;">⭐ 必吃 — 這趟沒吃到會後悔的</span>
+    </div>
+
+    <!-- 必吃 1：もつ鍋 -->
+    <div style="border:1px solid #ddd; border-radius:8px; padding:14px 16px; margin-bottom:12px;">
+      <div style="display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:6px;">
+        <div>
+          <span style="font-size:1.1rem; font-weight:700;">🍲 博多もつ鍋</span>
+          <span style="margin-left:8px; background:#fce4ec; color:#b71c1c; border-radius:4px; padding:2px 7px; font-size:0.72rem; font-weight:700;">Day 6（土）or 任意晚</span>
+        </div>
+        <div style="font-size:0.85rem; font-weight:700; color:#2e7d32;">¥2,500 ~ 3,500 / 人</div>
+      </div>
+      <p style="font-size:0.83rem; color:#444; margin:8px 0 4px;">牛腸以昆布・醬油湯底燉煮，最後下蔬菜收尾，鍋底精華加白飯或雜炊結尾。福岡發祥的鍋物，皮膠質豐富。</p>
+      <div style="display:flex; flex-wrap:wrap; gap:8px; font-size:0.78rem; margin-top:8px;">
+        <span style="background:#f5f4f0; border:1px solid #ddd; border-radius:20px; padding:3px 10px;">📍 元祖楽天地 天神ACROS店（天神駅16番出口直結）</span>
+        <span style="background:#fff0f0; border:1px solid #ef9a9a; border-radius:20px; padding:3px 10px; color:#b71c1c;">🗓 定休：無休（元旦・正月除く）</span>
+        <a href="https://maps.google.com/?q=元祖もつ鍋+楽天地+天神ACROS+福岡" target="_blank" style="background:#e3f2fd; border:1px solid #90caf9; border-radius:20px; padding:3px 10px; color:#1565c0; text-decoration:none;">🗺 Google Maps</a>
+      </div>
+      <p style="font-size:0.77rem; color:#777; margin:8px 0 0; line-height:1.6;">今泉總本店也很近（薬院徒步圏），柳川帰着（Day 6）夜の室內鍋物にも最適。推薦「醬油味」湯底。⚠️ 月曜開店確認電話 092-725-7739</p>
+    </div>
+
+    <!-- 必吃 2：豚骨拉麵 -->
+    <div style="border:1px solid #ddd; border-radius:8px; padding:14px 16px; margin-bottom:12px;">
+      <div style="display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:6px;">
+        <div>
+          <span style="font-size:1.1rem; font-weight:700;">🍜 博多豚骨拉麵</span>
+          <span style="margin-left:8px; background:#e3f2fd; color:#1565c0; border-radius:4px; padding:2px 7px; font-size:0.72rem; font-weight:700;">Day 1 / 任意日</span>
+        </div>
+        <div style="font-size:0.85rem; font-weight:700; color:#2e7d32;">¥820 ~ 1,000 / 碗</div>
+      </div>
+      <p style="font-size:0.83rem; color:#444; margin:8px 0 4px;">細麺・白濁豚骨スープ。「替玉」（加麵）文化はここ発祥。Shin-Shin 是外地人最易入門的口味，不腥不膩。深夜0:00前都開。</p>
+      <div style="display:flex; flex-wrap:wrap; gap:8px; font-size:0.78rem; margin-top:8px;">
+        <span style="background:#f5f4f0; border:1px solid #ddd; border-radius:20px; padding:3px 10px;">📍 博多らーめん Shin-Shin デイトス店（博多駅直結 2F）</span>
+        <span style="background:#f1f8e9; border:1px solid #aed581; border-radius:20px; padding:3px 10px; color:#33691e;">🗓 定休：無休（11:00–23:00）</span>
+        <a href="https://maps.google.com/?q=博多らーめんShin-Shin+博多デイトス店" target="_blank" style="background:#e3f2fd; border:1px solid #90caf9; border-radius:20px; padding:3px 10px; color:#1565c0; text-decoration:none;">🗺 Google Maps</a>
+      </div>
+      <p style="font-size:0.77rem; color:#777; margin:8px 0 0; line-height:1.6;">博多駅直結，行程中任何一天都能插入。深夜帰着でも開いてる。替玉 ¥100 必點。</p>
+    </div>
+
+    <!-- 必吃 3：柳川うなぎ -->
+    <div style="border:1px solid #ddd; border-radius:8px; padding:14px 16px; margin-bottom:12px;">
+      <div style="display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:6px;">
+        <div>
+          <span style="font-size:1.1rem; font-weight:700;">🐍 柳川 うなぎせいろ蒸し</span>
+          <span style="margin-left:8px; background:#fce4ec; color:#b71c1c; border-radius:4px; padding:2px 7px; font-size:0.72rem; font-weight:700;">Day 6（土）川下り後</span>
+        </div>
+        <div style="font-size:0.85rem; font-weight:700; color:#2e7d32;">¥2,500 ~ 4,000 / 人</div>
+      </div>
+      <p style="font-size:0.83rem; color:#444; margin:8px 0 4px;">柳川獨有的「蒸籠鰻魚飯」（せいろ蒸し）：鰻魚鋪在飯上入木蒸籠蒸，甜醬汁滲透整鍋。跟關東鰻重截然不同的吃法。</p>
+      <div style="display:flex; flex-wrap:wrap; gap:8px; font-size:0.78rem; margin-top:8px;">
+        <span style="background:#f5f4f0; border:1px solid #ddd; border-radius:20px; padding:3px 10px;">📍 元祖本吉屋 本店（川下り終點 徒步圏）</span>
+        <span style="background:#fff8e1; border:1px solid #ffca28; border-radius:20px; padding:3px 10px; color:#6d4c00;">🗓 定休：月・火曜（Day6 土曜→OK ✅，但週末人多）</span>
+        <a href="https://maps.google.com/?q=元祖本吉屋+柳川市+うなぎ" target="_blank" style="background:#e3f2fd; border:1px solid #90caf9; border-radius:20px; padding:3px 10px; color:#1565c0; text-decoration:none;">🗺 Google Maps</a>
+      </div>
+      <p style="font-size:0.77rem; color:#777; margin:8px 0 0; line-height:1.6;">川下り（14:00–16:00終了）後に直行。他店は14:30 LO が多いが元祖本吉屋は通し（10:30–20:00）。⚠️ Day6は土曜→週末は行列覚悟、開店直後（10:30）に入るのがベスト。</p>
+    </div>
+
+    <!-- 必吃 4：フルフル -->
+    <div style="border:1px solid #ddd; border-radius:8px; padding:14px 16px; margin-bottom:12px;">
+      <div style="display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:6px;">
+        <div>
+          <span style="font-size:1.1rem; font-weight:700;">🥖 フルフル 明太フランス</span>
+          <span style="margin-left:8px; background:#e3f2fd; color:#1565c0; border-radius:4px; padding:2px 7px; font-size:0.72rem; font-weight:700;">Day 1（月）天神</span>
+        </div>
+        <div style="font-size:0.85rem; font-weight:700; color:#2e7d32;">¥500 ~ 800 / 個</div>
+      </div>
+      <p style="font-size:0.83rem; color:#444; margin:8px 0 4px;">博多名物明太子抹入法式麵包，外酥內軟、明太子奶油香。有原味・辣味・起司等口味。</p>
+      <div style="display:flex; flex-wrap:wrap; gap:8px; font-size:0.78rem; margin-top:8px;">
+        <span style="background:#f5f4f0; border:1px solid #ddd; border-radius:20px; padding:3px 10px;">📍 天神店（天神コア B1F）</span>
+        <span style="background:#fff8e1; border:1px solid #ffca28; border-radius:20px; padding:3px 10px; color:#6d4c00;">🗓 定休：火曜（Day1 月曜→OK ✅）</span>
+        <a href="https://maps.google.com/?q=フルフル+天神+明太フランス+福岡" target="_blank" style="background:#e3f2fd; border:1px solid #90caf9; border-radius:20px; padding:3px 10px; color:#1565c0; text-decoration:none;">🗺 Google Maps</a>
+      </div>
+      <p style="font-size:0.77rem; color:#777; margin:8px 0 0; line-height:1.6;">Day 1 到福岡後、天神コアへ直行。⚠️ 博多祇園店（博多祇園町本店）は月曜定休→ Day 1（月）は天神コア店を利用。夕方前に行くと売り切れリスク少。</p>
+    </div>
+
+    <!-- 必吃 5：努努鶏 -->
+    <div style="border:1px solid #ddd; border-radius:8px; padding:14px 16px; margin-bottom:12px;">
+      <div style="display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:6px;">
+        <div>
+          <span style="font-size:1.1rem; font-weight:700;">🍗 努努鶏（ぬぬどり）冷炸雞翅</span>
+          <span style="margin-left:8px; background:#fce4ec; color:#b71c1c; border-radius:4px; padding:2px 7px; font-size:0.72rem; font-weight:700;">Day 3（水）天神 夕方</span>
+        </div>
+        <div style="font-size:0.85rem; font-weight:700; color:#2e7d32;">¥1,200 ~ 2,000 / 人</div>
+      </div>
+      <p style="font-size:0.83rem; color:#444; margin:8px 0 4px;">冷食炸雞翅，以秘傳醃料低溫油炸，放涼後更入味。博多限定名物，全國無分店。蒜香・辣味・原味等。</p>
+      <div style="display:flex; flex-wrap:wrap; gap:8px; font-size:0.78rem; margin-top:8px;">
+        <span style="background:#f5f4f0; border:1px solid #ddd; border-radius:20px; padding:3px 10px;">📍 天神 PARCO 地下（博多マイング・銘品蔵にも）</span>
+        <span style="background:#f1f8e9; border:1px solid #aed581; border-radius:20px; padding:3px 10px; color:#33691e;">🗓 定休：施設に準ずる（ほぼ無休）</span>
+        <a href="https://maps.google.com/?q=努努鶏+天神+博多マイング" target="_blank" style="background:#e3f2fd; border:1px solid #90caf9; border-radius:20px; padding:3px 10px; color:#1565c0; text-decoration:none;">🗺 Google Maps</a>
+      </div>
+      <p style="font-size:0.77rem; color:#777; margin:8px 0 0; line-height:1.6;">Day 3 ちいかわ討伐フェア（天神PARCO）→ Canal City → 努努鶏（天神PARCO地下）→ ばかとあほ 夜。現地で食べても良いし、持ち帰りパックも可。伴手禮用的也可以買一盒回去。</p>
+    </div>
+
+    <!-- 必吃 6：薬院焼肉 -->
+    <div style="border:1px solid #ddd; border-radius:8px; padding:14px 16px; margin-bottom:12px;">
+      <div style="display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:6px;">
+        <div>
+          <span style="font-size:1.1rem; font-weight:700;">🔥 薬院焼肉「ばかとあほ」</span>
+          <span style="margin-left:8px; background:#fce4ec; color:#b71c1c; border-radius:4px; padding:2px 7px; font-size:0.72rem; font-weight:700;">Day 3（水）夜</span>
+        </div>
+        <div style="font-size:0.85rem; font-weight:700; color:#2e7d32;">¥2,000 ~ 3,500 / 人</div>
+      </div>
+      <p style="font-size:0.83rem; color:#444; margin:8px 0 4px;">薬院の超人氣平價燒肉居酒屋，店名豪邁但肉質認真。當地年輕人聚集，氣氛熱鬧。高端路線可改「焼肉蔵元」（預算 ¥5,000~）。</p>
+      <div style="display:flex; flex-wrap:wrap; gap:8px; font-size:0.78rem; margin-top:8px;">
+        <span style="background:#f5f4f0; border:1px solid #ddd; border-radius:20px; padding:3px 10px;">📍 薬院駅 徒步3分（中央区薬院エリア）</span>
+        <span style="background:#fff8e1; border:1px solid #ffca28; border-radius:20px; padding:3px 10px; color:#6d4c00;">🗓 定休：月曜（Day3 水曜→OK ✅）</span>
+        <a href="https://maps.google.com/?q=ばかとあほ+薬院+焼肉+福岡" target="_blank" style="background:#e3f2fd; border:1px solid #90caf9; border-radius:20px; padding:3px 10px; color:#1565c0; text-decoration:none;">🗺 Google Maps</a>
+      </div>
+      <p style="font-size:0.77rem; color:#777; margin:8px 0 0; line-height:1.6;">糸島・唐津からの帰着（~18:45）後に薬院へ直行。19:30頃到着ちょうどよい。予約推薦、なければ並ぶ。⚠️ 高級版希望なら「焼肉蔵元 薬院本店」が同エリアにあり。</p>
+    </div>
+
+    <!-- ▌ 可能吃 ▐ -->
+    <div style="background:#2e3b1a; color:#f0ece4; border-radius:8px; padding:10px 16px; margin:20px 0 14px;">
+      <span style="font-size:0.72rem; font-weight:700; letter-spacing:0.08em;">🌟 可能吃 — 有機會就去，沒機會不遺憾</span>
+    </div>
+
+    <!-- 可能吃：中洲屋台 -->
+    <div style="border:1px solid #ddd; border-radius:8px; padding:14px 16px; margin-bottom:12px;">
+      <div style="display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:6px;">
+        <div>
+          <span style="font-size:1.05rem; font-weight:700;">🏮 中洲屋台（なかすやたい）</span>
+          <span style="margin-left:8px; background:#f3e5f5; color:#6a1b9a; border-radius:4px; padding:2px 7px; font-size:0.72rem; font-weight:700;">天晴 + 無颱風</span>
+        </div>
+        <div style="font-size:0.85rem; font-weight:700; color:#2e7d32;">¥1,500 ~ 2,500 / 人</div>
+      </div>
+      <p style="font-size:0.83rem; color:#444; margin:8px 0 4px;">露天屋台拉麵・おでん・焼き鳥，那珂川夜景加持。福岡代表性夜食體驗。昭和風格，陌生人同桌文化。</p>
+      <div style="display:flex; flex-wrap:wrap; gap:8px; font-size:0.78rem; margin-top:8px;">
+        <span style="background:#f5f4f0; border:1px solid #ddd; border-radius:20px; padding:3px 10px;">📍 中洲川端エリア、那珂川沿い</span>
+        <span style="background:#fff0f0; border:1px solid #ef9a9a; border-radius:20px; padding:3px 10px; color:#b71c1c;">☔ 雨・台風時は出店ゼロ（今回は注意）</span>
+        <a href="https://maps.google.com/?q=中洲屋台+那珂川+福岡" target="_blank" style="background:#e3f2fd; border:1px solid #90caf9; border-radius:20px; padding:3px 10px; color:#1565c0; text-decoration:none;">🗺 Google Maps</a>
+      </div>
+      <p style="font-size:0.77rem; color:#777; margin:8px 0 0; line-height:1.6;">⚠️ <strong>雨天・颱風期間（6/2–6/4）は出店しないケースが多い。</strong>Day 5（金）20%雨予報なら狙い目。夜 18:00 以降に行く。</p>
+    </div>
+
+    <!-- 可能吃：博多水炊き -->
+    <div style="border:1px solid #ddd; border-radius:8px; padding:14px 16px; margin-bottom:12px;">
+      <div style="display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:6px;">
+        <div>
+          <span style="font-size:1.05rem; font-weight:700;">🍳 博多水炊き</span>
+          <span style="margin-left:8px; background:#f3e5f5; color:#6a1b9a; border-radius:4px; padding:2px 7px; font-size:0.72rem; font-weight:700;">有預算再考慮</span>
+        </div>
+        <div style="font-size:0.85rem; font-weight:700; color:#e65100;">¥3,500 ~ 6,000 / 人</div>
+      </div>
+      <p style="font-size:0.83rem; color:#444; margin:8px 0 4px;">清雞骨湯鍋，先喝湯、再下雞肉、最後雜炊。博多三大鍋物（水炊き・もつ鍋・あごだし）之一。比もつ鍋精緻，適合慶祝餐。</p>
+      <div style="display:flex; flex-wrap:wrap; gap:8px; font-size:0.78rem; margin-top:8px;">
+        <span style="background:#f5f4f0; border:1px solid #ddd; border-radius:20px; padding:3px 10px;">📍 博多 華味鳥（はなみどり）各店、水炊きの龍</span>
+        <span style="background:#f1f8e9; border:1px solid #aed581; border-radius:20px; padding:3px 10px; color:#33691e;">🗓 定休：各店確認</span>
+        <a href="https://maps.google.com/?q=博多水炊き+華味鳥+福岡市" target="_blank" style="background:#e3f2fd; border:1px solid #90caf9; border-radius:20px; padding:3px 10px; color:#1565c0; text-decoration:none;">🗺 Google Maps</a>
+      </div>
+      <p style="font-size:0.77rem; color:#777; margin:8px 0 0; line-height:1.6;">Day 6 は柳川うなぎ・もつ鍋との重複に注意。Day 2（太宰府帰着後）や Day 4（小倉帰着後）に入れるのがおすすめ。要預約。</p>
+    </div>
+
+    <!-- 可能吃：武蔵牛排（已在 Day 4）-->
+    <div style="border:1px solid #ddd; border-radius:8px; padding:14px 16px; margin-bottom:12px;">
+      <div style="display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:6px;">
+        <div>
+          <span style="font-size:1.05rem; font-weight:700;">🥩 武蔵 黑毛和牛牛排</span>
+          <span style="margin-left:8px; background:#fce4ec; color:#b71c1c; border-radius:4px; padding:2px 7px; font-size:0.72rem; font-weight:700;">Day 4（木）已排入</span>
+        </div>
+        <div style="font-size:0.85rem; font-weight:700; color:#2e7d32;">¥1,000 ~ 1,999 / 人</div>
+      </div>
+      <p style="font-size:0.83rem; color:#444; margin:8px 0 4px;">博多駅徒步1分，CP值超高。黑毛和牛牛排定食，午餐和晚餐都有提供，不需預約。</p>
+      <div style="display:flex; flex-wrap:wrap; gap:8px; font-size:0.78rem; margin-top:8px;">
+        <span style="background:#f5f4f0; border:1px solid #ddd; border-radius:20px; padding:3px 10px;">📍 博多駅前（博多口徒步1分）</span>
+        <span style="background:#f1f8e9; border:1px solid #aed581; border-radius:20px; padding:3px 10px; color:#33691e;">🗓 定休：年中無休</span>
+        <a href="https://maps.google.com/?q=武蔵+ステーキ+博多駅+福岡" target="_blank" style="background:#e3f2fd; border:1px solid #90caf9; border-radius:20px; padding:3px 10px; color:#1565c0; text-decoration:none;">🗺 Google Maps</a>
+      </div>
+    </div>
+
+    <!-- 可能吃：糸島牡蠣 -->
+    <div style="border:1px solid #ddd; border-radius:8px; padding:14px 16px; margin-bottom:20px;">
+      <div style="display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:6px;">
+        <div>
+          <span style="font-size:1.05rem; font-weight:700;">🦪 糸島 牡蠣小屋</span>
+          <span style="margin-left:8px; background:#fff8e1; border:1px solid #ffca28; color:#7a5c00; border-radius:4px; padding:2px 7px; font-size:0.72rem; font-weight:700;">⚠️ 季節確認必要</span>
+        </div>
+        <div style="font-size:0.85rem; font-weight:700; color:#2e7d32;">¥1,500 ~ 2,500 / 人</div>
+      </div>
+      <p style="font-size:0.83rem; color:#444; margin:8px 0 4px;">糸島的海岸牡蠣小屋，自烤鮮蠔。炭火直烤，大顆鮮甜。</p>
+      <div style="display:flex; flex-wrap:wrap; gap:8px; font-size:0.78rem; margin-top:8px;">
+        <span style="background:#f5f4f0; border:1px solid #ddd; border-radius:20px; padding:3px 10px;">📍 岐志漁港・加布里漁港（前原駅からバス）</span>
+        <span style="background:#fff0f0; border:1px solid #ef9a9a; border-radius:20px; padding:3px 10px; color:#b71c1c;">🗓 ⚠️ 通常 10月〜4月シーズン。6月は終了済の可能性大</span>
+        <a href="https://maps.google.com/?q=糸島+牡蠣小屋+岐志漁港" target="_blank" style="background:#e3f2fd; border:1px solid #90caf9; border-radius:20px; padding:3px 10px; color:#1565c0; text-decoration:none;">🗺 Google Maps</a>
+      </div>
+      <p style="font-size:0.77rem; color:#777; margin:8px 0 0; line-height:1.6;">⚠️ 6月は牡蠣オフシーズン（稚貝回収期）。当日開いてれば超ラッキー、なければ糸島カフェランチに切替。</p>
+    </div>
+
+    <!-- ▌ 假日行程注意 ▐ -->
+    <div style="background:#3e2723; color:#f0ece4; border-radius:8px; padding:10px 16px; margin-bottom:14px;">
+      <span style="font-size:0.72rem; font-weight:700; letter-spacing:0.08em;">📅 假日（六日）行程注意 — 平日 vs 週末的差異</span>
+    </div>
+
+    <div style="border:1px solid #ddd; border-radius:8px; padding:14px 16px; margin-bottom:12px; background:#fffde7;">
+      <p style="font-size:0.82rem; font-weight:700; margin:0 0 8px; color:#7a5c00;">⚠️ 以下項目在假日（土・日）需特別注意</p>
+      <table style="width:100%; border-collapse:collapse; font-size:0.8rem;">
+        <thead>
+          <tr style="background:#f9a825; color:#fff;">
+            <th style="padding:6px 10px; text-align:left; border-radius:4px 0 0 0;">地點 / 餐廳</th>
+            <th style="padding:6px 10px; text-align:left;">當日星期</th>
+            <th style="padding:6px 10px; text-align:left;">假日狀況</th>
+            <th style="padding:6px 10px; text-align:left; border-radius:0 4px 0 0;">建議</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="border-bottom:1px solid #ffe082;">
+            <td style="padding:7px 10px; font-weight:600;">ちいかわらんど PARCO</td>
+            <td style="padding:7px 10px; color:#b71c1c; font-weight:700;">Day 7（日）⚠️</td>
+            <td style="padding:7px 10px;">週日整理券排隊時間長，開店前10:00到</td>
+            <td style="padding:7px 10px;">最晚 10:00 門口等開</td>
+          </tr>
+          <tr style="border-bottom:1px solid #ffe082;">
+            <td style="padding:7px 10px; font-weight:600;">元祖本吉屋（柳川鰻魚）</td>
+            <td style="padding:7px 10px; color:#2e7d32; font-weight:700;">Day 5（金）✅</td>
+            <td style="padding:7px 10px;">平日金曜→比較不排隊，但仍需 15:00 前到</td>
+            <td style="padding:7px 10px;">川下り終後直行 16:00~</td>
+          </tr>
+          <tr style="border-bottom:1px solid #ffe082;">
+            <td style="padding:7px 10px; font-weight:600;">但馬屋・えびのや ランチ（KITTE）</td>
+            <td style="padding:7px 10px; font-weight:700;">Day 3/4（水・木）✅</td>
+            <td style="padding:7px 10px; color:#b71c1c;"><strong>平日ランチ限定のセットメニューあり</strong>（土日は通常メニュー、割高）</td>
+            <td style="padding:7px 10px;">Day 3/4/5（水・木・金）狙い</td>
+          </tr>
+          <tr style="border-bottom:1px solid #ffe082;">
+            <td style="padding:7px 10px; font-weight:600;">阿蘇 Klook 一日遊バス</td>
+            <td style="padding:7px 10px; color:#b71c1c; font-weight:700;">Day 6（土）⚠️</td>
+            <td style="padding:7px 10px;">週末は特に人が多い（草千里・阿蘇火口）</td>
+            <td style="padding:7px 10px;">Klook ガイドに任せるだけ OK</td>
+          </tr>
+          <tr style="border-bottom:1px solid #ffe082;">
+            <td style="padding:7px 10px; font-weight:600;">中洲屋台</td>
+            <td style="padding:7px 10px; color:#2e7d32; font-weight:700;">Day 5（金）✅ 最佳</td>
+            <td style="padding:7px 10px;">週末は外国人で混雑、雨天は出店しない</td>
+            <td style="padding:7px 10px;">Day 5 晴れなら夜に寄る</td>
+          </tr>
+          <tr>
+            <td style="padding:7px 10px; font-weight:600;">旦過市場（小倉）</td>
+            <td style="padding:7px 10px; color:#2e7d32; font-weight:700;">Day 4（木）✅</td>
+            <td style="padding:7px 10px;">平日の方が活気あり（商店主が多い）</td>
+            <td style="padding:7px 10px;">木曜は朝から活発 ✅</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div style="border:1px solid #ddd; border-radius:8px; padding:14px 16px; background:#f3e5f5;">
+      <p style="font-size:0.82rem; font-weight:700; margin:0 0 6px; color:#6a1b9a;">💡 本次行程的假日/平日評估</p>
+      <p style="font-size:0.8rem; color:#555; line-height:1.7; margin:0;">
+        本次旅程 Day 6（土）+ Day 7（日）是唯一的週末。<br>
+        ✅ <strong>薬院焼肉</strong>：Day 3（水）→ 平日，最佳<br>
+        ✅ <strong>KITTE 商業午餐</strong>：Day 3–5（水・木・金）→ 平日限定セット狙える<br>
+        ✅ <strong>柳川鰻魚</strong>：Day 5（金）→ 平日，比週末排隊少<br>
+        ⚠️ <strong>ちいかわらんど</strong>：Day 7（日）→ 週日最多人，早到是關鍵<br>
+        ⚠️ <strong>阿蘇 Klook</strong>：Day 6（土）→ 週末但 Klook 包車/バス，不受市場擁擠影響
+      </p>
+    </div>
+
+  </div>
+</div><!-- /pane-food -->
+
+<script>
+(function () {
+  const WX_CODE = {
+    0:  '☀️', 1: '🌤️', 2: '⛅', 3: '☁️',
+    45: '🌫️', 48: '🌫️',
+    51: '🌦️', 53: '🌦️', 55: '🌦️',
+    61: '🌧️', 63: '🌧️', 65: '🌧️',
+    71: '❄️',  73: '❄️',  75: '❄️',
+    80: '🌦️', 81: '🌧️', 82: '⛈️',
+    95: '⛈️', 96: '⛈️', 99: '⛈️',
+  };
+
+  function wxIcon(code) { return WX_CODE[code] || '🌡️'; }
+
+  function wxClass(prob) {
+    if (prob >= 60) return 'wx-rain';
+    if (prob >= 30) return 'wx-part';
+    return 'wx-sun';
+  }
+
+  /* 每天對應的當地座標 */
+  const DAY_LOC = {
+    '2026-06-01': { lat: 33.59, lon: 130.41, name: '福岡' },
+    '2026-06-02': { lat: 33.52, lon: 130.53, name: '太宰府' },
+    '2026-06-03': { lat: 33.59, lon: 130.41, name: '福岡' },
+    '2026-06-04': { lat: 33.88, lon: 130.88, name: '小倉' },
+    '2026-06-05': { lat: 33.59, lon: 130.41, name: '福岡' },
+    '2026-06-06': { lat: 33.16, lon: 130.37, name: '柳川' },
+    '2026-06-07': { lat: 32.88, lon: 131.10, name: '阿蘇' },
+    '2026-06-08': { lat: 33.45, lon: 129.97, name: '唐津' },
+    '2026-06-09': { lat: 33.59, lon: 130.41, name: '福岡' },
+  };
+
+  /* 依座標分組，減少 API 呼叫次數 */
+  const groups = {};
+  Object.entries(DAY_LOC).forEach(([date, loc]) => {
+    const key = `${loc.lat},${loc.lon}`;
+    if (!groups[key]) groups[key] = { lat: loc.lat, lon: loc.lon, dates: [] };
+    groups[key].dates.push(date);
+  });
+
+  const FIELDS = 'weathercode,temperature_2m_max,temperature_2m_min,precipitation_probability_max';
+
+  Object.values(groups).forEach(g => {
+    const dates = g.dates.sort();
+    const url = `https://api.open-meteo.com/v1/forecast`
+      + `?latitude=${g.lat}&longitude=${g.lon}`
+      + `&daily=${FIELDS}`
+      + `&timezone=Asia%2FTokyo`
+      + `&start_date=${dates[0]}&end_date=${dates[dates.length - 1]}`;
+
+    fetch(url)
+      .then(r => r.json())
+      .then(data => {
+        const times   = data.daily.time;
+        const codes   = data.daily.weathercode;
+        const maxT    = data.daily.temperature_2m_max;
+        const minT    = data.daily.temperature_2m_min;
+        const rainPct = data.daily.precipitation_probability_max;
+
+        dates.forEach(date => {
+          const idx = times.indexOf(date);
+          if (idx === -1) return;
+          const div = document.querySelector(`.day-weather[data-date="${date}"]`);
+          if (!div) return;
+          const badge = div.querySelector('.wx-badge');
+          if (!badge) return;
+          const wxlink = div.querySelector('.wx-link');
+
+          const prob = rainPct[idx] ?? 0;
+          const locName = DAY_LOC[date].name;
+          badge.className = 'wx-badge ' + wxClass(prob);
+          badge.textContent =
+            wxIcon(codes[idx]) + ' ' +
+            Math.round(maxT[idx]) + '°C / ' +
+            Math.round(minT[idx]) + '°C　💧 ' + prob + '%'
+            + (locName !== '福岡' ? `　📍${locName}` : '');
+          if (wxlink) {
+            badge.style.cursor = 'pointer';
+            badge.title = '點擊查看 tenki.jp 詳細預報';
+            badge.onclick = () => window.open(wxlink.href, '_blank');
+            wxlink.style.display = 'none';
+          }
+        });
+      })
+      .catch(() => {
+        g.dates.forEach(date => {
+          const div = document.querySelector(`.day-weather[data-date="${date}"]`);
+          if (!div) return;
+          const badge = div.querySelector('.wx-badge');
+          if (badge) { badge.className = 'wx-badge wx-part'; badge.textContent = '⚠️ 載入失敗'; }
+        });
+      });
+  });
+})();
+</script>
+
+</body>
+</html>
