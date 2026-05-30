@@ -996,7 +996,6 @@
 </div>
 </div>
 </div>
-</div><!-- /pane-day1 -->
 <div class="tab-pane" id="pane-day2">
 <!-- Day 2 -->
 <div class="day-card d2">
@@ -2692,62 +2691,6 @@
 </div>
 </div>
 </div><!-- /pane-checklist -->
-</div><!-- /container -->
-<footer>
-  📅 製作日：2026年5月28日（最終更新：2026年5月30日）　｜　資料來源：JR 九州官網、Klook、ufotable Cafe 官網、heroaca-ex-fuk.com
-</footer>
-<script>
-var TAB_GROUPS = {
-  itinerary: ['overview','day1','day2','day3','day4','day5','day6','day7','day8','day9','rain'],
-  food: ['lunch','ramen','food'],
-  info: ['anime','workman','map','budget','checklist']
-};
-
-function showGroup(group, targetTab) {
-  // Update upper nav
-  document.querySelectorAll('.upper-btn').forEach(function(b) {
-    b.classList.toggle('active', b.dataset.group === group);
-  });
-  // Show/hide lower tabs
-  var tabs = TAB_GROUPS[group];
-  document.querySelectorAll('.tab-btn').forEach(function(b) {
-    b.style.display = tabs.indexOf(b.dataset.tab) !== -1 ? '' : 'none';
-  });
-  // Navigate to target tab or first in group
-  showTab(targetTab || tabs[0]);
-}
-
-function showTab(id) {
-  // Auto-switch upper group if needed
-  var group = null;
-  for (var g in TAB_GROUPS) {
-    if (TAB_GROUPS[g].indexOf(id) !== -1) { group = g; break; }
-  }
-  if (group) {
-    var activeUpper = document.querySelector('.upper-btn.active');
-    if (!activeUpper || activeUpper.dataset.group !== group) {
-      document.querySelectorAll('.upper-btn').forEach(function(b) {
-        b.classList.toggle('active', b.dataset.group === group);
-      });
-      var tabs = TAB_GROUPS[group];
-      document.querySelectorAll('.tab-btn').forEach(function(b) {
-        b.style.display = tabs.indexOf(b.dataset.tab) !== -1 ? '' : 'none';
-      });
-    }
-  }
-  document.querySelectorAll('.tab-pane').forEach(function(p) { p.classList.remove('active'); });
-  document.querySelectorAll('.tab-btn').forEach(function(b) { b.classList.remove('active'); });
-  var pane = document.getElementById('pane-' + id);
-  var btn  = document.querySelector('[data-tab="' + id + '"]');
-  if (pane) pane.classList.add('active');
-  if (btn)  {
-    btn.classList.add('active');
-    btn.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
-  }
-  window.scrollTo({ top: 0, behavior: 'smooth' });
-}
-document.addEventListener('DOMContentLoaded', function() { showTab('day1'); });
-</script>
 <div class="tab-pane" id="pane-food">
 <div style="padding: 20px 0 40px;">
 <h2 style="font-size:1.3rem; font-weight:700; margin-bottom:4px;">🍽️ 福岡美食懶人包</h2>
@@ -2997,6 +2940,62 @@ document.addEventListener('DOMContentLoaded', function() { showTab('day1'); });
 </div>
 </div>
 </div><!-- /pane-food -->
+</div><!-- /container -->
+<footer>
+  📅 製作日：2026年5月28日（最終更新：2026年5月30日）　｜　資料來源：JR 九州官網、Klook、ufotable Cafe 官網、heroaca-ex-fuk.com
+</footer>
+<script>
+var TAB_GROUPS = {
+  itinerary: ['overview','day1','day2','day3','day4','day5','day6','day7','day8','day9','rain'],
+  food: ['lunch','ramen','food'],
+  info: ['anime','workman','map','budget','checklist']
+};
+
+function showGroup(group, targetTab) {
+  // Update upper nav
+  document.querySelectorAll('.upper-btn').forEach(function(b) {
+    b.classList.toggle('active', b.dataset.group === group);
+  });
+  // Show/hide lower tabs
+  var tabs = TAB_GROUPS[group];
+  document.querySelectorAll('.tab-btn').forEach(function(b) {
+    b.style.display = tabs.indexOf(b.dataset.tab) !== -1 ? '' : 'none';
+  });
+  // Navigate to target tab or first in group
+  showTab(targetTab || tabs[0]);
+}
+
+function showTab(id) {
+  // Auto-switch upper group if needed
+  var group = null;
+  for (var g in TAB_GROUPS) {
+    if (TAB_GROUPS[g].indexOf(id) !== -1) { group = g; break; }
+  }
+  if (group) {
+    var activeUpper = document.querySelector('.upper-btn.active');
+    if (!activeUpper || activeUpper.dataset.group !== group) {
+      document.querySelectorAll('.upper-btn').forEach(function(b) {
+        b.classList.toggle('active', b.dataset.group === group);
+      });
+      var tabs = TAB_GROUPS[group];
+      document.querySelectorAll('.tab-btn').forEach(function(b) {
+        b.style.display = tabs.indexOf(b.dataset.tab) !== -1 ? '' : 'none';
+      });
+    }
+  }
+  document.querySelectorAll('.tab-pane').forEach(function(p) { p.classList.remove('active'); });
+  document.querySelectorAll('.tab-btn').forEach(function(b) { b.classList.remove('active'); });
+  var pane = document.getElementById('pane-' + id);
+  var btn  = document.querySelector('[data-tab="' + id + '"]');
+  if (pane) pane.classList.add('active');
+  if (btn)  {
+    btn.classList.add('active');
+    btn.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+  }
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+document.addEventListener('DOMContentLoaded', function() { showTab('day1'); });
+</script>
 <script>
 (function () {
   const WX_CODE = {
