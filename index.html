@@ -468,6 +468,49 @@
   .wx-warn.warn-orange { background:#fff3e0; border-color:#ffb74d; color:#bf360c; }
   .wx-warn.warn-yellow { background:#fffde7; border-color:#fdd835; color:#6d4c00; }
   .wx-warn.warn-green  { background:#e8f5e9; border-color:#81c784; color:#1b5e20; }
+
+  /* ── 每日出門清單 ── */
+  .gear-panel {
+    background: #fff;
+    border: 1px solid #e0e0e0;
+    border-radius: 14px;
+    margin: 16px auto 0;
+    max-width: 900px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+  }
+  .gear-panel-header {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 12px 18px;
+    background: linear-gradient(135deg,#1a1a2e,#16213e);
+    color: #fff;
+    cursor: pointer;
+    user-select: none;
+  }
+  .gear-panel-header h3 { margin: 0; font-size: 0.95rem; font-weight: 700; }
+  .gear-toggle { font-size: 0.78rem; opacity: 0.7; transition: opacity 0.2s; }
+  .gear-panel-header:hover .gear-toggle { opacity: 1; }
+  .gear-body { overflow: hidden; transition: max-height 0.35s ease; max-height: 800px; }
+  .gear-body.collapsed { max-height: 0; }
+  .gear-table { width: 100%; border-collapse: collapse; font-size: 0.82rem; }
+  .gear-table th {
+    background: #f5f5f5; padding: 7px 10px;
+    text-align: left; font-weight: 700; color: #333;
+    border-bottom: 2px solid #e0e0e0; white-space: nowrap;
+  }
+  .gear-table td { padding: 7px 10px; border-bottom: 1px solid #f0f0f0; vertical-align: top; }
+  .gear-table tr:last-child td { border-bottom: none; }
+  .gear-table tr:hover td { background: #fafafa; }
+  .gear-day-label { font-weight: 700; white-space: nowrap; }
+  .gear-icon-yes  { color: #1565c0; font-weight: 700; }
+  .gear-icon-opt  { color: #888; }
+  .gear-icon-no   { color: #ccc; }
+  .gear-icon-warn { color: #bf360c; font-weight: 700; }
+  .gear-extra { color: #444; line-height: 1.5; }
+  @media(max-width:600px){
+    .gear-table th:nth-child(3),
+    .gear-table td:nth-child(3) { display: none; }
+  }
   </style>
 </head>
 <body>
@@ -486,6 +529,93 @@
 <button class="hero-tag hero-tag-btn" onclick="showTab('overview')" style="background:rgba(72,199,142,0.25);border-color:rgba(72,199,142,0.5);color:#d4f5e9;">✅ eSIM 已購入 NT$652</button>
 </div>
 </div>
+
+<!-- ===== 每日出門清單 ===== -->
+<div class="gear-panel">
+  <div class="gear-panel-header" onclick="toggleGear()">
+    <h3>🎒 每日出門清單</h3>
+    <span class="gear-toggle" id="gearToggleLbl">▲ 收起</span>
+  </div>
+  <div class="gear-body" id="gearBody">
+    <table class="gear-table">
+      <thead>
+        <tr>
+          <th>日期</th>
+          <th>主要行程</th>
+          <th>📷 相機</th>
+          <th>☂️ 傘</th>
+          <th>特別攜帶</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="gear-day-label">Day 1<br/><span style="font-weight:400;color:#888">6/1 週一</span></td>
+          <td>✈️ 抵達・大濠公園・中洲屋台</td>
+          <td class="gear-icon-yes">✅ 必帶</td>
+          <td class="gear-icon-warn">⚠️ 必帶<br/><span style="font-size:0.75rem;color:#bf360c">颱風外圍 80%</span></td>
+          <td class="gear-extra">輕便隨身包（行李先寄存）・舒適走路鞋</td>
+        </tr>
+        <tr>
+          <td class="gear-day-label">Day 2<br/><span style="font-weight:400;color:#888">6/2 週二</span></td>
+          <td>🐭 吉伊卡娃討伐祭・室內購物</td>
+          <td class="gear-icon-opt">📷 可選<br/><span style="font-size:0.75rem;color:#888">全室內</span></td>
+          <td class="gear-icon-opt">備用即可</td>
+          <td class="gear-extra">💰 <strong>現金多帶</strong>（購物）・大容量袋（戰利品用）</td>
+        </tr>
+        <tr>
+          <td class="gear-day-label">Day 3<br/><span style="font-weight:400;color:#888">6/3 週三</span></td>
+          <td>🌸 太宰府繡球花・九博（戶外）</td>
+          <td class="gear-icon-yes">✅ 必帶<br/><span style="font-size:0.75rem;color:#1565c0">繡球花×神社</span></td>
+          <td class="gear-icon-yes">✅ 帶<br/><span style="font-size:0.75rem;color:#666">梅雨季</span></td>
+          <td class="gear-extra">🧴 防曬・舒適走路鞋（參道步行多）・現金（梅枝餅¥200）</td>
+        </tr>
+        <tr>
+          <td class="gear-day-label">Day 4<br/><span style="font-weight:400;color:#888">6/4 週四</span></td>
+          <td>⚔️ 小倉・ufotable Cafe・門司港夜景</td>
+          <td class="gear-icon-yes">✅ 必帶<br/><span style="font-size:0.75rem;color:#1565c0">門司港夜景</span></td>
+          <td class="gear-icon-opt">帶傘即可<br/><span style="font-size:0.75rem;color:#888">雨量 0mm</span></td>
+          <td class="gear-extra">🧥 薄外套（門司港夜間海風涼）・現金（Cafe消費）・✈️ 接機用品</td>
+        </tr>
+        <tr>
+          <td class="gear-day-label">Day 5<br/><span style="font-weight:400;color:#888">6/5 週五</span></td>
+          <td>🦸 英雄學院展・🐟 Marine World</td>
+          <td class="gear-icon-yes">✅ 必帶<br/><span style="font-size:0.75rem;color:#1565c0">水族館戶外</span></td>
+          <td class="gear-icon-opt">備用</td>
+          <td class="gear-extra">🧴 防曬（Marine World 戶外區）・📱 Marine World 票截圖・舒適鞋</td>
+        </tr>
+        <tr>
+          <td class="gear-day-label">Day 6<br/><span style="font-weight:400;color:#888">6/6 週六</span></td>
+          <td>🌋 阿蘇火山 Klook 全日遊</td>
+          <td class="gear-icon-yes">✅ 必帶<br/><span style="font-size:0.75rem;color:#1565c0">火山口・草千里</span></td>
+          <td class="gear-icon-yes">✅ 必帶<br/><span style="font-size:0.75rem;color:#666">高原多霧雨</span></td>
+          <td class="gear-extra">🧥 薄外套（阿蘇高原涼）・🛁 毛巾+換洗衣（黑川溫泉泡湯）・🧴 防曬・📱 Klook 票截圖（07:30 天神集合）</td>
+        </tr>
+        <tr>
+          <td class="gear-day-label">Day 7<br/><span style="font-weight:400;color:#888">6/7 週日</span></td>
+          <td>🚤 柳川遊船・鰻魚蒸籠飯</td>
+          <td class="gear-icon-yes">✅ 必帶<br/><span style="font-size:0.75rem;color:#1565c0">遊船水道景</span></td>
+          <td class="gear-icon-warn">⚠️ 必帶<br/><span style="font-size:0.75rem;color:#bf360c">遊船全露天</span></td>
+          <td class="gear-extra">👗 舒適衣著（遊船坐70分）・💰 現金（鰻魚飯¥2,500~）・🐭 ちいかわらんど今日週日開</td>
+        </tr>
+        <tr>
+          <td class="gear-day-label">Day 8<br/><span style="font-weight:400;color:#888">6/8 週一</span></td>
+          <td>🌊 糸島・唐津（海邊全日）</td>
+          <td class="gear-icon-yes">✅ 必帶<br/><span style="font-size:0.75rem;color:#1565c0">此行最上鏡</span></td>
+          <td class="gear-icon-opt">備用</td>
+          <td class="gear-extra">🧴 <strong>防曬必備</strong>（海邊整天）・🩴 涼鞋/海灘鞋・🏖️ 小毛巾・💰 現金（海鮮午餐）</td>
+        </tr>
+        <tr>
+          <td class="gear-day-label">Day 9<br/><span style="font-weight:400;color:#888">6/9 週二</span></td>
+          <td>✈️ 離開福岡</td>
+          <td class="gear-icon-no">—</td>
+          <td class="gear-icon-no">—</td>
+          <td class="gear-extra">🛂 護照確認・💴 日幣用完・🧳 行李全清點・機場地下鐵 ¥260（回空港）</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
 <div class="container">
 <!-- ===== Two-layer Tab Navigation ===== -->
 <div class="nav-wrapper">
@@ -3132,6 +3262,16 @@
   📅 製作日：2026年5月28日（最終更新：2026年5月30日）　｜　資料來源：JR 九州官網、Klook、ufotable Cafe 官網、heroaca-ex-fuk.com
 </footer>
 <script>
+function toggleGear() {
+  var body = document.getElementById('gearBody');
+  var lbl  = document.getElementById('gearToggleLbl');
+  if (body.classList.toggle('collapsed')) {
+    lbl.textContent = '▼ 展開';
+  } else {
+    lbl.textContent = '▲ 收起';
+  }
+}
+
 var TAB_GROUPS = {
   itinerary: ['overview','day1','day2','day3','day4','day5','day6','day7','day8','day9','rain'],
   food: ['lunch','ramen','food'],
