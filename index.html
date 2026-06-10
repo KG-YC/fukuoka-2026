@@ -469,48 +469,27 @@
   .wx-warn.warn-yellow { background:#fffde7; border-color:#fdd835; color:#6d4c00; }
   .wx-warn.warn-green  { background:#e8f5e9; border-color:#81c784; color:#1b5e20; }
 
-  /* ── 每日出門清單 ── */
-  .gear-panel {
-    background: #fff;
-    border: 1px solid #e0e0e0;
-    border-radius: 14px;
-    margin: 16px auto 0;
-    max-width: 900px;
-    overflow: hidden;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+  /* ── 每日攜帶（單日卡，置於各日行程最上方）── */
+  .day-gear {
+    display: flex; flex-wrap: wrap; align-items: center; gap: 8px;
+    background: #fffdf6;
+    border: 1px solid #f0e4c4;
+    border-left: 4px solid #e8a13a;
+    border-radius: 10px;
+    padding: 10px 14px;
+    margin-bottom: 16px;
+    font-size: 0.83rem;
+    line-height: 1.5;
   }
-  .gear-panel-header {
-    display: flex; align-items: center; justify-content: space-between;
-    padding: 12px 18px;
-    background: linear-gradient(135deg,#1a1a2e,#16213e);
-    color: #fff;
-    cursor: pointer;
-    user-select: none;
+  .day-gear .dg-label { font-weight: 700; color: #b5790f; white-space: nowrap; }
+  .day-gear .dg-pill {
+    padding: 2px 10px; border-radius: 12px; font-weight: 600; white-space: nowrap;
   }
-  .gear-panel-header h3 { margin: 0; font-size: 0.95rem; font-weight: 700; }
-  .gear-toggle { font-size: 0.78rem; opacity: 0.7; transition: opacity 0.2s; }
-  .gear-panel-header:hover .gear-toggle { opacity: 1; }
-  .gear-body { overflow: hidden; transition: max-height 0.35s ease; max-height: 800px; }
-  .gear-body.collapsed { max-height: 0; }
-  .gear-table { width: 100%; border-collapse: collapse; font-size: 0.82rem; }
-  .gear-table th {
-    background: #f5f5f5; padding: 7px 10px;
-    text-align: left; font-weight: 700; color: #333;
-    border-bottom: 2px solid #e0e0e0; white-space: nowrap;
-  }
-  .gear-table td { padding: 7px 10px; border-bottom: 1px solid #f0f0f0; vertical-align: top; }
-  .gear-table tr:last-child td { border-bottom: none; }
-  .gear-table tr:hover td { background: #fafafa; }
-  .gear-day-label { font-weight: 700; white-space: nowrap; }
-  .gear-icon-yes  { color: #1565c0; font-weight: 700; }
-  .gear-icon-opt  { color: #888; }
-  .gear-icon-no   { color: #ccc; }
-  .gear-icon-warn { color: #bf360c; font-weight: 700; }
-  .gear-extra { color: #444; line-height: 1.5; }
-  @media(max-width:600px){
-    .gear-table th:nth-child(3),
-    .gear-table td:nth-child(3) { display: none; }
-  }
+  .day-gear .dg-yes  { background: #e3f2fd; color: #1565c0; }
+  .day-gear .dg-warn { background: #fdeae2; color: #bf360c; }
+  .day-gear .dg-opt  { background: #f0f0f0; color: #777; }
+  .day-gear .dg-none { background: #f5f5f5; color: #bbb; }
+  .day-gear .dg-extra { color: #555; }
   </style>
 </head>
 <body>
@@ -528,92 +507,6 @@
 <button class="hero-tag hero-tag-btn" onclick="showTab('day8')">🌊 糸島 + 唐津</button>
 <button class="hero-tag hero-tag-btn" onclick="showTab('overview')" style="background:rgba(72,199,142,0.25);border-color:rgba(72,199,142,0.5);color:#d4f5e9;">✅ eSIM 已購入 NT$652</button>
 </div>
-</div>
-
-<!-- ===== 每日出門清單 ===== -->
-<div class="gear-panel">
-  <div class="gear-panel-header" onclick="toggleGear()">
-    <h3>🎒 每日出門清單</h3>
-    <span class="gear-toggle" id="gearToggleLbl">▲ 收起</span>
-  </div>
-  <div class="gear-body" id="gearBody">
-    <table class="gear-table">
-      <thead>
-        <tr>
-          <th>日期</th>
-          <th>主要行程</th>
-          <th>📷 相機</th>
-          <th>☂️ 傘</th>
-          <th>特別攜帶</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td class="gear-day-label">Day 1<br/><span style="font-weight:400;color:#888">6/1 週一</span></td>
-          <td>✈️ 抵達・大濠公園・中洲屋台</td>
-          <td class="gear-icon-yes">✅ 必帶</td>
-          <td class="gear-icon-warn">⚠️ 必帶<br/><span style="font-size:0.75rem;color:#bf360c">颱風外圍 80%</span></td>
-          <td class="gear-extra">輕便隨身包（行李先寄存）・舒適走路鞋</td>
-        </tr>
-        <tr>
-          <td class="gear-day-label">Day 2<br/><span style="font-weight:400;color:#888">6/2 週二</span></td>
-          <td>🐭 吉伊卡娃討伐祭・室內購物</td>
-          <td class="gear-icon-opt">📷 可選<br/><span style="font-size:0.75rem;color:#888">全室內</span></td>
-          <td class="gear-icon-opt">備用即可</td>
-          <td class="gear-extra">💰 <strong>現金多帶</strong>（購物）・大容量袋（戰利品用）</td>
-        </tr>
-        <tr>
-          <td class="gear-day-label">Day 3<br/><span style="font-weight:400;color:#888">6/3 週三</span></td>
-          <td>🌸 太宰府繡球花・九博（戶外）</td>
-          <td class="gear-icon-yes">✅ 必帶<br/><span style="font-size:0.75rem;color:#1565c0">繡球花×神社</span></td>
-          <td class="gear-icon-yes">✅ 帶<br/><span style="font-size:0.75rem;color:#666">梅雨季</span></td>
-          <td class="gear-extra">🧴 防曬・舒適走路鞋（參道步行多）・現金（梅枝餅¥200）</td>
-        </tr>
-        <tr>
-          <td class="gear-day-label">Day 4<br/><span style="font-weight:400;color:#888">6/4 週四</span></td>
-          <td>⚔️ 小倉・ufotable Cafe・門司港夜景</td>
-          <td class="gear-icon-yes">✅ 必帶<br/><span style="font-size:0.75rem;color:#1565c0">門司港夜景</span></td>
-          <td class="gear-icon-warn">⚠️ 必帶<br/><span style="font-size:0.75rem;color:#bf360c">7mm 梅雨鋒面</span></td>
-          <td class="gear-extra">🧥 薄外套（門司港夜間海風涼）・現金（Cafe消費）・✈️ 接機用品・⚠️ 比台風天還濕</td>
-        </tr>
-        <tr>
-          <td class="gear-day-label">Day 5<br/><span style="font-weight:400;color:#888">6/5 週五</span></td>
-          <td>🦸 英雄學院展・🐟 Marine World</td>
-          <td class="gear-icon-yes">✅ 必帶<br/><span style="font-size:0.75rem;color:#1565c0">水族館戶外</span></td>
-          <td class="gear-icon-opt">備用</td>
-          <td class="gear-extra">🧴 防曬（Marine World 戶外區）・📱 Marine World 票截圖・舒適鞋</td>
-        </tr>
-        <tr>
-          <td class="gear-day-label">Day 6<br/><span style="font-weight:400;color:#888">6/6 週六</span></td>
-          <td>🌋 阿蘇火山 Klook 全日遊</td>
-          <td class="gear-icon-yes">✅ 必帶<br/><span style="font-size:0.75rem;color:#1565c0">火山口・草千里</span></td>
-          <td class="gear-icon-yes">✅ 必帶<br/><span style="font-size:0.75rem;color:#666">高原多霧雨</span></td>
-          <td class="gear-extra">🧥 薄外套（阿蘇高原涼）・🧴 防曬・📱 Klook 票截圖（07:30 天神集合）・♨️ 溫泉毛巾現場¥100~可購</td>
-        </tr>
-        <tr>
-          <td class="gear-day-label">Day 7<br/><span style="font-weight:400;color:#888">6/7 週日</span></td>
-          <td>🚤 柳川遊船・鰻魚蒸籠飯</td>
-          <td class="gear-icon-yes">✅ 必帶<br/><span style="font-size:0.75rem;color:#1565c0">遊船水道景</span></td>
-          <td class="gear-icon-warn">⚠️ 必帶<br/><span style="font-size:0.75rem;color:#bf360c">遊船全露天</span></td>
-          <td class="gear-extra">👗 舒適衣著（遊船坐70分）・💰 現金（鰻魚飯¥2,500~）・🐭 ちいかわらんど今日週日開</td>
-        </tr>
-        <tr>
-          <td class="gear-day-label">Day 8<br/><span style="font-weight:400;color:#888">6/8 週一</span></td>
-          <td>🌊 糸島・唐津（海邊全日）</td>
-          <td class="gear-icon-yes">✅ 必帶<br/><span style="font-size:0.75rem;color:#1565c0">此行最上鏡</span></td>
-          <td class="gear-icon-opt">備用</td>
-          <td class="gear-extra">🧴 <strong>防曬必備</strong>（海邊整天）・🩴 涼鞋/海灘鞋・💰 現金（海鮮午餐）</td>
-        </tr>
-        <tr>
-          <td class="gear-day-label">Day 9<br/><span style="font-weight:400;color:#888">6/9 週二</span></td>
-          <td>✈️ 離開福岡</td>
-          <td class="gear-icon-no">—</td>
-          <td class="gear-icon-no">—</td>
-          <td class="gear-extra">🛂 護照確認・💴 日幣用完・🧳 行李全清點・機場地下鐵 ¥260（回空港）</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
 </div>
 
 <div class="container">
@@ -889,8 +782,7 @@
   </div>
   <div style="margin-top:8px; color:#1a6fa8;">📍 在地鐵各站自動售票機購買即可</div>
 </div>
-</div>
-<!-- 出發前準備清單 -->
+<!-- 出發前準備清單（概覽分頁內） -->
 <div class="section-title">📋 出發前準備清單</div>
 <div class="rain-card" style="padding:16px 20px">
 <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px 24px;">
@@ -1029,8 +921,6 @@
     <div class="value">819240100883</div>
   </div>
 </div>
-<!-- 每日行程 -->
-<div class="section-title">每日行程</div>
 <!-- 颱風警告 -->
 <div class="note-box" style="margin-bottom:16px; background:#fff0f0; border-left-color:#e53e3e; color:#7b1c1c; border-radius:8px; padding:14px 16px;">
 <strong>⚠️ 颱風 6号（查米 Champi）動態注意</strong><br/>
@@ -1051,6 +941,12 @@
 </div><!-- /pane-overview -->
 <div class="tab-pane active" id="pane-day1">
 <!-- Day 1 -->
+<div class="day-gear">
+<span class="dg-label">🎒 今日攜帶</span>
+<span class="dg-pill dg-yes">📷 必帶</span>
+<span class="dg-pill dg-warn">☂️ 必帶 · 颱風外圍80%</span>
+<span class="dg-extra">輕便隨身包（行李先寄存）・舒適走路鞋</span>
+</div>
 <div class="day-card d1">
 <div class="day-header">
 <div class="day-num">01</div>
@@ -1155,6 +1051,12 @@
 </div>
 <div class="tab-pane" id="pane-day2">
 <!-- Day 2 -->
+<div class="day-gear">
+<span class="dg-label">🎒 今日攜帶</span>
+<span class="dg-pill dg-opt">📷 可選 · 全室內</span>
+<span class="dg-pill dg-opt">☂️ 備用即可</span>
+<span class="dg-extra">💰 現金多帶（購物）・大容量袋（戰利品用）</span>
+</div>
 <div class="day-card d2">
 <div class="day-header">
 <div class="day-num">02</div>
@@ -1241,6 +1143,12 @@
 </div><!-- /pane-day2 -->
 <div class="tab-pane" id="pane-day3">
 <!-- Day 3 -->
+<div class="day-gear">
+<span class="dg-label">🎒 今日攜帶</span>
+<span class="dg-pill dg-yes">📷 必帶 · 繡球花×神社</span>
+<span class="dg-pill dg-yes">☂️ 帶 · 梅雨季</span>
+<span class="dg-extra">🧴 防曬・舒適走路鞋（參道步行多）・現金（梅枝餅¥200）</span>
+</div>
 <div class="day-card d3">
 <div class="day-header">
 <div class="day-num">03</div>
@@ -1337,6 +1245,12 @@
 </div><!-- /pane-day3 -->
 <div class="tab-pane" id="pane-day4">
 <!-- Day 4 -->
+<div class="day-gear">
+<span class="dg-label">🎒 今日攜帶</span>
+<span class="dg-pill dg-yes">📷 必帶 · 門司港夜景</span>
+<span class="dg-pill dg-warn">☂️ 必帶 · 7mm梅雨鋒面</span>
+<span class="dg-extra">🧥 薄外套（門司港夜間海風涼）・現金（Cafe消費）・✈️ 接機用品・⚠️ 比台風天還濕</span>
+</div>
 <div class="day-card d4">
 <div class="day-header">
 <div class="day-num">04</div>
@@ -1441,6 +1355,12 @@
 </div><!-- /pane-day4 -->
 <div class="tab-pane" id="pane-day5">
 <!-- Day 5 -->
+<div class="day-gear">
+<span class="dg-label">🎒 今日攜帶</span>
+<span class="dg-pill dg-yes">📷 必帶 · 水族館戶外</span>
+<span class="dg-pill dg-opt">☂️ 備用</span>
+<span class="dg-extra">🧴 防曬（Marine World 戶外區）・📱 Marine World 票截圖・舒適鞋</span>
+</div>
 <div class="day-card d5">
 <div class="day-header">
 <div class="day-num">05</div>
@@ -1531,6 +1451,12 @@
 </div><!-- /pane-day5 -->
 <div class="tab-pane" id="pane-day6">
 <!-- Day 6 -->
+<div class="day-gear">
+<span class="dg-label">🎒 今日攜帶</span>
+<span class="dg-pill dg-yes">📷 必帶 · 火山口・草千里</span>
+<span class="dg-pill dg-yes">☂️ 必帶 · 高原多霧雨</span>
+<span class="dg-extra">🧥 薄外套（阿蘇高原涼）・🧴 防曬・📱 Klook 票截圖（07:30 天神集合）・♨️ 溫泉毛巾現場¥100~可購</span>
+</div>
 <div class="day-card d6">
 <div class="day-header">
 <div class="day-num">06</div>
@@ -1632,6 +1558,12 @@
 </div><!-- /pane-day6 -->
 <div class="tab-pane" id="pane-day7">
 <!-- Day 7 -->
+<div class="day-gear">
+<span class="dg-label">🎒 今日攜帶</span>
+<span class="dg-pill dg-yes">📷 必帶 · 遊船水道景</span>
+<span class="dg-pill dg-warn">☂️ 必帶 · 遊船全露天</span>
+<span class="dg-extra">👗 舒適衣著（遊船坐70分）・💰 現金（鰻魚飯¥2,500~）・🐭 ちいかわらんど今日週日開</span>
+</div>
 <div class="day-card d7">
 <div class="day-header">
 <div class="day-num">07</div>
@@ -1721,6 +1653,12 @@
 </div><!-- /pane-day7 -->
 <div class="tab-pane" id="pane-day8">
 <!-- Day 8 -->
+<div class="day-gear">
+<span class="dg-label">🎒 今日攜帶</span>
+<span class="dg-pill dg-yes">📷 必帶 · 此行最上鏡</span>
+<span class="dg-pill dg-opt">☂️ 備用</span>
+<span class="dg-extra">🧴 防曬必備（海邊整天）・🩴 涼鞋/海灘鞋・💰 現金（海鮮午餐）</span>
+</div>
 <div class="day-card d8">
 <div class="day-header">
 <div class="day-num">08</div>
@@ -1843,6 +1781,12 @@
 </div><!-- /pane-day8 -->
 <div class="tab-pane" id="pane-day9">
 <!-- Day 9 -->
+<div class="day-gear">
+<span class="dg-label">🎒 今日攜帶</span>
+<span class="dg-pill dg-none">📷 —</span>
+<span class="dg-pill dg-none">☂️ —</span>
+<span class="dg-extra">🛂 護照確認・💴 日幣用完・🧳 行李全清點・機場地下鐵 ¥260（回空港）</span>
+</div>
 <div class="day-card d9">
 <div class="day-header">
 <div class="day-num">09</div>
@@ -2457,6 +2401,13 @@
 <td>萬代南夢宮集團官方直營，「觀看・觸摸・體驗」三合一的沉浸式旗艦店。ONE PIECE・鬼滅之刃・機動戰士・Dragon Ball・偶像大師等萬代全品牌正版周邊，限定商品一次入手。<span style="color:#3a5a8a;font-size:0.82rem">Canal City 南棟 B1F，Gundam Base（1F）正上方，Day 2 直接上下樓兩間一起掃</span></td>
 <td style="font-size:0.77rem">10:00–21:00<br/>（Canal City 同時間）</td>
 <td style="font-size:0.77rem">博多区住吉1-2-74<br/>Canal City 博多<br/>南棟 B1F<br/><a href="https://bandainamco-am.co.jp/crossstore/store/hakata.html" style="color:#1a6fa8" target="_blank">官網 →</a><br/><a href="https://maps.google.com/?q=バンダイナムコ+Cross+Store+博多+キャナルシティ博多+福岡市" style="color:#1565c0" target="_blank">🗺 Maps</a></td>
+</tr>
+<tr style="background:#f0f7ff">
+<td><span class="rain-indoor" style="background:#e3f2fd;color:#1565c0">戰鬥<br/>陀螺</span></td>
+<td style="font-weight:600">戰鬥陀螺 ベイブレードX<br/><span style="font-size:0.73rem;color:#999">連鎖店多點有售・不指定分店</span></td>
+<td>BEYBLADE X（戰鬥陀螺）系列在各大連鎖店都買得到，過來人實測以下幾間連鎖都有現貨：<strong>Yamada電機（ヤマダデンキ）・Yodobashi（ヨドバシ）・唐吉軻德（ドン・キホーテ）・玩具反斗城（トイザらス）</strong>。<span style="color:#3a5a8a;font-size:0.82rem">不限特定分店，市區大型門市玩具／模型樓層找得到，順路逛到哪間就進去看</span></td>
+<td style="font-size:0.77rem">各店營業時間不一<br/>定價販售</td>
+<td style="font-size:0.77rem">Yamada電機<br/>Yodobashi<br/>唐吉軻德<br/>玩具反斗城<br/><span style="color:#999">（不指定分店）</span></td>
 </tr>
 </tbody>
 </table>
@@ -3292,16 +3243,6 @@
   📅 製作日：2026年5月28日（最終更新：2026年5月30日）　｜　資料來源：JR 九州官網、Klook、ufotable Cafe 官網、heroaca-ex-fuk.com
 </footer>
 <script>
-function toggleGear() {
-  var body = document.getElementById('gearBody');
-  var lbl  = document.getElementById('gearToggleLbl');
-  if (body.classList.toggle('collapsed')) {
-    lbl.textContent = '▼ 展開';
-  } else {
-    lbl.textContent = '▲ 收起';
-  }
-}
-
 var TAB_GROUPS = {
   itinerary: ['overview','day1','day2','day3','day4','day5','day6','day7','day8','day9','rain'],
   food: ['lunch','ramen','food'],
